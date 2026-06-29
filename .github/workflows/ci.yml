@@ -9,6 +9,21 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: protospace_development
+          POSTGRES_USER: protospace
+          POSTGRES_PASSWORD: password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     steps:
       - uses: actions/checkout@v4
 
@@ -21,3 +36,7 @@ jobs:
 
       - name: Run tests
         run: ./gradlew test
+        env:
+          SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/protospace_development
+          SPRING_DATASOURCE_USERNAME: protospace
+          SPRING_DATASOURCE_PASSWORD: password
