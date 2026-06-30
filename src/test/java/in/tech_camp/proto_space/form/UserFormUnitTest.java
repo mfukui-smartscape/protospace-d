@@ -63,5 +63,31 @@ public class UserFormUnitTest {
         assertEquals("Email should be valid", violations.iterator().next().getMessage());
       }
 
+      //パスワード
 
+      @Test
+      public void passwordが空では登録できない() {
+        userForm.setPassword("");
+        Set<ConstraintViolation<UserForm>> violations = validator.validate(userForm,ValidationPriority1.class);
+        assertEquals(1, violations.size());
+        assertEquals("Password can't be blank", violations.iterator().next().getMessage());
+      }
+
+      @Test
+      public void passwordが5文字以下では登録できない() {
+        userForm.setPassword("setUp");
+        Set<ConstraintViolation<UserForm>> violations = validator.validate(userForm,ValidationPriority2.class);
+        assertEquals(1, violations.size());
+        assertEquals("Password should be between 6 and 128 characters", violations.iterator().next().getMessage());
+      }
+
+      @Test
+      public void passwordとpasswordConfirmationが不一致では登録できない() {
+        userForm.setPasswordConfirmation("differentPassword");
+        userForm.validatePasswordConfirmation(bindingResult);
+        verify(bindingResult).rejectValue("PasswordConfirmation","error.user","Password confirmation does'nt match Password");
+      }
+
+      
+    }
 }
