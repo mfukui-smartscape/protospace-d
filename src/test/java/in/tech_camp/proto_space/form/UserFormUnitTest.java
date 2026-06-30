@@ -88,6 +88,35 @@ public class UserFormUnitTest {
         verify(bindingResult).rejectValue("PasswordConfirmation","error.user","Password confirmation does'nt match Password");
       }
 
-      
+      @Test
+      public void nameが空では登録できない () {
+        userForm.setName("");
+        Set<ConstraintViolation<UserForm>> violations = validator.validate(userForm,ValidationPriority1.class);
+        assertEquals(1, violations.size());
+        assertEquals("Name can't be blank", violations.iterator().next().getMessage());
+      }
+
+      @Test
+      public void profileが空では登録できない () {
+        userForm.setProfile("");
+        Set<ConstraintViolation<UserForm>> violations = validator.validate(userForm,ValidationPriority1.class);
+        assertEquals(1, violations.size());
+        assertEquals("Profile can't be blank", violations.iterator().next().getMessage());
+      }
+
+      @Test//所属
+      public void roleが空で登録できない(){
+        userForm.setRole("");
+        Set<ConstraintViolation<UserForm>> violations = validator.validate(userForm,ValidationPriority1.class);
+        assertEquals(1, violations.size());
+        assertEquals("Profile can't be blank", violations.iterator().next().getMessage());
+      }
+      @Test//役職
+      public void positionが空では登録できない(){
+        userForm.setPosition("");
+        Set<ConstraintViolation<UserForm>> violations = validator.validate(userForm,ValidationPriority1.class);
+        assertEquals(1, violations.size());
+        assertEquals("Position can't be blank", violations.iterator().next().getMessage());
+      }
     }
 }
