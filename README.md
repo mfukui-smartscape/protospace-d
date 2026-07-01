@@ -20,11 +20,31 @@ Spring Boot (Java 21) + Thymeleaf + MyBatis + Flyway + PostgreSQL で構築。
 
 ---
 
+## DB構成
+
+このプロジェクトはローカルに2つのDBを使う。
+
+| DB | 用途 |
+|------|------|
+| `protospace_development` | 開発用。普段の動作確認に使う |
+| `protospace_test` | テスト用。`./gradlew test` が使う。**開発DBを汚さない** |
+
+テストは `protospace_test` を見るので、テストデータが開発DBに残ることはない。
+それぞれの接続設定は以下に記載：
+
+- 開発用: `src/main/resources/application.properties`
+- テスト用: `src/test/resources/application.properties`
+
+> ⚠ DB名・ユーザー・パスワードは設定ファイルと完全に一致させること。
+> ズレると `DataSourceBeanCreationException` で起動に失敗する。
+
+---
+
 ## 環境構築（メンバー全員が各自実施）
 
 ### 前提
 - WSL (Ubuntu) 環境
-- Java 21 がインストール済み（無くても gradlew が面倒を見ます）
+- Java 21（無くても gradlew が面倒を見る）
 
 ### 1. リポジトリを取得
 
@@ -53,8 +73,7 @@ sudo service postgresql status
 sudo -u postgres psql -f setup_db.sql
 ```
 
-> `setup_db.sql` がDB・ユーザー・権限をまとめて作成します。
-> 手動で実行する場合は下記の「DBセットアップSQL」を参照。
+`setup_db.sql` が **開発用・テスト用の両方のDB**、ユーザー、権限をまとめて作成する。
 
 ### 4. 動作確認
 
@@ -62,33 +81,33 @@ sudo -u postgres psql -f setup_db.sql
 ./gradlew test
 ```
 
-`BUILD SUCCESSFUL` が出れば環境構築完了です。
-（Flyway が起動時にテーブルを自動作成します）
+`BUILD SUCCESSFUL` が出れば環境構築完了。
+（Flyway が起動時にテーブルを自動作成する）
 
 ---
 
 ## DBセットアップSQL（参考: setup_db.sql の中身）
 
 ```sql
+-- 開発用DB
 CREATE DATABASE protospace_development;
+-- テスト用DB
+CREATE DATABASE protospace_test;
+
+-- ユーザー作成
 CREATE USER protospace WITH PASSWORD 'password';
+
+-- 権限付与
 GRANT ALL PRIVILEGES ON DATABASE protospace_development TO protospace;
+GRANT ALL PRIVILEGES ON DATABASE protospace_test TO protospace;
 
 -- PostgreSQL 15+ で必要（publicスキーマへの権限）
 \c protospace_development
 GRANT ALL ON SCHEMA public TO protospace;
+
+\c protospace_test
+GRANT ALL ON SCHEMA public TO protospace;
 ```
-
-接続設定は `src/main/resources/application.properties` に記載:
-
-```properties
-spring.datasource.url=jdbc:postgresql://localhost:5432/protospace_development
-spring.datasource.username=protospace
-spring.datasource.password=password
-```
-
-> ⚠ DB名・ユーザー・パスワードは設定ファイルと完全に一致させること。
-> ズレると `DataSourceBeanCreationException` で起動に失敗します。
 
 ---
 
@@ -108,10 +127,32 @@ spring.datasource.password=password
 - まだ実装していない機能のテストは `@Disabled`（skip）にしておき、CIを緑に保つ。
   実装が済んだら skip を外す → これが Red→Green のサイクルになる。
 - 作業途中で共有・相談したい PR は **Draft Pull Request** で出す（赤でもOK）。
+- テストでDBにデータを入れる場合は、`@Transactional` を付けて各テスト後に
+  自動ロールバックさせる（テストDBもまっさらに保つ）。
 
 ### コミット前の注意
-- `master.key` 等の秘密情報、`build/`・`.gradle/` 等の自動生成物はコミットしない
+- 秘密情報や `build/`・`.gradle/` 等の自動生成物はコミットしない
   （`.gitignore` で除外済み）。
+
+---
+
+## 共有の土台と各機能の分担
+
+このリポジトリは「全員が参照する共有の型」を先に固め、各機能はその上に各自が実装する方針。
+
+**共有の型（リーダーが管理・変更は要相談）**
+
+- `entity/`（User / Prototype / Comment）… 全機能が参照するデータ構造
+- `config/SecurityConfig`（認可ルール + PasswordEncoder）… 認証の土台
+- `db/migration/`（Flyway）… テーブル定義
+- URL設計（公開 / 認証必須の区分）
+- テスト用DB設定（`src/test/resources/application.properties`）
+
+**各機能の中身（各担当が実装）**
+
+- 各 Controller / Form / Mapper / 画面(Thymeleaf) / テスト
+
+> 共有の型を変更すると全機能に影響するため、変更時はチームで合意すること。
 
 ---
 
@@ -120,7 +161,7 @@ spring.datasource.password=password
 ```mermaid
 flowchart TD
     A[git clone] --> B[PostgreSQL インストール・起動]
-    B --> C[setup_db.sql で DB・ユーザー作成]
+    B --> C[setup_db.sql で 開発DB・テストDB 作成]
     C --> D[./gradlew test で動作確認]
     D --> E{緑になった?}
     E -->|Yes| F[feature ブランチを切る]
@@ -138,52 +179,24 @@ flowchart TD
 
 ---
 
-## セットアップ全体像（リポジトリ初期構築の記録）
-
-```mermaid
-flowchart TD
-    subgraph GitHub["GitHub 側設定"]
-        R1[Ruleset 作成] --> R2[PR必須 / 承認1]
-        R2 --> R3[status check 必須: test]
-        R3 --> R4[Block force pushes]
-        R4 --> R5[Bypass list: リーダー]
-        R5 --> R6[Enforcement: Active]
-    end
-
-    subgraph Local["ローカル構築"]
-        L1[Spring Initializr で雛形生成] --> L2[Gradle / Java21 / Web+Thymeleaf+MyBatis+Flyway+PostgreSQL]
-        L2 --> L3[入れ子を解消し構成を整理]
-        L3 --> L4[application.properties に DB接続を記述]
-        L4 --> L5[PostgreSQL 用意 + DB作成]
-        L5 --> L6[./gradlew test 緑]
-    end
-
-    subgraph CI["CI 連携"]
-        C1[.github/workflows/ci.yml 作成] --> C2[push で Actions 実行]
-        C2 --> C3[test job が緑]
-        C3 --> C4[Ruleset の status check に test を追加]
-    end
-
-    Local --> CI
-    CI --> GitHub
-```
-
----
-
 ## プロジェクト構成
 
 ```
 protospace-d/
-├── .github/workflows/ci.yml   # GitHub Actions（CI）
+├── .github/workflows/ci.yml        # GitHub Actions（CI）
 ├── src/
 │   ├── main/
-│   │   ├── java/              # アプリケーションコード
+│   │   ├── java/in/tech_camp/proto_space/
+│   │   │   ├── config/             # SecurityConfig（共有の型）
+│   │   │   └── entity/             # User / Prototype / Comment（共有の型）
 │   │   └── resources/
-│   │       ├── application.properties
-│   │       └── db/migration/  # Flyway マイグレーション
-│   └── test/                  # テストコード
+│   │       ├── application.properties      # 開発DB接続
+│   │       └── db/migration/       # Flyway マイグレーション（共有の型）
+│   └── test/
+│       └── resources/
+│           └── application.properties      # テストDB接続
 ├── build.gradle
 ├── gradlew / gradlew.bat
-├── setup_db.sql               # DBセットアップ
+├── setup_db.sql                    # DBセットアップ（開発+テスト）
 └── README.md
 ```
