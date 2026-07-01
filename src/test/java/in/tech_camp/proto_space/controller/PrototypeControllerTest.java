@@ -59,6 +59,7 @@ public class PrototypeControllerTest {
   @Test
   void 詳細ページにコンセプトが表示される() throws Exception {
     mockMvc.perform(get("/prototypes/1"))
+            .andExpect(status().isOk())
             .andExpect(content().string(containsString("コンセプト")));
   }
 
@@ -66,6 +67,7 @@ public class PrototypeControllerTest {
   @Test
   void 詳細ページに画像が表示される() throws Exception {
     mockMvc.perform(get("/prototypes/1"))
+            .andExpect(status().isOk())
             .andExpect(content().string(containsString("<img")));
   }
 
@@ -75,7 +77,7 @@ public class PrototypeControllerTest {
   void ログイン時は編集リンクが表示される() throws Exception {
     mockMvc.perform(get("/prototypes/1"))
             .andExpect(status().isOk())
-            .andExpect(content().string(containsString("編集")));
+            .andExpect(content().string(containsString("href=\"/prototypes/1/edit\"")));
   }
 
   //ログイン時のみ削除リンク表示
@@ -84,7 +86,7 @@ public class PrototypeControllerTest {
   void ログイン時は削除リンクが表示される() throws Exception {
     mockMvc.perform(get("/prototypes/1"))
             .andExpect(status().isOk())
-            .andExpect(content().string(containsString("削除")));
+            .andExpect(content().string(containsString("href=\"/prototypes/1/delete\"")));
   }
 
   //未ログイン時は編集リンクなし
@@ -92,7 +94,7 @@ public class PrototypeControllerTest {
   void 未ログイン時は編集リンクが表示されない() throws Exception {
     mockMvc.perform(get("/prototypes/1"))
             .andExpect(status().isOk())
-            .andExpect(content().string(not(containsString("編集"))));
+            .andExpect(content().string(not(containsString("href=\"/prototypes/1/edit\""))));
   }
 
   //未ログイン時は削除リンクなし
@@ -100,7 +102,7 @@ public class PrototypeControllerTest {
   void 未ログイン時は削除リンクが表示されない() throws Exception {
     mockMvc.perform(get("/prototypes/1"))
             .andExpect(status().isOk())
-            .andExpect(content().string(not(containsString("削除"))));
+            .andExpect(content().string(not(containsString("href=\"/prototypes/1/delete\""))));
   }
 
   //編集ページ遷移
@@ -119,10 +121,10 @@ public class PrototypeControllerTest {
             .andExpect(status().is3xxRedirection());
   }
 
-  //入力済み項目が消えない
+  // 編集画面初期表示
   @Test
   @WithMockUser
-  void 編集失敗時も入力済み内容は保持される() throws Exception {
+  void 編集画面には既存情報が表示される() throws Exception {
     mockMvc.perform(get("/prototypes/1/edit"))
             .andExpect(status().isOk())
             .andExpect(model().attributeExists("prototype"));
@@ -140,10 +142,10 @@ public class PrototypeControllerTest {
             .andExpect(model().hasErrors());
   }
 
-  //入力内容の保存
+  // バリデーションエラー時の入力保持
   @Test
   @WithMockUser
-  void 編集失敗時も入力済み内容は保存される() throws Exception {
+  void 編集失敗時も入力済み内容は保持される() throws Exception {
     mockMvc.perform(post("/prototypes/1")
             .with(csrf())
             .param("name", "テスト名")
