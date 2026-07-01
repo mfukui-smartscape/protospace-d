@@ -79,4 +79,21 @@ public class PrototypePostValidationIntegrationTest
                 .andExpect(status().isOk())
                 .andExpect(view().name("prototypes/new"));
     }
+
+    
+    @Test
+    @WithMockUser
+    void image未入力では投稿できない()
+            throws Exception {
+
+        mockMvc.perform(
+                multipart("/prototypes")
+                        .param("name", "名称")
+                        .param("catchCopy", "キャッチコピー")
+                        .param("concept", "コンセプト")
+                        .with(csrf()))
+                .andExpect(status().isOk())
+                .andExpect(view().name("prototypes/new"));
+    }
+
 }

@@ -106,4 +106,24 @@ public class PrototypeEditSuccessIntegrationTest
                         containsString(
                                 prototype1.getName())));
     }
+
+    @Test
+    @WithMockUser
+    void 編集画面に登録済み情報が表示される()
+            throws Exception {
+
+        mockMvc.perform(
+                get("/prototypes/{id}/edit",
+                        prototype1.getId()))
+                .andExpect(status().isOk())
+                .andExpect(content().string(
+                        containsString(
+                                prototype1.getName())))
+                .andExpect(content().string(
+                        containsString(
+                                prototype1.getCatchCopy())))
+                .andExpect(content().string(
+                        containsString(
+                                prototype1.getConcept())));
+    }
 }
