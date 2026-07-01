@@ -204,7 +204,7 @@ URL設計表（担当なし・技術仕様のみ）
 │ POST     │ /prototypes              │ 投稿処理        │ 認証          │
 │ GET      │ /prototypes/{id}         │ 詳細            │ 公開          │
 │ GET      │ /prototypes/{id}/edit    │ 編集ページ      │ 認証＋本人    │
-│ PUT      │ /prototypes/{id}         │ 更新処理        │ 認証＋本人    │
-│ DELETE   │ /prototypes/{id}         │ 削除処理        │ 認証＋本人    │
+│ POST      │ /prototypes/{id}         │ 更新処理        │ 認証＋本人    │
+│ POST   │ /prototypes/{id}/delete       │ 削除処理        │ 認証＋本人    │
 │ POST     │ /prototypes/{id}/comments│ コメント投稿    │ 認証          │
 └──────────┴──────────────────────────┴────────────────┴──────────────┘
