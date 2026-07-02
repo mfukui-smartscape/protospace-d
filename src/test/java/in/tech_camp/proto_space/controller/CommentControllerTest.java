@@ -106,7 +106,7 @@ class CommentControllerTest {
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/prototypes/" + prototypeId));
 
-        Comment savedComment = commentMapper.findLatestByPrototypeId(prototypeId);
+        Comment savedComment = commentMapper.findByPrototypeId(prototypeId);
 
         assertNotNull(savedComment);
         assertEquals("いいね！", savedComment.getContent());
@@ -189,7 +189,7 @@ class CommentControllerTest {
                 .param("content", "テストコメント"))
                 .andExpect(status().is3xxRedirection());
 
-        Comment comment = commentMapper.findLatestByPrototypeId(prototypeId);
+        Comment comment = commentMapper.findByPrototypeId(prototypeId);
 
         assertNull(comment);
     }
