@@ -24,8 +24,8 @@ public class SecurityConfig {
         http
             .authorizeHttpRequests(auth -> auth
                 // --- 認証必須を先に書く（順番が重要）---
-                .requestMatchers("/prototypes/new").authenticated()
-                .requestMatchers("/prototypes/*/edit").authenticated()
+                .requestMatchers(HttpMethod.GET, "/prototypes/new").authenticated()
+                .requestMatchers(HttpMethod.GET, "/prototypes/*/edit").authenticated()
                 .requestMatchers(HttpMethod.POST,   "/prototypes").authenticated()
                 .requestMatchers(HttpMethod.PUT,    "/prototypes/*").authenticated()
                 .requestMatchers(HttpMethod.DELETE, "/prototypes/*").authenticated()
