@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+    <title>ProtoType投稿ページ</title>
+  </head>
+
+  <body>
+    <form th:action="" method="post" th:object="" class="prototype_form">
+      <h1>新規プロトタイプ投稿</h1>
+      <div class="prototype_subtitle">プロトタイプの名称</div>
+      <input type="text" th:field="*{name}">
+      <div class="prototype_subtitle">キャッチコピー</div>
+      <input type="text" th:field="*{catchCopy}">
+      <div class="prototype_subtitle">コンセプト</div>
+      <input type="text" th:field="*{concept}">
+      <div class="prototype_subtitle">プロトタイプの画像</div>
+      <input type="file" th:field="*{imageName}">
+      <input type="submit" value="保存する" class="prototype_submit">
+    </form>
+  </body>
+</html>
