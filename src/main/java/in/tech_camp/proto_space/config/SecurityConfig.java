@@ -13,7 +13,6 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    // パスワードのハッシュ化方式（登録・ログイン共通）
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -23,6 +22,9 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests(auth -> auth
+                // --- 静的ファイル（追加）---
+                .requestMatchers("/images/**", "/css/**", "/js/**").permitAll()
+
                 // --- 認証必須を先に書く（順番が重要）---
                 .requestMatchers(HttpMethod.GET, "/prototypes/new").authenticated()
                 .requestMatchers(HttpMethod.GET, "/prototypes/*/edit").authenticated()
@@ -36,8 +38,8 @@ public class SecurityConfig {
                 .requestMatchers("/login").permitAll()
                 .requestMatchers(HttpMethod.GET,  "/users/new").permitAll()
                 .requestMatchers(HttpMethod.POST, "/users").permitAll()
-                .requestMatchers(HttpMethod.GET,  "/prototypes/*").permitAll()  // 詳細
-                .requestMatchers(HttpMethod.GET,  "/users/*").permitAll()       // ユーザー詳細
+                .requestMatchers(HttpMethod.GET,  "/prototypes/*").permitAll()
+                .requestMatchers(HttpMethod.GET,  "/users/*").permitAll()
 
                 .anyRequest().authenticated()
             )
