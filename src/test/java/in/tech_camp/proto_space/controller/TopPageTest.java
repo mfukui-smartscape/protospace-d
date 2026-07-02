@@ -8,16 +8,16 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.xpath;
 import org.springframework.transaction.annotation.Transactional;
 
 import in.tech_camp.proto_space.entity.Prototype;
 import in.tech_camp.proto_space.entity.User;
 import in.tech_camp.proto_space.mapper.PrototypeMapper;
 import in.tech_camp.proto_space.mapper.UserMapper;
-
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -69,27 +69,30 @@ class TopPageTest {
     }
 
     @Test
-    void プロトタイプ名が表示される() throws Exception {
+    void プロトタイプ名が正しい要素に表示される() throws Exception {
         mockMvc.perform(get("/"))
-               .andExpect(content().string(containsString("テストプロトタイプ")));
+            .andExpect(xpath("//*[@data-testid='prototype-name']")
+                    .string("テストプロトタイプ"));
     }
-
     @Test
     void キャッチコピーが表示される() throws Exception {
         mockMvc.perform(get("/"))
-               .andExpect(content().string(containsString("すごいキャッチコピー")));
+            .andExpect(xpath("//*[@data-testid='prototype-catch-copy']")
+                    .string("すごいキャッチコピー"));
     }
 
     @Test
     void 投稿者の名前が表示される() throws Exception {
         mockMvc.perform(get("/"))
-               .andExpect(content().string(containsString("山田太郎")));
+            .andExpect(xpath("//*[@data-testid='user-name']")
+                    .string("山田太郎"));
     }
 
     @Test
     void 画像のimgタグが出力されている() throws Exception {
         mockMvc.perform(get("/"))
-               .andExpect(content().string(containsString("sample.png")));
+               .andExpect(xpath("//img[@data-testid='prototype-image']")
+               .exists());
     }
 
     @Test
@@ -110,6 +113,6 @@ class TopPageTest {
     @WithMockUser(username = "yamada@example.com")
     void ログイン状態だとこんにちはとユーザー名が表示される() throws Exception {
         mockMvc.perform(get("/"))
-               .andExpect(content().string(containsString("こんにちは")));
+               .andExpect(xpath("//*[@data-testid='welcome-message']").string("こんにちは"));
     }
 }
