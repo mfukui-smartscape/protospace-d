@@ -116,35 +116,45 @@ class UserDetailTest {
                    .andExpect(xpath("//img[@data-testid='prototype-image']").exists())
                    .andExpect(xpath("//img[@data-testid='prototype-image']/@src")
                               .string(containsString("sample.png")));
+<<<<<<< HEAD
 =======
+=======
+        }
+
+        @Test
+>>>>>>> e92f0c3 (xpath)
         void 名前が表示される() throws Exception {
             mockMvc.perform(get("/users/" + userId))
-                   .andExpect(content().string(containsString("山田太郎")));
+                   .andExpect(xpath("//*[@data-testid='user-name']").string("山田太郎"));
         }
 
         @Test
         void プロフィールが表示される() throws Exception {
             mockMvc.perform(get("/users/" + userId))
-                   .andExpect(content().string(containsString("エンジニアです")));
+                   .andExpect(xpath("//*[@data-testid='user-profile']").string("エンジニアです"));
         }
 
         @Test
         void 所属が表示される() throws Exception {
             mockMvc.perform(get("/users/" + userId))
-                   .andExpect(content().string(containsString("テック株式会社")));
+                   .andExpect(xpath("//*[@data-testid='user-affiliation']").string("テック株式会社"));
         }
 
         @Test
         void 役職が表示される() throws Exception {
             mockMvc.perform(get("/users/" + userId))
-                   .andExpect(content().string(containsString("バックエンドエンジニア")));
+                   .andExpect(xpath("//*[@data-testid='user-position']").string("バックエンドエンジニア"));
         }
 
         @Test
         void 投稿したプロトタイプが表示される() throws Exception {
             mockMvc.perform(get("/users/" + userId))
+<<<<<<< HEAD
                    .andExpect(content().string(containsString("テストプロトタイプ")));
 >>>>>>> e1e0d8b (ログイン・ログアウトの状態に関わらず、ユーザーの詳細ページには、そのユーザーの詳細情報（名前・プロフィール・所属・役職）と、そのユーザーが投稿したプロトタイプが表示されていること)
+=======
+                   .andExpect(xpath("//*[@data-testid='prototype-name']").string("テストプロトタイプ"));
+>>>>>>> e92f0c3 (xpath)
         }
     }
 
@@ -217,25 +227,25 @@ class UserDetailTest {
 =======
         void 名前が表示される() throws Exception {
             mockMvc.perform(get("/users/" + userId))
-                   .andExpect(content().string(containsString("山田太郎")));
+                   .andExpect(xpath("//*[@data-testid='user-name']").string("山田太郎"));
         }
 
         @Test
         void プロフィールが表示される() throws Exception {
             mockMvc.perform(get("/users/" + userId))
-                   .andExpect(content().string(containsString("エンジニアです")));
+                   .andExpect(xpath("//*[@data-testid='user-profile']").string("エンジニアです"));
         }
 
         @Test
         void 所属が表示される() throws Exception {
             mockMvc.perform(get("/users/" + userId))
-                   .andExpect(content().string(containsString("テック株式会社")));
+                   .andExpect(xpath("//*[@data-testid='user-affiliation']").string("テック株式会社"));
         }
 
         @Test
         void 役職が表示される() throws Exception {
             mockMvc.perform(get("/users/" + userId))
-                   .andExpect(content().string(containsString("バックエンドエンジニア")));
+                   .andExpect(xpath("//*[@data-testid='user-position']").string("バックエンドエンジニア"));
         }
 
         @Test
