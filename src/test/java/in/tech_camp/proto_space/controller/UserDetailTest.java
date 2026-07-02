@@ -21,7 +21,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.xpath;
-
 @SpringBootTest
 @AutoConfigureMockMvc
 @Transactional
@@ -71,7 +70,7 @@ class UserDetailTest {
         }
 
         @Test
-        void 名前が正しい要素に表示される() throws Exception {
+	void 名前が正しい要素に表示される() throws Exception {
             mockMvc.perform(get("/users/" + userId))
                    .andExpect(xpath("//*[@data-testid='user-name']").string("山田太郎"));
         }
@@ -107,12 +106,42 @@ class UserDetailTest {
                    .andExpect(xpath("//img[@data-testid='prototype-image']/@src")
                               .string(containsString("sample.png")));
         }
+
+        void 名前が表示される() throws Exception {
+            mockMvc.perform(get("/users/" + userId))
+                   .andExpect(content().string(containsString("山田太郎")));
+        }
+
+        @Test
+        void プロフィールが表示される() throws Exception {
+            mockMvc.perform(get("/users/" + userId))
+                   .andExpect(content().string(containsString("エンジニアです")));
+        }
+
+        @Test
+        void 所属が表示される() throws Exception {
+            mockMvc.perform(get("/users/" + userId))
+                   .andExpect(content().string(containsString("テック株式会社")));
+        }
+
+        @Test
+        void 役職が表示される() throws Exception {
+            mockMvc.perform(get("/users/" + userId))
+                   .andExpect(content().string(containsString("バックエンドエンジニア")));
+        }
+
+        @Test
+        void 投稿したプロトタイプが表示される() throws Exception {
+            mockMvc.perform(get("/users/" + userId))
+                   .andExpect(content().string(containsString("テストプロトタイプ")));
+	    }
     }
 
     // ===== ログイン状態 =====
     @Nested
     @WithMockUser
     @Transactional
+
     class ログイン状態のとき {
 
         @Test
@@ -170,6 +199,34 @@ class UserDetailTest {
             mockMvc.perform(get("/images/sample.png"))
                    .andExpect(status().isOk())
                    .andExpect(content().contentType(MediaType.IMAGE_PNG));
+        }
+        void 名前が表示される() throws Exception {
+            mockMvc.perform(get("/users/" + userId))
+                   .andExpect(content().string(containsString("山田太郎")));
+        }
+
+        @Test
+        void プロフィールが表示される() throws Exception {
+            mockMvc.perform(get("/users/" + userId))
+                   .andExpect(content().string(containsString("エンジニアです")));
+        }
+
+        @Test
+        void 所属が表示される() throws Exception {
+            mockMvc.perform(get("/users/" + userId))
+                   .andExpect(content().string(containsString("テック株式会社")));
+        }
+
+        @Test
+        void 役職が表示される() throws Exception {
+            mockMvc.perform(get("/users/" + userId))
+                   .andExpect(content().string(containsString("バックエンドエンジニア")));
+        }
+
+        @Test
+        void 投稿したプロトタイプが表示される() throws Exception {
+            mockMvc.perform(get("/users/" + userId))
+                   .andExpect(content().string(containsString("テストプロトタイプ")));
         }
     }
 }
