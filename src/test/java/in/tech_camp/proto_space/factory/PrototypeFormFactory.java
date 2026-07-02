@@ -25,7 +25,7 @@ public class PrototypeFormFactory {
                         "image/jpeg",
                         "dummy image".getBytes());
 
-        prototypeForm.setImage(image);
+        prototypeForm.setImageName(image);
 
         return prototypeForm;
     }

@@ -7,7 +7,11 @@ import org.springframework.ui.Model;
 import in.tech_camp.proto_space.entity.Prototype;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 @Controller
@@ -17,9 +21,15 @@ public class PrototypeController {
   private final Prototype prototype;
 
   @GetMapping("/prototypes/new")
-  public String showPrototypeNew(@AuthenticationPrincipal Model model) {
-      return "prototypes/new";
+  public String showPrototypeNew( Model model) {
+    model.addAttribute("prototype",new Prototype());
+    return "prototypes/new";
   }
   
+  @PostMapping("/prototypes")
+  public String createPrototype(@ModelAttribute("prototype")) {
+      
+      return entity;
+  }
   
 }
