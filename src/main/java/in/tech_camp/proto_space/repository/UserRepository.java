@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Select;
 
 import in.tech_camp.proto_space.entity.User;
 
-// UserMapper（共有する形）
+// UserRepository（共有する形）
 @Mapper
 public interface UserRepository {
 

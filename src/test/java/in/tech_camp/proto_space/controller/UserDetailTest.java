@@ -20,11 +20,6 @@ import in.tech_camp.proto_space.entity.Prototype;
 import in.tech_camp.proto_space.entity.User;
 import in.tech_camp.proto_space.repository.PrototypeRepository;
 import in.tech_camp.proto_space.repository.UserRepository;
-
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.xpath;
 @SpringBootTest
 @AutoConfigureMockMvc
 @Transactional
@@ -34,11 +29,10 @@ class UserDetailTest {
     MockMvc mockMvc;
 
     @Autowired
-    UserRepository userMapper;
+    UserRepository userRepository;
 
     @Autowired
-    PrototypeRepository prototypeMapper;
-    PrototypeMapper prototypeMapper;
+    PrototypeRepository prototypeRepository;
 
     Long userId;
 
@@ -51,7 +45,7 @@ class UserDetailTest {
         user.setProfile("エンジニアです");
         user.setAffiliation("テック株式会社");
         user.setPosition("バックエンドエンジニア");
-        userMapper.insert(user);
+        userRepository.insert(user);
         userId = user.getId();
 
         Prototype prototype = new Prototype();
@@ -60,7 +54,7 @@ class UserDetailTest {
         prototype.setConcept("コンセプトです");
         prototype.setImageName("sample.png");
         prototype.setUserId(userId);
-        prototypeMapper.insert(prototype);
+        prototypeRepository.insert(prototype);
     }
 
     // ===== 未ログイン状態 =====

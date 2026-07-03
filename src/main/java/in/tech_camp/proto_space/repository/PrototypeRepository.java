@@ -3,13 +3,13 @@ package in.tech_camp.proto_space.repository;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Repository;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 
 import in.tech_camp.proto_space.entity.Prototype;
 
-// PrototypeMapper（共有する形）
+// PrototypeRepository（共有する形）
 @Mapper
 public interface PrototypeRepository {
 

@@ -28,10 +28,10 @@ class TopPageTest {
     MockMvc mockMvc;
 
     @Autowired
-    UserRepository userMapper;
+    UserRepository UserRepository;
 
     @Autowired
-    PrototypeRepository prototypeMapper;
+    PrototypeRepository prototypeRepository;
 
     Long userId;
     Long prototypeId;
@@ -46,7 +46,7 @@ class TopPageTest {
         user.setProfile("エンジニアです");
         user.setAffiliation("テック株式会社");
         user.setPosition("バックエンドエンジニア");
-        userMapper.insert(user);
+        UserRepository.insert(user);
         userId = user.getId();
 
         // 投稿（トップに表示される）
@@ -56,7 +56,7 @@ class TopPageTest {
         prototype.setConcept("コンセプトです");
         prototype.setImageName("sample.png");
         prototype.setUserId(userId);
-        prototypeMapper.insert(prototype);
+        prototypeRepository.insert(prototype);
         prototypeId = prototype.getId();
     }
 
