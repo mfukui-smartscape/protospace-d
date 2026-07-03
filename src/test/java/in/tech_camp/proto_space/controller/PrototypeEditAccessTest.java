@@ -7,15 +7,15 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrlPattern;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import org.springframework.transaction.annotation.Transactional;
 
 import in.tech_camp.proto_space.entity.Prototype;
 import in.tech_camp.proto_space.entity.User;
-import in.tech_camp.proto_space.mapper.PrototypeMapper;
-import in.tech_camp.proto_space.mapper.UserMapper;
-
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import in.tech_camp.proto_space.repository.PrototypeRepository;
+import in.tech_camp.proto_space.repository.UserRepository;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -26,10 +26,10 @@ class PrototypeEditAccessTest {
     MockMvc mockMvc;
 
     @Autowired
-    UserMapper userMapper;
+    UserRepository UserRepository;
 
     @Autowired
-    PrototypeMapper prototypeMapper;
+    PrototypeRepository prototypeRepository;
 
     Long ownerId;        // 投稿の持ち主（山田）
     Long othersPrototypeId;  // 山田が投稿したプロトタイプ
@@ -44,7 +44,7 @@ class PrototypeEditAccessTest {
         owner.setProfile("プロフィール");
         owner.setAffiliation("所属");
         owner.setPosition("役職");
-        userMapper.insert(owner);
+        UserRepository.insert(owner);
         ownerId = owner.getId();
 
         // 別人：佐藤花子（この人でログインして山田の投稿を編集しようとする）
@@ -55,7 +55,7 @@ class PrototypeEditAccessTest {
         other.setProfile("プロフィール");
         other.setAffiliation("所属");
         other.setPosition("役職");
-        userMapper.insert(other);
+        UserRepository.insert(other);
 
         // 山田が投稿したプロトタイプ
         Prototype prototype = new Prototype();
@@ -64,7 +64,7 @@ class PrototypeEditAccessTest {
         prototype.setConcept("コンセプト");
         prototype.setImageName("sample.png");
         prototype.setUserId(ownerId);
-        prototypeMapper.insert(prototype);
+        prototypeRepository.insert(prototype);
         othersPrototypeId = prototype.getId();
     }
 

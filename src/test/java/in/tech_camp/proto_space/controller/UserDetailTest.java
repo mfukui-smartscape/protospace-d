@@ -10,17 +10,16 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.transaction.annotation.Transactional;
-
-import in.tech_camp.proto_space.entity.Prototype;
-import in.tech_camp.proto_space.entity.User;
-import in.tech_camp.proto_space.mapper.PrototypeMapper;
-import in.tech_camp.proto_space.mapper.UserMapper;
-
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.xpath;
+import org.springframework.transaction.annotation.Transactional;
+
+import in.tech_camp.proto_space.entity.Prototype;
+import in.tech_camp.proto_space.entity.User;
+import in.tech_camp.proto_space.repository.PrototypeRepository;
+import in.tech_camp.proto_space.repository.UserRepository;
 @SpringBootTest
 @AutoConfigureMockMvc
 @Transactional
@@ -30,10 +29,10 @@ class UserDetailTest {
     MockMvc mockMvc;
 
     @Autowired
-    UserMapper userMapper;
+    UserRepository userRepository;
 
     @Autowired
-    PrototypeMapper prototypeMapper;
+    PrototypeRepository prototypeRepository;
 
     Long userId;
 
@@ -46,7 +45,7 @@ class UserDetailTest {
         user.setProfile("エンジニアです");
         user.setAffiliation("テック株式会社");
         user.setPosition("バックエンドエンジニア");
-        userMapper.insert(user);
+        userRepository.insert(user);
         userId = user.getId();
 
         Prototype prototype = new Prototype();
@@ -55,7 +54,7 @@ class UserDetailTest {
         prototype.setConcept("コンセプトです");
         prototype.setImageName("sample.png");
         prototype.setUserId(userId);
-        prototypeMapper.insert(prototype);
+        prototypeRepository.insert(prototype);
     }
 
     // ===== 未ログイン状態 =====
@@ -142,7 +141,6 @@ class UserDetailTest {
     @Nested
     @WithMockUser
     @Transactional
-
     class ログイン状態のとき {
 
         @Test
@@ -200,34 +198,6 @@ class UserDetailTest {
             mockMvc.perform(get("/images/sample.png"))
                    .andExpect(status().isOk())
                    .andExpect(content().contentType(MediaType.IMAGE_PNG));
-        }
-        void 名前が表示される() throws Exception {
-            mockMvc.perform(get("/users/" + userId))
-                   .andExpect(xpath("//*[@data-testid='user-name']").string("山田太郎"));
-        }
-
-        @Test
-        void プロフィールが表示される() throws Exception {
-            mockMvc.perform(get("/users/" + userId))
-                   .andExpect(xpath("//*[@data-testid='user-profile']").string("エンジニアです"));
-        }
-
-        @Test
-        void 所属が表示される() throws Exception {
-            mockMvc.perform(get("/users/" + userId))
-                   .andExpect(xpath("//*[@data-testid='user-affiliation']").string("テック株式会社"));
-        }
-
-        @Test
-        void 役職が表示される() throws Exception {
-            mockMvc.perform(get("/users/" + userId))
-                   .andExpect(xpath("//*[@data-testid='user-position']").string("バックエンドエンジニア"));
-        }
-
-        @Test
-        void 投稿したプロトタイプが表示される() throws Exception {
-            mockMvc.perform(get("/users/" + userId))
-                   .andExpect(content().string(containsString("テストプロトタイプ")));
         }
     }
 }

@@ -16,8 +16,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import in.tech_camp.proto_space.entity.Prototype;
 import in.tech_camp.proto_space.entity.User;
-import in.tech_camp.proto_space.mapper.PrototypeMapper;
-import in.tech_camp.proto_space.mapper.UserMapper;
+import in.tech_camp.proto_space.repository.PrototypeRepository;
+import in.tech_camp.proto_space.repository.UserRepository;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -28,10 +28,10 @@ class TopPageTest {
     MockMvc mockMvc;
 
     @Autowired
-    UserMapper userMapper;
+    UserRepository UserRepository;
 
     @Autowired
-    PrototypeMapper prototypeMapper;
+    PrototypeRepository prototypeRepository;
 
     Long userId;
     Long prototypeId;
@@ -46,7 +46,7 @@ class TopPageTest {
         user.setProfile("エンジニアです");
         user.setAffiliation("テック株式会社");
         user.setPosition("バックエンドエンジニア");
-        userMapper.insert(user);
+        UserRepository.insert(user);
         userId = user.getId();
 
         // 投稿（トップに表示される）
@@ -56,7 +56,7 @@ class TopPageTest {
         prototype.setConcept("コンセプトです");
         prototype.setImageName("sample.png");
         prototype.setUserId(userId);
-        prototypeMapper.insert(prototype);
+        prototypeRepository.insert(prototype);
         prototypeId = prototype.getId();
     }
 
