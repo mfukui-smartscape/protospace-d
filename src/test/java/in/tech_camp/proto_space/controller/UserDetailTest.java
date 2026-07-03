@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import in.tech_camp.proto_space.entity.Prototype;
 import in.tech_camp.proto_space.entity.User;
 import in.tech_camp.proto_space.repository.PrototypeRepository;
-import in.tech_camp.proto_space.repository.UserMapper;
+import in.tech_camp.proto_space.repository.UserRepository;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -34,7 +34,7 @@ class UserDetailTest {
     MockMvc mockMvc;
 
     @Autowired
-    UserMapper userMapper;
+    UserRepository userMapper;
 
     @Autowired
     PrototypeRepository prototypeMapper;

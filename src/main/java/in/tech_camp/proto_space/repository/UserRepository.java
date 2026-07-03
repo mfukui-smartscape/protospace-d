@@ -9,7 +9,7 @@ import in.tech_camp.proto_space.entity.User;
 
 // UserMapper（共有する形）
 @Mapper
-public interface UserMapper {
+public interface UserRepository {
 
     @Insert("INSERT INTO users (email, password, name, profile, affiliation, position) " +
             "VALUES (#{email}, #{password}, #{name}, #{profile}, #{affiliation}, #{position})")
