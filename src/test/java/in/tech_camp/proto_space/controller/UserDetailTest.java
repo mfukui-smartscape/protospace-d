@@ -7,26 +7,19 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-<<<<<<< HEAD
 import org.springframework.http.MediaType;
-=======
->>>>>>> e1e0d8b (ログイン・ログアウトの状態に関わらず、ユーザーの詳細ページには、そのユーザーの詳細情報（名前・プロフィール・所属・役職）と、そのユーザーが投稿したプロトタイプが表示されていること)
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.xpath;
 import org.springframework.transaction.annotation.Transactional;
 
 import in.tech_camp.proto_space.entity.Prototype;
 import in.tech_camp.proto_space.entity.User;
 import in.tech_camp.proto_space.mapper.PrototypeMapper;
 import in.tech_camp.proto_space.mapper.UserMapper;
-
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-<<<<<<< HEAD
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.xpath;
-=======
->>>>>>> e1e0d8b (ログイン・ログアウトの状態に関わらず、ユーザーの詳細ページには、そのユーザーの詳細情報（名前・プロフィール・所属・役職）と、そのユーザーが投稿したプロトタイプが表示されていること)
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -67,10 +60,7 @@ class UserDetailTest {
 
     // ===== 未ログイン状態 =====
     @Nested
-<<<<<<< HEAD
     @Transactional
-=======
->>>>>>> e1e0d8b (ログイン・ログアウトの状態に関わらず、ユーザーの詳細ページには、そのユーザーの詳細情報（名前・プロフィール・所属・役職）と、そのユーザーが投稿したプロトタイプが表示されていること)
     class 未ログインのとき {
 
         @Test
@@ -80,7 +70,6 @@ class UserDetailTest {
         }
 
         @Test
-<<<<<<< HEAD
         void 名前が正しい要素に表示される() throws Exception {
             mockMvc.perform(get("/users/" + userId))
                    .andExpect(xpath("//*[@data-testid='user-name']").string("山田太郎"));
@@ -116,13 +105,9 @@ class UserDetailTest {
                    .andExpect(xpath("//img[@data-testid='prototype-image']").exists())
                    .andExpect(xpath("//img[@data-testid='prototype-image']/@src")
                               .string(containsString("sample.png")));
-<<<<<<< HEAD
-=======
-=======
         }
 
         @Test
->>>>>>> e92f0c3 (xpath)
         void 名前が表示される() throws Exception {
             mockMvc.perform(get("/users/" + userId))
                    .andExpect(xpath("//*[@data-testid='user-name']").string("山田太郎"));
@@ -149,23 +134,14 @@ class UserDetailTest {
         @Test
         void 投稿したプロトタイプが表示される() throws Exception {
             mockMvc.perform(get("/users/" + userId))
-<<<<<<< HEAD
-                   .andExpect(content().string(containsString("テストプロトタイプ")));
->>>>>>> e1e0d8b (ログイン・ログアウトの状態に関わらず、ユーザーの詳細ページには、そのユーザーの詳細情報（名前・プロフィール・所属・役職）と、そのユーザーが投稿したプロトタイプが表示されていること)
-=======
                    .andExpect(xpath("//*[@data-testid='prototype-name']").string("テストプロトタイプ"));
->>>>>>> e92f0c3 (xpath)
         }
     }
 
     // ===== ログイン状態 =====
     @Nested
-<<<<<<< HEAD
     @WithMockUser
     @Transactional
-=======
-    @WithMockUser   // このグループ全体がログイン状態になる
->>>>>>> e1e0d8b (ログイン・ログアウトの状態に関わらず、ユーザーの詳細ページには、そのユーザーの詳細情報（名前・プロフィール・所属・役職）と、そのユーザーが投稿したプロトタイプが表示されていること)
     class ログイン状態のとき {
 
         @Test
@@ -175,7 +151,6 @@ class UserDetailTest {
         }
 
         @Test
-<<<<<<< HEAD
         void 名前が正しい要素に表示される() throws Exception {
             mockMvc.perform(get("/users/" + userId))
                    .andExpect(xpath("//*[@data-testid='user-name']").string("山田太郎"));
@@ -224,35 +199,6 @@ class UserDetailTest {
             mockMvc.perform(get("/images/sample.png"))
                    .andExpect(status().isOk())
                    .andExpect(content().contentType(MediaType.IMAGE_PNG));
-=======
-        void 名前が表示される() throws Exception {
-            mockMvc.perform(get("/users/" + userId))
-                   .andExpect(xpath("//*[@data-testid='user-name']").string("山田太郎"));
-        }
-
-        @Test
-        void プロフィールが表示される() throws Exception {
-            mockMvc.perform(get("/users/" + userId))
-                   .andExpect(xpath("//*[@data-testid='user-profile']").string("エンジニアです"));
-        }
-
-        @Test
-        void 所属が表示される() throws Exception {
-            mockMvc.perform(get("/users/" + userId))
-                   .andExpect(xpath("//*[@data-testid='user-affiliation']").string("テック株式会社"));
-        }
-
-        @Test
-        void 役職が表示される() throws Exception {
-            mockMvc.perform(get("/users/" + userId))
-                   .andExpect(xpath("//*[@data-testid='user-position']").string("バックエンドエンジニア"));
-        }
-
-        @Test
-        void 投稿したプロトタイプが表示される() throws Exception {
-            mockMvc.perform(get("/users/" + userId))
-                   .andExpect(content().string(containsString("テストプロトタイプ")));
->>>>>>> e1e0d8b (ログイン・ログアウトの状態に関わらず、ユーザーの詳細ページには、そのユーザーの詳細情報（名前・プロフィール・所属・役職）と、そのユーザーが投稿したプロトタイプが表示されていること)
         }
     }
 }
