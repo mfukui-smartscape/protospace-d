@@ -29,7 +29,7 @@ public class PrototypeController {
   @GetMapping("/")
   public String showPrototype(Model model) {
     model.addAttribute("prototypes",prototypeMapper.findAll());
-    return "index";
+    return "/index";
   }
   
   @GetMapping("/prototypes/new")
