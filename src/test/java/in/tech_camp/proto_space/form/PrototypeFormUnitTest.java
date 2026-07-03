@@ -97,7 +97,7 @@ public class PrototypeFormUnitTest {
         @Test
         public void imageが空の場合バリデーションエラーが発生する() {
 
-            prototypeForm.setImageName("");
+            prototypeForm.setImageName(null);
 
             Set<ConstraintViolation<PrototypeForm>> violations =
                     validator.validate(prototypeForm);

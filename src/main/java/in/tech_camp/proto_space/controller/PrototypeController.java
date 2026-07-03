@@ -8,12 +8,13 @@ import org.springframework.validation.annotation.Validated;
 
 import in.tech_camp.proto_space.entity.Prototype;
 import in.tech_camp.proto_space.form.PrototypeForm;
+import in.tech_camp.proto_space.repository.PrototypeRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.multipart.MultipartFile;
+
 
 
 
@@ -39,14 +40,32 @@ public class PrototypeController {
 
     Prototype prototype = new Prototype();
 
+    
+    MultipartFile imageFile = prototypeForm.getImageName();
+
+    if (imageFile != null && !imageFile.isEmpty()) {
+
+      try {
+        String fileName = imageFile.getOriginalFilename();
+
+        prototype.setImageName(fileName);
+
+      } catch (Exception e) {
+        System.out.println("エラー：" + e);
+        return "prototypes/new";
+      }
+    }
+
     prototype.setName(prototypeForm.getName());
     prototype.setCatchCopy(prototypeForm.getCatchCopy());
     prototype.setConcept(prototypeForm.getConcept());
-
-    prototypeRepository.save(prototype);
+    try{
+      prototypeRepository.insert(prototype);
+    } catch (Exception e) {
+      System.out.println("エラー：" + e);
+    }
+    
 
     return "redirect:/";
-}
-
-  
+  }
 }
