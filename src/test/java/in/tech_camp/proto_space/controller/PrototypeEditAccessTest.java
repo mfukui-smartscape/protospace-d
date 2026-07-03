@@ -26,7 +26,7 @@ class PrototypeEditAccessTest {
     MockMvc mockMvc;
 
     @Autowired
-    UserRepository UserRepository;
+    UserRepository userRepository;
 
     @Autowired
     PrototypeRepository prototypeRepository;
@@ -44,7 +44,7 @@ class PrototypeEditAccessTest {
         owner.setProfile("プロフィール");
         owner.setAffiliation("所属");
         owner.setPosition("役職");
-        UserRepository.insert(owner);
+        userRepository.insert(owner);
         ownerId = owner.getId();
 
         // 別人：佐藤花子（この人でログインして山田の投稿を編集しようとする）
@@ -55,7 +55,7 @@ class PrototypeEditAccessTest {
         other.setProfile("プロフィール");
         other.setAffiliation("所属");
         other.setPosition("役職");
-        UserRepository.insert(other);
+        userRepository.insert(other);
 
         // 山田が投稿したプロトタイプ
         Prototype prototype = new Prototype();

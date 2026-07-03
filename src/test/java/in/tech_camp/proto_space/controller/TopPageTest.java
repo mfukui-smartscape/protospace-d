@@ -28,7 +28,7 @@ class TopPageTest {
     MockMvc mockMvc;
 
     @Autowired
-    UserRepository UserRepository;
+    UserRepository userRepository;
 
     @Autowired
     PrototypeRepository prototypeRepository;
@@ -46,7 +46,7 @@ class TopPageTest {
         user.setProfile("エンジニアです");
         user.setAffiliation("テック株式会社");
         user.setPosition("バックエンドエンジニア");
-        UserRepository.insert(user);
+        userRepository.insert(user);
         userId = user.getId();
 
         // 投稿（トップに表示される）
@@ -113,6 +113,6 @@ class TopPageTest {
     @WithMockUser(username = "yamada@example.com")
     void ログイン状態だとこんにちはとユーザー名が表示される() throws Exception {
         mockMvc.perform(get("/"))
-               .andExpect(xpath("//*[@data-testid='welcome-message']").string("こんにちは"));
+               .andExpect(xpath("//*[@data-testid='welcome-message']").string("こんにちは、山田太郎さん"));
     }
 }
