@@ -10,8 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import in.tech_camp.proto_space.entity.Prototype;
 import in.tech_camp.proto_space.entity.User;
-import in.tech_camp.proto_space.mapper.PrototypeMapper;
-import in.tech_camp.proto_space.mapper.UserMapper;
+import in.tech_camp.proto_space.repository.PrototypeMapper;
+import in.tech_camp.proto_space.repository.UserMapper;
 
 @ActiveProfiles("test")
 @SpringBootTest
