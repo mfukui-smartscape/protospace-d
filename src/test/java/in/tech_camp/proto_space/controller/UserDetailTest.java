@@ -18,8 +18,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import in.tech_camp.proto_space.entity.Prototype;
 import in.tech_camp.proto_space.entity.User;
-import in.tech_camp.proto_space.mapper.PrototypeMapper;
-import in.tech_camp.proto_space.mapper.UserMapper;
+import in.tech_camp.proto_space.repository.PrototypeRepository;
+import in.tech_camp.proto_space.repository.UserMapper;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -33,7 +33,7 @@ class UserDetailTest {
     UserMapper userMapper;
 
     @Autowired
-    PrototypeMapper prototypeMapper;
+    PrototypeRepository prototypeMapper;
 
     Long userId;
 

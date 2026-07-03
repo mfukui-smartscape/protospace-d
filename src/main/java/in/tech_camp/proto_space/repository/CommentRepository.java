@@ -1,4 +1,4 @@
-package in.tech_camp.proto_space.mapper;
+package in.tech_camp.proto_space.repository;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import in.tech_camp.proto_space.entity.Comment;
 
 // CommentMapper（共有する形）
 @Mapper
-public interface CommentMapper {
+public interface CommentRepository {
 
     @Insert("INSERT INTO comments (content, user_id, prototype_id) " +
             "VALUES (#{content}, #{userId}, #{prototypeId})")

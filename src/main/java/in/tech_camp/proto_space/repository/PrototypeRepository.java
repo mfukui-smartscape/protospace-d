@@ -1,4 +1,4 @@
-package in.tech_camp.proto_space.mapper;
+package in.tech_camp.proto_space.repository;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import in.tech_camp.proto_space.entity.Prototype;
 
 // PrototypeMapper（共有する形）
 @Mapper
-public interface PrototypeMapper {
+public interface PrototypeRepository {
 
     @Insert("INSERT INTO prototypes (name, catch_copy, concept, image_name, user_id) " +
             "VALUES (#{name}, #{catchCopy}, #{concept}, #{imageName}, #{userId})")

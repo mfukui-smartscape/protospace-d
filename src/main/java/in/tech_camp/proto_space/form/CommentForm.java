@@ -1,8 +1,11 @@
 package in.tech_camp.proto_space.form;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data
 public class CommentForm {
-  private String content;
+
+    @NotBlank
+    private String content;
 }

@@ -11,8 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import in.tech_camp.proto_space.entity.Prototype;
 import in.tech_camp.proto_space.entity.User;
-import in.tech_camp.proto_space.mapper.PrototypeMapper;
-import in.tech_camp.proto_space.mapper.UserMapper;
+import in.tech_camp.proto_space.repository.PrototypeRepository;
+import in.tech_camp.proto_space.repository.UserMapper;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -29,7 +29,7 @@ class PrototypeEditAccessTest {
     UserMapper userMapper;
 
     @Autowired
-    PrototypeMapper prototypeMapper;
+    PrototypeRepository prototypeMapper;
 
     Long ownerId;        // 投稿の持ち主（山田）
     Long othersPrototypeId;  // 山田が投稿したプロトタイプ
