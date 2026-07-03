@@ -21,6 +21,10 @@ import in.tech_camp.proto_space.entity.User;
 import in.tech_camp.proto_space.repository.PrototypeRepository;
 import in.tech_camp.proto_space.repository.UserMapper;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.xpath;
 @SpringBootTest
 @AutoConfigureMockMvc
 @Transactional
@@ -34,6 +38,7 @@ class UserDetailTest {
 
     @Autowired
     PrototypeRepository prototypeMapper;
+    PrototypeMapper prototypeMapper;
 
     Long userId;
 
@@ -70,7 +75,7 @@ class UserDetailTest {
         }
 
         @Test
-        void 名前が正しい要素に表示される() throws Exception {
+	void 名前が正しい要素に表示される() throws Exception {
             mockMvc.perform(get("/users/" + userId))
                    .andExpect(xpath("//*[@data-testid='user-name']").string("山田太郎"));
         }
