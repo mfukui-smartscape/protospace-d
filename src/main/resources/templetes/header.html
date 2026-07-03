@@ -1,6 +1,5 @@
 <header xmlns:th="http://www.thymeleaf.org" th:fragment="header" class="header">
   <div class="header__bar row">
-    <h1>
     <h1 class="grid-6"><a th:href="@{/}">PROTOTYPE SPACE</a></h1>
     <div class="user_nav grid-6" th:if="${#authorization.expression('isAuthenticated()')}">
       <span>
