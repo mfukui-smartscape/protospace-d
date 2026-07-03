@@ -17,12 +17,12 @@ import in.tech_camp.proto_space.service.PrototypeService;
 public class PrototypeServiceTest {
 
   @Mock
-  private PrototypeRepository repository;
+  private PrototypeRepository prototypeMapper;
 
   @InjectMocks
   private PrototypeService service;
 
-  //保存処理テスト
+  // 保存処理テスト
   @Test
   void 保存処理が呼ばれる() {
     Prototype prototype = new Prototype();
@@ -32,12 +32,12 @@ public class PrototypeServiceTest {
 
     service.save(prototype);
 
-    verify(repository).save(prototype);
+    verify(prototypeMapper).insert(prototype);
   }
 
-  //null入力チェック
+  // null入力チェック
   @Test
   void nullの場合は例外() {
     assertThrows(IllegalArgumentException.class, () -> service.save(null));
-  }cat src/test/java/in/tech_camp/proto_space/service/PrototypeServiceTest.java
+  }
 }
