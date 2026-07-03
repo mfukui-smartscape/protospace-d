@@ -11,11 +11,11 @@ import in.tech_camp.proto_space.entity.Prototype;
 
 @Mapper
 public interface PrototypeRepository {
-  @Insert("INSERT INTO prototypes (name, catchCopy, concept, imageName) VALUES (#{name}, #{catch_copy}, #{concept}, #{image_name})")
+  @Insert("INSERT INTO prototypes (name, catch_copy, concept, image_name) VALUES (#{name}, #{catchCopy}, #{concept}, #{imageName})")
   @Options(useGeneratedKeys = true,keyProperty = "id")
   void insert(Prototype prototype);
   
-  @Select("SELECT * FROM prototypes WHERE user_id = #{userId}")
+  @Select("SELECT * FROM prototypes")
   List<Prototype> findAll();
 
 }
