@@ -1,4 +1,4 @@
-package in.tech_camp.proto_space.mapper;
+package in.tech_camp.proto_space.repository;
 
 import java.util.List;
 
