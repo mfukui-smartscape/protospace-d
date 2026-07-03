@@ -18,12 +18,35 @@ public interface PrototypeRepository {
     @Options(useGeneratedKeys = true, keyProperty = "id")
     void insert(Prototype prototype);
 
-    @Select("SELECT * FROM prototypes WHERE id = #{id}")
+    @Select("""
+        SELECT
+            p.*,
+            u.name AS user_name
+        FROM prototypes p
+        JOIN users u
+          ON p.user_id = u.id
+        WHERE p.id = #{id}
+        """)
     Prototype findById(Long id);
 
-    @Select("SELECT * FROM prototypes WHERE user_id = #{userId}")
+    @Select("""
+        SELECT
+            p.*,
+            u.name AS user_name
+        FROM prototypes p
+        JOIN users u
+          ON p.user_id = u.id
+        WHERE p.user_id = #{userId}
+        """)
     List<Prototype> findByUserId(Long userId);
 
-    @Select("SELECT * FROM prototypes")
+    @Select("""
+        SELECT
+            p.*,
+            u.name AS user_name
+        FROM prototypes p
+        JOIN users u
+          ON p.user_id = u.id
+        """)
     List<Prototype> findAll();
 }
