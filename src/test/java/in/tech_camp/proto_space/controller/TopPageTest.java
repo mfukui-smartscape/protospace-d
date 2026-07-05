@@ -6,7 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.security.test.context.support.TestExecutionEvent;
+import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -35,6 +36,7 @@ class TopPageTest {
 
     Long userId;
     Long prototypeId;
+    String userName;
 
     @BeforeEach
     void setUp() {
@@ -48,6 +50,7 @@ class TopPageTest {
         user.setPosition("バックエンドエンジニア");
         userRepository.insert(user);
         userId = user.getId();
+        userName = user.getName();
 
         // 投稿（トップに表示される）
         Prototype prototype = new Prototype();
@@ -110,9 +113,11 @@ class TopPageTest {
     // ===== ログイン状態でのみ表示される =====
 
     @Test
-    @WithMockUser(username = "yamada@example.com")
+    @WithUserDetails(value = "yamada@example.com",
+                    setupBefore = TestExecutionEvent.TEST_EXECUTION)
     void ログイン状態だとこんにちはとユーザー名が表示される() throws Exception {
         mockMvc.perform(get("/"))
-               .andExpect(xpath("//*[@data-testid='welcome-message']").string("こんにちは、山田太郎さん"));
+            .andExpect(xpath("//*[@data-testid='welcome-message']")
+                    .string("こんにちは、" + userName + "です"));
     }
 }
