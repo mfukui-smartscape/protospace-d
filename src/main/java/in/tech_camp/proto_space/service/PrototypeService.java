@@ -12,13 +12,15 @@ public class PrototypeService {
 
     private final PrototypeRepository prototypeRepository;
 
-    public PrototypeService(
-            PrototypeRepository prototypeRepository) {
-
+    public PrototypeService(PrototypeRepository prototypeRepository) {
         this.prototypeRepository = prototypeRepository;
     }
 
     public List<Prototype> findAll() {
         return prototypeRepository.findAll();
+    }
+
+    public List<Prototype> findByUserId(Long userId) {
+        return prototypeRepository.findByUserId(userId);
     }
 }
