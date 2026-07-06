@@ -199,4 +199,27 @@ protospace-d/
 ├── gradlew / gradlew.bat
 ├── setup_db.sql                    # DBセットアップ（開発+テスト）
 └── README.md
+
 ```
+
+URL設計表（担当なし・技術仕様のみ）
+
+┌──────────┬──────────────────────────┬────────────────┬──────────────┐
+│ メソッド  │ パス                      │ 機能            │ アクセス制御  │
+├──────────┼──────────────────────────┼────────────────┼──────────────┤
+│ GET      │ /                         │ トップ（一覧）  │ 公開          │
+│ GET      │ /users/new               │ 新規登録ページ  │ 公開          │
+│ POST     │ /users                   │ 登録処理        │ 公開          │
+│ GET      │ /login                   │ ログインページ  │ 公開          │
+│ POST     │ /login                   │ ログイン処理    │ 公開          │
+│ POST     │ /logout                  │ ログアウト      │ 公開          │
+│ GET      │ /users/{id}              │ ユーザー詳細    │ 公開          │
+│ GET      │ /prototypes/new          │ 投稿ページ      │ 認証          │
+│ POST     │ /prototypes              │ 投稿処理        │ 認証          │
+│ GET      │ /prototypes/{id}         │ 詳細            │ 公開          │
+│ GET      │ /prototypes/{id}/edit    │ 編集ページ      │ 認証＋本人    │
+│ POST      │ /prototypes/{id}         │ 更新処理        │ 認証＋本人    │
+│ POST   │ /prototypes/{id}/delete       │ 削除処理        │ 認証＋本人    │
+│ POST     │ /prototypes/{id}/comments│ コメント投稿    │ 認証          │
+└──────────┴──────────────────────────┴────────────────┴──────────────┘
+

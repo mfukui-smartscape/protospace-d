@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: protospace-d
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: JDBC_DATABASE_URL
+        fromDatabase:
+          name: protospace-db
+          property: connectionString
+      - key: DB_USER
+        fromDatabase:
+          name: protospace-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: protospace-db
+          property: password
+
+databases:
+  - name: protospace-db
+    databaseName: protospace
+    plan: free
