@@ -23,4 +23,8 @@ public class PrototypeService {
     public List<Prototype> findByUserId(Long userId) {
         return prototypeRepository.findByUserId(userId);
     }
+
+    public Prototype findById(Long id) {
+        return prototypeRepository.findById(id);
+    }
 }
