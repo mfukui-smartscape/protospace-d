@@ -12,6 +12,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.util.List;
 
@@ -38,7 +39,7 @@ import in.tech_camp.proto_space.factory.PrototypeFormFactory;
 import in.tech_camp.proto_space.factory.UserFormFactory;
 import in.tech_camp.proto_space.form.PrototypeForm;
 import in.tech_camp.proto_space.form.UserForm;
-import in.tech_camp.proto_space.repository.PrototypeRepository;
+import in.tech_camp.proto_space.repository.PrototypeMapper;
 import in.tech_camp.proto_space.service.UserService;
 
 @ActiveProfiles("test")
@@ -65,7 +66,7 @@ public class PrototypeEditIntegrationTest {
     private UserService userService;
 
     @Autowired
-    private PrototypeRepository prototypeRepository;
+    private PrototypeMapper prototypeRepository;
 
     @BeforeEach
     public void setup() {
@@ -155,8 +156,11 @@ public class PrototypeEditIntegrationTest {
                     multipart(
                             "/prototypes/{id}/update",
                             prototype1.getId())
+                           
                             .file(
-                                 prototypeForm1.getImage())
+                                (org.springframework.mock.web.MockMultipartFile)
+                                    prototypeForm1.getImageName())
+
                             .param(
                                 "name",
                                 "編集後の名称")

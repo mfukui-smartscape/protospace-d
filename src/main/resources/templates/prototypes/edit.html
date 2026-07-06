@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>編集</title>
+</head>
+<body>
+
+<form th:object="${prototypeForm}" method="post">
+
+    <input type="text" th:field="*{name}">
+
+    <input type="text" th:field="*{catchCopy}">
+
+    <input type="text" th:field="*{concept}">
+
+    <input type="submit" value="更新">
+
+</form>
+
+</body>
+</html>

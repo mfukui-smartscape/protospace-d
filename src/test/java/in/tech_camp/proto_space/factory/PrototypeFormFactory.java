@@ -18,14 +18,14 @@ public class PrototypeFormFactory {
         prototypeForm.setCatchCopy(faker.lorem().sentence());
         prototypeForm.setConcept(faker.lorem().paragraph());
 
-        MockMultipartFile image =
+        MockMultipartFile imageName =
                 new MockMultipartFile(
                         "image",
                         "test.jpg",
                         "image/jpeg",
                         "dummy image".getBytes());
 
-        prototypeForm.setImageName(image);
+        prototypeForm.setImageName(imageName);
 
         return prototypeForm;
     }

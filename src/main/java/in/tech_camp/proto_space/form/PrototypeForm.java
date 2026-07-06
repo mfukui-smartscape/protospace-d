@@ -17,4 +17,10 @@ public class PrototypeForm {
   private String concept;
   @NotNull(message = "Image can't be blank", groups = ValidationPriority1.class)
   private MultipartFile imageName;
+
+  
+ public MultipartFile getImage() {
+      return imageName;
+  }
+
 }

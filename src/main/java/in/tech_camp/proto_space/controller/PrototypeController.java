@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.security.core.Authentication;
 
 import in.tech_camp.proto_space.entity.Prototype;
 import in.tech_camp.proto_space.form.PrototypeForm;
@@ -76,9 +77,9 @@ public class PrototypeController {
 
     return "redirect:/";
   }
-// 編集ページ
+  // 編集ページ
   
-@GetMapping("/prototypes/{id}")
+  @GetMapping("/prototypes/{id}")
     public String showDetail(
             @PathVariable Long id,
             Model model) {
@@ -90,83 +91,38 @@ public class PrototypeController {
         return "prototypes/show";
     }
 
-    @GetMapping("/prototypes/{id}/edit")
-    public String showEdit(
-            @PathVariable Long id,
-            Model model) {
+    
+  @GetMapping("/prototypes/{id}/edit")
+public String showEdit(
+        @PathVariable Long id,
+        Authentication authentication,
+        Model model) {
 
-        Prototype prototype =
-                prototypeMapper.findById(id);
+    Prototype prototype =
+            prototypeMapper.findById(id);
 
-        PrototypeForm form =
-                new PrototypeForm();
+    String loginUserEmail =
+            authentication.getName();
 
-        form.setName(prototype.getName());
-        form.setCatchCopy(prototype.getCatchCopy());
-        form.setConcept(prototype.getConcept());
+    // 所有者判定
+    // if (!prototype.getUser().getEmail()
+    //         .equals(loginUserEmail)) {
 
-        model.addAttribute(
-                "prototype",
-                prototype);
+    //     return "redirect:/";
+    // }
 
-        model.addAttribute(
-                "prototypeForm",
-                form);
+    PrototypeForm form =
+            new PrototypeForm();
 
-        return "prototypes/edit";
-    }
+    form.setName(prototype.getName());
+    form.setCatchCopy(prototype.getCatchCopy());
+    form.setConcept(prototype.getConcept());
 
-    @PostMapping("/prototypes/{id}")
-    public String updatePrototype(
+    model.addAttribute("prototype", prototype);
+    model.addAttribute("prototypeForm", form);
 
-            @PathVariable Long id,
+    return "prototypes/edit";
+}
 
-            @Validated(ValidationOrder.class)
-            @ModelAttribute("prototypeForm")
-            PrototypeForm prototypeForm,
-
-            BindingResult result,
-            Model model) {
-
-        Prototype prototype =
-                prototypeMapper.findById(id);
-
-        if (result.hasErrors()) {
-
-            model.addAttribute(
-                    "prototype",
-                    prototype);
-
-            model.addAttribute(
-                    "prototypeForm",
-                    prototypeForm);
-
-            return "prototypes/edit";
-        }
-
-        prototype.setName(
-                prototypeForm.getName());
-
-        prototype.setCatchCopy(
-                prototypeForm.getCatchCopy());
-
-        prototype.setConcept(
-                prototypeForm.getConcept());
-
-        MultipartFile imageFile =
-                prototypeForm.getImageName();
-
-        // 画像未選択ならそのまま保持
-        if (imageFile != null &&
-            !imageFile.isEmpty()) {
-
-            prototype.setImageName(
-                    imageFile.getOriginalFilename());
-        }
-
-        prototypeMapper.update(prototype);
-
-        return "redirect:/prototypes/" + id;
-    }
 
 }

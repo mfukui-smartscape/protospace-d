@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.test.context.ActiveProfiles;
 
 import in.tech_camp.proto_space.factory.PrototypeFormFactory;
+import in.tech_camp.proto_space.validation.ValidationPriority1;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
@@ -55,7 +56,7 @@ public class PrototypeFormUnitTest {
             prototypeForm.setName("");
 
             Set<ConstraintViolation<PrototypeForm>> violations =
-                    validator.validate(prototypeForm);
+                    validator.validate(prototypeForm,ValidationPriority1.class);
 
             assertEquals(1, violations.size());
 
@@ -70,7 +71,7 @@ public class PrototypeFormUnitTest {
             prototypeForm.setCatchCopy("");
 
             Set<ConstraintViolation<PrototypeForm>> violations =
-                    validator.validate(prototypeForm);
+                    validator.validate(prototypeForm,ValidationPriority1.class);
 
             assertEquals(1, violations.size());
 
@@ -85,7 +86,7 @@ public class PrototypeFormUnitTest {
             prototypeForm.setConcept("");
 
             Set<ConstraintViolation<PrototypeForm>> violations =
-                    validator.validate(prototypeForm);
+                    validator.validate(prototypeForm,ValidationPriority1.class);
 
             assertEquals(1, violations.size());
 
@@ -100,7 +101,7 @@ public class PrototypeFormUnitTest {
             prototypeForm.setImageName(null);
 
             Set<ConstraintViolation<PrototypeForm>> violations =
-                    validator.validate(prototypeForm);
+                    validator.validate(prototypeForm,ValidationPriority1.class);
 
             assertEquals(1, violations.size());
 
