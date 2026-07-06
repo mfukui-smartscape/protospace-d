@@ -1,0 +1,66 @@
+/* login.css */
+
+.contents-row {
+    padding: 60px 0 0 140px;
+}
+
+.contents-row .container h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #000000;
+    margin: 0 0 30px 0;
+}
+
+.contents-row .container .login-error {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.new_user .field {
+    margin-bottom: 18px;
+}
+
+.new_user .field label {
+    display: inline-block;
+    font-size: 15px;
+    color: #404040;
+    margin-bottom: 8px;
+}
+
+.new_user .field input[type="email"],
+.new_user .field input[type="password"] {
+    display: block;
+    width: 260px;
+    height: 36px;
+    padding: 0 10px;
+    border: 1px solid #b2b2b2;
+    border-radius: 3px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+.new_user .field input[type="email"]:focus,
+.new_user .field input[type="password"]:focus {
+    outline: none;
+    border-color: #87ceeb;
+}
+
+.new_user .actions {
+    margin-top: 20px;
+}
+
+.new_user .actions input[type="submit"] {
+    width: 140px;
+    height: 42px;
+    background-color: #87ceeb;
+    color: #ffffff;
+    border: 1px solid #c3e6fc;
+    border-radius: 3px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.new_user .actions input[type="submit"]:hover {
+    background-color: #6fc3e6;
+}

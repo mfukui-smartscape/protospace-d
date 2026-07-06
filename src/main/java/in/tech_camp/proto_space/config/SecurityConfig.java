@@ -35,6 +35,7 @@ public class SecurityConfig {
                 .requestMatchers("/").permitAll()
                 .requestMatchers("/login").permitAll()
                 .requestMatchers(HttpMethod.GET,  "/users/new").permitAll()
+                .requestMatchers("/css/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/users").permitAll()
                 .requestMatchers(HttpMethod.GET,  "/prototypes/*").permitAll()  // 詳細
                 .requestMatchers(HttpMethod.GET,  "/users/*").permitAll()       // ユーザー詳細
@@ -43,6 +44,7 @@ public class SecurityConfig {
             )
             .formLogin(login -> login
                 .loginPage("/login")
+                .usernameParameter("email")
                 .defaultSuccessUrl("/")
                 .permitAll()
             )

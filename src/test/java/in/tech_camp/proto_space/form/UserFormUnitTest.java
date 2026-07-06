@@ -1,23 +1,21 @@
 package in.tech_camp.proto_space.form;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.verify;
-
 import java.util.Set;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import static org.mockito.Mockito.verify;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.validation.BindingResult;
 
 import in.tech_camp.proto_space.factories.UserFormFactory;
+import in.tech_camp.proto_space.repositry.UserMapper;
 import in.tech_camp.proto_space.validation.ValidationPriority1;
 import in.tech_camp.proto_space.validation.ValidationPriority2;
-
-
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
@@ -46,7 +44,7 @@ public class UserFormUnitTest {
     @Nested
     class ユーザーを作成できる場合{
       @Test
-      public void emailとpasswordとpasswordconfirmationとnameとroleとpositionが存在すれば登録できる(){
+      public void emailとpasswordとpasswordconfirmationとnameとaffiliationとpositionが存在すれば登録できる(){
         Set<ConstraintViolation<UserForm>> violations = validator.validate(userForm,ValidationPriority1.class);
         assertEquals(0, violations.size());
       }
@@ -73,14 +71,14 @@ public class UserFormUnitTest {
 
       @Test
       public void emailが重複している場合は登録できない() {
-        UserRepository userRepository = Mockito.mock(UserRepository.class);
+        UserMapper userMapper = Mockito.mock(UserMapper.class);
 
         // 「このメールは既に存在する」と仮定
-        Mockito.when(userRepository.existsByEmail(userForm.getEmail()))
-           .thenReturn(true);
+        Mockito.when(userMapper.countByEmail(userForm.getEmail()))
+           .thenReturn(1);
 
         // バリデーション実行
-        userForm.validateEmailUnique(userRepository, bindingResult);
+        userForm.validateEmailUnique(userMapper, bindingResult);
 
         // エラーが追加されたか確認
         verify(bindingResult).rejectValue(
@@ -148,11 +146,11 @@ public class UserFormUnitTest {
       }
 
       @Test//所属
-      public void roleが空で登録できない(){
-        userForm.setRole("");
+      public void affiliationが空で登録できない(){
+        userForm.setAffiliation("");
         Set<ConstraintViolation<UserForm>> violations = validator.validate(userForm,ValidationPriority1.class);
         assertEquals(1, violations.size());
-        assertEquals("Role can't be blank", violations.iterator().next().getMessage());
+        assertEquals("Affiliation can't be blank", violations.iterator().next().getMessage());
       }
       @Test//役職
       public void positionが空では登録できない(){

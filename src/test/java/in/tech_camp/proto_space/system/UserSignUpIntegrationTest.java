@@ -2,22 +2,22 @@ package in.tech_camp.proto_space.system;
 
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.transaction.annotation.Transactional;
 
 import in.tech_camp.proto_space.entity.User;
-import in.tech_camp.proto_space.repositories.UserRepository;
+import in.tech_camp.proto_space.repositry.UserMapper;
 
 
 @Transactional
-
+@SpringBootTest
 public class UserSignUpIntegrationTest {
   
   @Autowired
-  private UserRepository userRepository;
+  private UserMapper userMapper;
 
   @Test
   void メールが重複すると保存できない() {
@@ -30,7 +30,7 @@ public class UserSignUpIntegrationTest {
       user1.setProfile("プロフィール");
       user1.setAffiliation("所属");
       user1.setPosition("職種");
-      userRepository.save(user1);
+      userMapper.insert(user1);
 
         // ② 同じメールで2件目を作る
       User user2 = new User();
@@ -42,7 +42,7 @@ public class UserSignUpIntegrationTest {
       user2.setPosition("職種");
       // ③ 保存すると例外が発生することを確認
       assertThrows( DataIntegrityViolationException.class, () -> {
-          userRepository.save(user2);
+          userMapper.insert(user2);
       });
   }
 }
