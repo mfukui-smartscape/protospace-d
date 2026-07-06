@@ -7,8 +7,10 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.security.core.Authentication;
 
 import in.tech_camp.proto_space.entity.Prototype;
+import in.tech_camp.proto_space.entity.User;
 import in.tech_camp.proto_space.form.PrototypeForm;
 import in.tech_camp.proto_space.repository.PrototypeMapper;
+import in.tech_camp.proto_space.repository.UserMapper;
 import in.tech_camp.proto_space.validation.ValidationOrder;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,12 +28,14 @@ import org.springframework.web.multipart.MultipartFile;
 public class PrototypeController {
 
   private final PrototypeMapper prototypeMapper;
+
+  private final UserMapper userMapper;
   //投稿ページ
   @GetMapping("/")
-  public String showPrototype(Model model) {
-    model.addAttribute("prototypes",prototypeMapper.findAll());
-    return "/index";
-  }
+   public String showPrototype(Model model) {
+     model.addAttribute("prototypes",prototypeMapper.findAll());
+     return "prototypes/index";
+   }
   
   @GetMapping("/prototypes/new")
   public String showPrototypeNew( Model model) {
@@ -80,16 +84,16 @@ public class PrototypeController {
   // 編集ページ
   
   @GetMapping("/prototypes/{id}")
-    public String showDetail(
-            @PathVariable Long id,
-            Model model) {
+     public String showDetail(
+             @PathVariable Long id,
+             Model model) {
 
-        model.addAttribute(
-                "prototype",
-                prototypeMapper.findById(id));
+         model.addAttribute(
+                 "prototype",
+                 prototypeMapper.findById(id));
 
-        return "prototypes/show";
-    }
+         return "prototypes/show";
+     }
 
     
   @GetMapping("/prototypes/{id}/edit")
@@ -104,12 +108,12 @@ public String showEdit(
     String loginUserEmail =
             authentication.getName();
 
-    // 所有者判定
-    // if (!prototype.getUser().getEmail()
-    //         .equals(loginUserEmail)) {
+    //所有者判定
+    User user = userMapper.findById(prototype.getUserId());
 
-    //     return "redirect:/";
-    // }
+    if (!user.getEmail().equals(loginUserEmail)) {
+      return "redirect:/";
+    }
 
     PrototypeForm form =
             new PrototypeForm();
@@ -123,6 +127,57 @@ public String showEdit(
 
     return "prototypes/edit";
 }
+
+
+
+@PostMapping("/prototypes/{id}")
+public String updatePrototype(
+        @PathVariable Long id,
+        @Validated(ValidationOrder.class)
+        @ModelAttribute("prototypeForm")
+        PrototypeForm prototypeForm,
+        BindingResult result,
+        Model model) {
+
+    Prototype prototype =
+            prototypeMapper.findById(id);
+
+    if (result.hasErrors()) {
+
+        model.addAttribute("prototype",
+                prototype);
+
+        return "prototypes/edit";
+    }
+
+    prototype.setName(
+            prototypeForm.getName());
+
+    prototype.setCatchCopy(
+            prototypeForm.getCatchCopy());
+
+    prototype.setConcept(
+            prototypeForm.getConcept());
+
+    MultipartFile imageFile =
+            prototypeForm.getImageName();
+
+    if (imageFile != null
+            && !imageFile.isEmpty()) {
+
+        prototype.setImageName(
+                imageFile.getOriginalFilename());
+    }
+
+    prototypeMapper.update(prototype);
+
+    return "redirect:/prototypes/" + id;
+}
+
+@GetMapping("/login")
+    public String showLogin() {
+        return "prototypes/login";
+    }
 
 
 }

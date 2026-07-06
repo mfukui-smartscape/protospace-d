@@ -7,7 +7,7 @@
   </head>
 
   <body>
-    <form th:action="@{/prototypes}" method="post" th:object="${prototype}" class="prototype_form">
+    <form th:action="@{/prototypes}" method="post" th:object="${prototypeForm}" class="prototype_form">
       <h1>新規プロトタイプ投稿</h1>
       <div class="prototype_subtitle">プロトタイプの名称</div>
       <input type="text" th:field="*{name}">

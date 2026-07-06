@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import in.tech_camp.proto_space.entity.Prototype;
 
@@ -41,4 +42,13 @@ public interface PrototypeMapper {
         ORDER BY id DESC
         """)
     List<Prototype> findAll();
+
+    @Update("""
+        UPDATE prototypes
+        SET name = #{name},
+            catch_copy = #{catchCopy},
+            concept = #{concept}
+        WHERE id = #{id}
+        """)
+    void update(Prototype prototype);
 }
