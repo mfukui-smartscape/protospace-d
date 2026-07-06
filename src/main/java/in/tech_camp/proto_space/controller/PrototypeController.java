@@ -111,9 +111,9 @@ public String showEdit(
     //所有者判定
     User user = userMapper.findById(prototype.getUserId());
 
-    if (!user.getEmail().equals(loginUserEmail)) {
-      return "redirect:/";
-    }
+     if (!user.getEmail().equals(loginUserEmail)) {
+       return "redirect:/";
+     }
 
     PrototypeForm form =
             new PrototypeForm();

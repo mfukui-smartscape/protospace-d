@@ -14,7 +14,7 @@ public class PrototypeEditValidationIntegrationTest
         extends AbstractPrototypeIntegrationTest {
 
     @Test
-    @WithMockUser
+    @WithMockUser(username = "user1@test.com")
     void name未入力では編集できない()
             throws Exception {
 
@@ -32,7 +32,7 @@ public class PrototypeEditValidationIntegrationTest
     }
 
     @Test
-    @WithMockUser
+    @WithMockUser(username = "user1@test.com")
     void catchCopy未入力では編集できない()
             throws Exception {
 
@@ -50,7 +50,7 @@ public class PrototypeEditValidationIntegrationTest
     }
 
     @Test
-    @WithMockUser
+    @WithMockUser(username = "user1@test.com")
     void concept未入力では編集できない()
             throws Exception {
 
@@ -68,7 +68,7 @@ public class PrototypeEditValidationIntegrationTest
     }
 
     @Test
-    @WithMockUser
+    @WithMockUser(username = "user1@test.com")
     void 編集失敗時も入力値が保持される()
             throws Exception {
 

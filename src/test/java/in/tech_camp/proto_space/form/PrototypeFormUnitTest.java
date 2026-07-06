@@ -11,6 +11,7 @@ import org.springframework.test.context.ActiveProfiles;
 
 import in.tech_camp.proto_space.factory.PrototypeFormFactory;
 import in.tech_camp.proto_space.validation.ValidationPriority1;
+import in.tech_camp.proto_space.validation.ValidationPriority3;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
@@ -101,7 +102,7 @@ public class PrototypeFormUnitTest {
             prototypeForm.setImageName(null);
 
             Set<ConstraintViolation<PrototypeForm>> violations =
-                    validator.validate(prototypeForm,ValidationPriority1.class);
+                    validator.validate(prototypeForm,ValidationPriority3.class);
 
             assertEquals(1, violations.size());
 
