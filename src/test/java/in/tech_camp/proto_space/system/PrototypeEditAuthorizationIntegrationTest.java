@@ -10,28 +10,27 @@ public class PrototypeEditAuthorizationIntegrationTest
         extends AbstractPrototypeIntegrationTest {
 
     @Test
-    @WithMockUser
-    void 自分のプロトタイプ編集ページへ遷移できる()
-            throws Exception {
+@WithMockUser(username = "user1@test.com")
+void 自分のプロトタイプ編集ページへ遷移できる()
+        throws Exception {
 
-        mockMvc.perform(
-                get("/prototypes/{id}/edit",
-                        prototype1.getId()))
-                .andExpect(status().isOk());
-    }
+    mockMvc.perform(
+            get("/prototypes/{id}/edit",
+                    prototype1.getId()))
+            .andExpect(status().isOk());
+}
 
     @Test
-    @WithMockUser
-    void 他人のプロトタイプ編集ページへ遷移できない()
-            throws Exception {
+@WithMockUser(username = "user1@test.com")
+void 他人のプロトタイプ編集ページへ遷移できない()
+        throws Exception {
 
-        mockMvc.perform(
-                get("/prototypes/{id}/edit",
-                        prototype2.getId()))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/"));
-    }
-
+    mockMvc.perform(
+            get("/prototypes/{id}/edit",
+                    prototype2.getId()))
+            .andExpect(status().is3xxRedirection())
+            .andExpect(redirectedUrl("/"));
+}
     @Test
     void 未ログインでは編集ページへ遷移できない()
             throws Exception {
@@ -40,6 +39,6 @@ public class PrototypeEditAuthorizationIntegrationTest
                 get("/prototypes/{id}/edit",
                         prototype1.getId()))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("**/login"));
+                .andExpect(redirectedUrl("http://localhost/login"));
     }
 }

@@ -10,8 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import in.tech_camp.proto_space.entity.Prototype;
 import in.tech_camp.proto_space.entity.User;
-import in.tech_camp.proto_space.mapper.PrototypeMapper;
-import in.tech_camp.proto_space.mapper.UserMapper;
+import in.tech_camp.proto_space.repository.PrototypeMapper;
+import in.tech_camp.proto_space.repository.UserMapper;
 
 @ActiveProfiles("test")
 @SpringBootTest
@@ -37,17 +37,25 @@ public abstract class AbstractPrototypeIntegrationTest {
     @BeforeEach
     void setUp() {
 
+ 
         user1 = new User();
         user1.setEmail("user1@test.com");
-        user1.setPassword("password");
-        user1.setName("ユーザー1");
-        userMapper.insert(user1);
+    user1.setPassword("password");
+    user1.setName("ユーザー1");
+    user1.setProfile("");
+user1.setAffiliation("");
+user1.setPosition("");
+userMapper.insert(user1);
 
-        user2 = new User();
-        user2.setEmail("user2@test.com");
-        user2.setPassword("password");
-        user2.setName("ユーザー2");
-        userMapper.insert(user2);
+user2 = new User();
+user2.setEmail("user2@test.com");
+user2.setPassword("password");
+user2.setName("ユーザー2");
+user2.setProfile("");
+user2.setAffiliation("");
+user2.setPosition("");
+userMapper.insert(user2);
+;
 
         prototype1 = new Prototype();
         prototype1.setName("プロトタイプ1");

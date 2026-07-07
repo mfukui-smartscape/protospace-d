@@ -21,7 +21,7 @@ public class PrototypePostSuccessIntegrationTest
 
         MockMultipartFile file =
                 new MockMultipartFile(
-                        "image",
+                        "imageName",
                         "test.png",
                         "image/png",
                         "dummy".getBytes());

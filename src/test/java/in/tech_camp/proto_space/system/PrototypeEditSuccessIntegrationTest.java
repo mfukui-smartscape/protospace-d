@@ -21,7 +21,7 @@ public class PrototypeEditSuccessIntegrationTest
         extends AbstractPrototypeIntegrationTest {
 
     @Test
-    @WithMockUser
+    @WithMockUser(username = "user1@test.com")
     void プロトタイプを編集できる()
             throws Exception {
 
@@ -31,9 +31,9 @@ public class PrototypeEditSuccessIntegrationTest
         int beforeCount =
                 beforeList.size();
 
-        MockMultipartFile image =
+        MockMultipartFile imageName =
                 new MockMultipartFile(
-                        "image",
+                        "imageName",
                         "edited.png",
                         "image/png",
                         "edited image".getBytes());
@@ -41,7 +41,7 @@ public class PrototypeEditSuccessIntegrationTest
         mockMvc.perform(
                 multipart("/prototypes/{id}",
                         prototype1.getId())
-                        .file(image)
+                        .file(imageName)
                         .param("name",
                                 "編集後の名称")
                         .param("catchCopy",
@@ -66,7 +66,7 @@ public class PrototypeEditSuccessIntegrationTest
     }
 
     @Test
-    @WithMockUser
+    @WithMockUser(username = "user1@test.com")
     void 画像を変更しなくても画像は保持される()
             throws Exception {
 

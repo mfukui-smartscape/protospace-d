@@ -24,6 +24,6 @@ public class PrototypePostAuthorizationIntegrationTest
 
         mockMvc.perform(get("/prototypes/new"))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("**/login"));
+                .andExpect(redirectedUrl("http://localhost/login"));
     }
 }
