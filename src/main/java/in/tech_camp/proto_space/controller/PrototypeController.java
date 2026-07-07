@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.view.RedirectView;
 
 import in.tech_camp.proto_space.entity.PrototypeEntity;
 import in.tech_camp.proto_space.entity.UserEntity;
@@ -35,7 +36,27 @@ public class PrototypeController {
         this.commentMapper = commentMapper;
     }
 
-    //  詳細表示（誰でも見れる。本人だけ編集/削除リンクを出す）
+    // トップページ（一覧）
+    @GetMapping("/")
+    public String index(Authentication authentication, Model model) {
+        model.addAttribute("prototypes", prototypeService.findAll());
+        if (authentication != null) {
+            UserEntity user = userService.findByEmail(authentication.getName());
+            if (user != null) {
+                model.addAttribute("userName", user.getName());
+            }
+        }
+        return "index";
+    }
+
+    // 投稿フォーム表示
+    @GetMapping("/prototypes/new")
+    public String showNew(Model model) {
+        model.addAttribute("prototypeForm", new PrototypeForm());
+        return "prototypes/new";
+    }
+
+    // 詳細表示（誰でも見れる。本人だけ編集/削除リンクを出す）
     @GetMapping("/prototypes/{id}")
     public String showDetail(
             @PathVariable Long id,
@@ -61,6 +82,26 @@ public class PrototypeController {
         model.addAttribute("isLoggedIn", isLoggedIn);
 
         return "prototypes/detail";
+    }
+
+    // 編集フォーム表示（本人のみ）
+    @GetMapping("/prototypes/{id}/edit")
+    public Object showEdit(@PathVariable Long id, Authentication authentication, Model model) {
+        PrototypeEntity prototype = prototypeService.findById(id);
+        UserEntity loginUser = userService.findByEmail(authentication.getName());
+
+        if (!prototype.getUserId().equals(loginUser.getId())) {
+            return new RedirectView("/");
+        }
+
+        PrototypeForm form = new PrototypeForm();
+        form.setName(prototype.getName());
+        form.setCatchCopy(prototype.getCatchCopy());
+        form.setConcept(prototype.getConcept());
+
+        model.addAttribute("prototype", prototype);
+        model.addAttribute("prototypeForm", form);
+        return "prototypes/edit";
     }
 
     // 投稿
