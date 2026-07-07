@@ -1,41 +1,85 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="ja">
+
 <head>
     <meta charset="UTF-8" />
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/css/detail.css}" rel="stylesheet" type="text/css" />
     <title>User Detail</title>
 </head>
+
 <body>
 
-    <div
-        data-testid="user-name"
-        th:text="${user.name}">
-    </div>
+    <div th:replace="~{layout/header :: header}"></div>
 
-    <div
-        data-testid="user-profile"
-        th:text="${user.profile}">
-    </div>
+    <main class="main">
 
-    <div
-        data-testid="user-affiliation"
-        th:text="${user.affiliation}">
-    </div>
+        <div class="inner">
 
-    <div
-        data-testid="user-position"
-        th:text="${user.position}">
-    </div>
+            <h2 class="user-title">
+                <span th:text="${user.name}"></span>さんの情報
+            </h2>
 
-    <div th:each="prototype : ${prototypes}">
+            <table class="user-table">
+                <tbody>
+                    <tr>
+                        <th>名前</th>
+                        <td data-testid="user-name" th:text="${user.name}"></td>
+                    </tr>
 
-        <div
-            data-testid="prototype-name"
-            th:text="${prototype.name}">
+                    <tr>
+                        <th>プロフィール</th>
+                        <td data-testid="user-profile" th:text="${user.profile}"></td>
+                    </tr>
+
+                    <tr>
+                        <th>所属</th>
+                        <td data-testid="user-affiliation" th:text="${user.affiliation}"></td>
+                    </tr>
+
+                    <tr>
+                        <th>役職</th>
+                        <td data-testid="user-position" th:text="${user.position}"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 class="prototype-title">
+                <span th:text="${user.name}"></span>さんのプロトタイプ
+            </h2>
+
+            <div class="prototype-list">
+                <div class="prototype-card" th:each="prototype : ${prototypes}">
+
+                    <a th:href="@{/prototypes/{id}(id=${prototype.id})}">
+                        <img class="prototype-image" data-testid="prototype-image" th:src="${prototype.imageName}"/>
+                    </a>
+
+                    <a th:href="@{/prototypes/{id}(id=${prototype.id})}">
+                        <div class="prototype-name"
+                            data-testid="prototype-name"
+                            th:text="${prototype.name}">
+                        </div>
+                    </a>
+
+                    <div class="prototype-catch-copy"
+                        data-testid="prototype-catch-copy"
+                        th:text="${prototype.catchCopy}">
+                    </div>
+
+                    <a th:href="@{/users/{id}(id=${prototype.userId})}">
+                        <div class="user-name"
+                            data-testid="user-name"
+                            th:text="|by ${prototype.userName}|">
+                        </div>
+                    </a>
+
+                </div>
+            </div>
         </div>
+    </main>
 
-        <img data-testid="prototype-image" th:src="${prototype.imageName}"/>
-
-    </div>
-
+    <div th:replace="~{layout/footer :: footer}"></div>
 </body>
+
 </html>
