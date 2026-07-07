@@ -1,5 +1,7 @@
 package in.tech_camp.proto_space.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import in.tech_camp.proto_space.entity.Prototype;
@@ -19,5 +21,17 @@ public class PrototypeService {
             throw new IllegalArgumentException("prototype must not be null");
         }
         prototypeMapper.insert(prototype);
+    }
+
+    public List<Prototype> findAll() {
+        return prototypeMapper.findAll();
+    }
+
+    public List<Prototype> findByUserId(Long userId) {
+        return prototypeMapper.findByUserId(userId);
+    }
+
+    public Prototype findById(Long id) {
+        return prototypeMapper.findById(id);
     }
 }

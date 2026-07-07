@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<<<<<<< HEAD
 
 <head>
     <meta charset="UTF-8">
@@ -19,4 +20,44 @@
 <div th:replace="~{layout/footer :: footer}"></div>
 </body>
 
+=======
+<head>
+    <meta charset="UTF-8" />
+    <title>ProtoSpace</title>
+</head>
+<body>
+
+    <div
+        data-testid="welcome-message"
+        th:if="${userName != null}"
+        th:text="|こんにちは、${userName}です|">
+    </div>
+
+    <div th:each="prototype : ${prototypes}">
+
+        <div
+            data-testid="prototype-name"
+            th:text="${prototype.name}">
+        </div>
+
+        <div
+            data-testid="prototype-catch-copy"
+            th:text="${prototype.catchCopy}">
+        </div>
+
+        <div
+            data-testid="user-name"
+            th:text="${prototype.userName}">
+        </div>
+
+        <img data-testid="prototype-image" th:src="${prototype.imageName}"/>
+
+        <a th:href="@{/prototypes/{id}(id=${prototype.id})}">詳細</a>
+
+        <a th:href="@{/users/{id}(id=${prototype.userId})}">ユーザー詳細</a>
+
+    </div>
+
+</body>
+>>>>>>> origin/workspace-d
 </html>

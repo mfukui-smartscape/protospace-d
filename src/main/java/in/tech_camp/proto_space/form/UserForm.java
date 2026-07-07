@@ -1,5 +1,6 @@
 package in.tech_camp.proto_space.form;
 
+<<<<<<< HEAD
 import org.springframework.validation.BindingResult;
 
 import in.tech_camp.proto_space.repository.UserMapper;
@@ -8,10 +9,13 @@ import in.tech_camp.proto_space.validation.ValidationPriority2;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+=======
+>>>>>>> origin/workspace-d
 import lombok.Data;
 
 @Data
 public class UserForm {
+<<<<<<< HEAD
 
     @NotBlank(message = "Email can't be blank", groups = ValidationPriority1.class)
     @Email(message = "Email should be valid", groups = ValidationPriority2.class)
@@ -65,4 +69,12 @@ public class UserForm {
                 "Password confirmation doesn't match Password");
             }
         }
+=======
+  private String email;
+  private String password;
+  private String name;
+  private String profile;
+  private String affiliation;
+  private String position;
+>>>>>>> origin/workspace-d
 }

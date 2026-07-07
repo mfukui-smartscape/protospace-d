@@ -12,7 +12,11 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> origin/workspace-d
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -24,7 +28,11 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 // --- 静的ファイル（追加）---
                 .requestMatchers("/images/**", "/css/**", "/js/**").permitAll()
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> origin/workspace-d
                 // --- 認証必須を先に書く（順番が重要）---
                 .requestMatchers(HttpMethod.GET, "/prototypes/new").authenticated()
                 .requestMatchers(HttpMethod.GET, "/prototypes/*/edit").authenticated()
@@ -42,7 +50,11 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.POST, "/users").permitAll()
                 .requestMatchers(HttpMethod.GET,  "/prototypes/*").permitAll()
                 .requestMatchers(HttpMethod.GET,  "/users/*").permitAll()
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> origin/workspace-d
                 .anyRequest().authenticated()
             )
             .formLogin(login -> login

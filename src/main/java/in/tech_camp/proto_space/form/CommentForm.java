@@ -8,4 +8,8 @@ public class CommentForm {
 
     @NotBlank
     private String content;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/workspace-d
