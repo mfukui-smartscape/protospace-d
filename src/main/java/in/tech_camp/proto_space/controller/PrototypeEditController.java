@@ -31,6 +31,6 @@ public class PrototypeEditController {
       return new RedirectView("/");
     }
 
-    return "prototype_edit";
+    return "prototype/edit";
   }
 }

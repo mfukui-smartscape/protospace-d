@@ -29,6 +29,6 @@ public class UserDetailController {
         model.addAttribute("user", user);
         model.addAttribute("prototypes", prototypeService.findByUserId(id));
 
-        return "user_detail";
+        return "user/detail";
     }
 }
