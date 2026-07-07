@@ -14,12 +14,16 @@
       <h1>新規プロトタイプ投稿</h1>
       <div class="prototype_subtitle">プロトタイプの名称</div>
       <input type="text" th:field="*{name}">
+
       <div class="prototype_subtitle">キャッチコピー</div>
       <input type="text" th:field="*{catchCopy}">
+
       <div class="prototype_subtitle">コンセプト</div>
       <input type="text" th:field="*{concept}">
+
       <div class="prototype_subtitle">プロトタイプの画像</div>
       <input type="file" th:field="*{imageName}">
+      <br>
       <input type="submit" value="保存する" class="prototype_submit">
     </form>
     <div th:insert="~{layout/footer :: footer}"></div>

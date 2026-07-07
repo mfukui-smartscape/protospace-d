@@ -6,9 +6,8 @@
     <link th:href="@{/css/edit.css}" rel="stylesheet" type="text/css">
     <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
 <body>
-
+<div th:insert="~{layout/header :: header}"></div>
 <div class="edit-container">
-
     <h1>プロトタイプ編集</h1>
 
     <form th:object="${prototypeForm}" method="post" enctype="multipart/form-data">
@@ -28,9 +27,8 @@
         <input type="submit" value="保存する" class="prototype_submit">
 
     </form>
-
 </div>
-
+<div th:insert="~{layout/footer :: footer}"></div>
 </body>
 </html>
 

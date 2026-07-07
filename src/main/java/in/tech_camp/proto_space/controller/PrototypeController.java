@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 
@@ -179,5 +181,13 @@ public String updatePrototype(
         return "prototypes/login";
     }
 
+    
+@GetMapping("/preview/edit")
+public String previewEdit(Model model) {
+    model.addAttribute("prototypeForm", new PrototypeForm());
+    return "prototypes/edit";
+}
+
+    
 
 }

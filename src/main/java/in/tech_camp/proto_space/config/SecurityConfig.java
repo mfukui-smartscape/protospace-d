@@ -26,7 +26,7 @@ public class SecurityConfig {
                 .requestMatchers("/images/**", "/css/**", "/js/**").permitAll()
  
                 // --- 認証必須を先に書く（順番が重要）---
-                .requestMatchers(HttpMethod.GET, "/prototypes/new").authenticated()
+                // .requestMatchers(HttpMethod.GET, "/prototypes/new").authenticated()
                 .requestMatchers(HttpMethod.GET, "/prototypes/*/edit").authenticated()
                 .requestMatchers(HttpMethod.POST,   "/prototypes").authenticated()
                 .requestMatchers(HttpMethod.POST, "/prototypes/*").authenticated()
@@ -41,7 +41,9 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.POST, "/users").permitAll()
                 .requestMatchers(HttpMethod.GET,  "/prototypes/*").permitAll()
                 .requestMatchers(HttpMethod.GET,  "/users/*").permitAll()
- 
+                // 一時的にみるため
+                .requestMatchers(HttpMethod.GET, "/prototypes/new").permitAll()
+                .requestMatchers(HttpMethod.GET, "/preview/edit").permitAll()
                 .anyRequest().authenticated()
             )
             .formLogin(login -> login
