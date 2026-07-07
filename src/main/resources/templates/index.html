@@ -3,30 +3,55 @@
 <head>
     <meta charset="UTF-8" />
     <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css" />
     <title>ProtoSpace</title>
 </head>
 <body>
 
     <div th:replace="~{layout/header :: header}"></div>
 
-    <div
-        data-testid="welcome-message"
-        th:if="${userName != null}"
-        th:text="|こんにちは、${userName}です|">
+    <div class="welcome-message"
+         data-testid="welcome-message"
+         th:if="${userName != null}"
+         th:text="|こんにちは、${userName}です|">
     </div>
 
-    <div th:each="prototype : ${prototypes}">
+    <main class="main">
+        <div class="inner">
+            <div class="prototype-list">
 
-        <div data-testid="prototype-name" th:text="${prototype.name}"></div>
-        <div data-testid="prototype-catch-copy" th:text="${prototype.catchCopy}"></div>
-        <div data-testid="user-name" th:text="${prototype.userName}"></div>
+                <div class="prototype-card" th:each="prototype : ${prototypes}">
 
-        <img data-testid="prototype-image" th:src="${prototype.imageName}" />
+                    <a th:href="@{/prototypes/{id}(id=${prototype.id})}">
+                        <img class="prototype-image"
+                             data-testid="prototype-image"
+                             th:src="${prototype.imageName}" />
+                    </a>
 
-        <a th:href="@{/prototypes/{id}(id=${prototype.id})}">詳細</a>
-        <a th:href="@{/users/{id}(id=${prototype.userId})}">ユーザー詳細</a>
+                    <a th:href="@{/prototypes/{id}(id=${prototype.id})}">
+                        <div class="prototype-name"
+                             data-testid="prototype-name"
+                             th:text="${prototype.name}">
+                        </div>
+                    </a>
 
-    </div>
+                    <div class="prototype-catch-copy"
+                         data-testid="prototype-catch-copy"
+                         th:text="${prototype.catchCopy}">
+                    </div>
+
+                    <a th:href="@{/users/{id}(id=${prototype.userId})}">
+                        <div class="user-name"
+                             data-testid="user-name"
+                             th:text="|by ${prototype.userName}|">
+                        </div>
+                    </a>
+
+                </div>
+
+            </div>
+        </div>
+    </main>
 
     <div th:replace="~{layout/footer :: footer}"></div>
 
