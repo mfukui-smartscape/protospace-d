@@ -15,10 +15,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.xpath;
 import org.springframework.transaction.annotation.Transactional;
 
-import in.tech_camp.proto_space.entity.Prototype;
-import in.tech_camp.proto_space.entity.User;
-import in.tech_camp.proto_space.repository.PrototypeRepository;
-import in.tech_camp.proto_space.repository.UserRepository;
+import in.tech_camp.proto_space.entity.PrototypeEntity;
+import in.tech_camp.proto_space.entity.UserEntity;
+import in.tech_camp.proto_space.repository.PrototypeMapper;
+import in.tech_camp.proto_space.repository.UserMapper;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -29,10 +29,10 @@ class TopPageTest {
     MockMvc mockMvc;
 
     @Autowired
-    UserRepository userRepository;
+    UserMapper UserMapper;
 
     @Autowired
-    PrototypeRepository prototypeRepository;
+    PrototypeMapper PrototypeMapper;
 
     Long userId;
     Long prototypeId;
@@ -41,25 +41,25 @@ class TopPageTest {
     @BeforeEach
     void setUp() {
         // 投稿者
-        User user = new User();
+        UserEntity user = new UserEntity();
         user.setEmail("yamada@example.com");
         user.setPassword("password123");
         user.setName("山田太郎");
         user.setProfile("エンジニアです");
         user.setAffiliation("テック株式会社");
         user.setPosition("バックエンドエンジニア");
-        userRepository.insert(user);
+        UserMapper.insert(user);
         userId = user.getId();
         userName = user.getName();
 
         // 投稿（トップに表示される）
-        Prototype prototype = new Prototype();
+        PrototypeEntity prototype = new PrototypeEntity();
         prototype.setName("テストプロトタイプ");
         prototype.setCatchCopy("すごいキャッチコピー");
         prototype.setConcept("コンセプトです");
         prototype.setImageName("sample.png");
         prototype.setUserId(userId);
-        prototypeRepository.insert(prototype);
+        PrototypeMapper.insert(prototype);
         prototypeId = prototype.getId();
     }
 

@@ -21,17 +21,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import org.springframework.transaction.annotation.Transactional;
 
-import in.tech_camp.proto_space.entity.Prototype;
-import in.tech_camp.proto_space.entity.User;
-
+import in.tech_camp.proto_space.entity.PrototypeEntity;
+import in.tech_camp.proto_space.entity.UserEntity;
 import in.tech_camp.proto_space.repository.PrototypeMapper;
 import in.tech_camp.proto_space.repository.UserMapper;
-
-
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -54,7 +47,7 @@ class PrototypeControllerTest {
     @BeforeEach
     void setUp() {
 
-        User owner = new User();
+        UserEntity owner = new UserEntity();
         owner.setEmail("owner@test.com");
         owner.setPassword("password");
         owner.setName("投稿者");
@@ -65,7 +58,7 @@ class PrototypeControllerTest {
         userMapper.insert(owner);
         ownerId = owner.getId();
 
-        User other = new User();
+        UserEntity other = new UserEntity();
         other.setEmail("other@test.com");
         other.setPassword("password");
         other.setName("他ユーザー");
@@ -76,7 +69,7 @@ class PrototypeControllerTest {
         userMapper.insert(other);
         otherUserId = other.getId();
 
-        Prototype prototype = new Prototype();
+        PrototypeEntity prototype = new PrototypeEntity();
         prototype.setName("AIカメラ");
         prototype.setCatchCopy("未来を映す");
         prototype.setConcept("AIで画像解析");
@@ -243,7 +236,7 @@ class PrototypeControllerTest {
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/prototypes/" + prototypeId));
 
-        Prototype updated = prototypeMapper.findById(prototypeId);
+        PrototypeEntity updated = prototypeMapper.findById(prototypeId);
 
         assertEquals("更新後タイトル", updated.getName());
 
@@ -292,7 +285,7 @@ class PrototypeControllerTest {
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/"));
 
-        Prototype deleted = prototypeMapper.findById(prototypeId);
+        PrototypeEntity deleted = prototypeMapper.findById(prototypeId);
 
         assertNull(deleted);
     }
@@ -304,7 +297,7 @@ class PrototypeControllerTest {
                 .with(csrf()))
                 .andExpect(status().is3xxRedirection());
 
-        Prototype prototype = prototypeMapper.findById(prototypeId);
+        PrototypeEntity prototype = prototypeMapper.findById(prototypeId);
 
         assertNotNull(prototype);
     }
@@ -317,7 +310,7 @@ class PrototypeControllerTest {
                 .with(csrf()))
                 .andExpect(status().is3xxRedirection());
 
-        Prototype prototype = prototypeMapper.findById(prototypeId);
+        PrototypeEntity prototype = prototypeMapper.findById(prototypeId);
 
         assertNotNull(prototype);
     }

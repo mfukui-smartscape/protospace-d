@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import in.tech_camp.proto_space.entity.User;
+import in.tech_camp.proto_space.entity.UserEntity;
 import in.tech_camp.proto_space.service.PrototypeService;
 import in.tech_camp.proto_space.service.UserService;
 
@@ -24,7 +24,7 @@ public class UserDetailController {
     @GetMapping("/users/{id}")
     public String show(@PathVariable Long id, Model model) {
 
-        User user = userService.findById(id);
+        UserEntity user = userService.findById(id);
 
         model.addAttribute("user", user);
         model.addAttribute("prototypes", prototypeService.findByUserId(id));

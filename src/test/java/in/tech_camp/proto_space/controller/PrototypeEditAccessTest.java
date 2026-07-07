@@ -12,10 +12,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import org.springframework.transaction.annotation.Transactional;
 
-import in.tech_camp.proto_space.entity.Prototype;
-import in.tech_camp.proto_space.entity.User;
-import in.tech_camp.proto_space.repository.PrototypeRepository;
-import in.tech_camp.proto_space.repository.UserRepository;
+import in.tech_camp.proto_space.entity.PrototypeEntity;
+import in.tech_camp.proto_space.entity.UserEntity;
+import in.tech_camp.proto_space.repository.PrototypeMapper;
+import in.tech_camp.proto_space.repository.UserMapper;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -26,10 +26,10 @@ class PrototypeEditAccessTest {
     MockMvc mockMvc;
 
     @Autowired
-    UserRepository userRepository;
+    UserMapper UserMapper;
 
     @Autowired
-    PrototypeRepository prototypeRepository;
+    PrototypeMapper PrototypeMapper;
 
     Long ownerId;        // 投稿の持ち主（山田）
     Long othersPrototypeId;  // 山田が投稿したプロトタイプ
@@ -37,34 +37,34 @@ class PrototypeEditAccessTest {
     @BeforeEach
     void setUp() {
         // 投稿の持ち主：山田太郎
-        User owner = new User();
+        UserEntity owner = new UserEntity();
         owner.setEmail("yamada@example.com");
         owner.setPassword("password123");
         owner.setName("山田太郎");
         owner.setProfile("プロフィール");
         owner.setAffiliation("所属");
         owner.setPosition("役職");
-        userRepository.insert(owner);
+        UserMapper.insert(owner);
         ownerId = owner.getId();
 
         // 別人：佐藤花子（この人でログインして山田の投稿を編集しようとする）
-        User other = new User();
+        UserEntity other = new UserEntity();
         other.setEmail("sato@example.com");
         other.setPassword("password123");
         other.setName("佐藤花子");
         other.setProfile("プロフィール");
         other.setAffiliation("所属");
         other.setPosition("役職");
-        userRepository.insert(other);
+        UserMapper.insert(other);
 
         // 山田が投稿したプロトタイプ
-        Prototype prototype = new Prototype();
+        PrototypeEntity prototype = new PrototypeEntity();
         prototype.setName("山田のプロトタイプ");
         prototype.setCatchCopy("キャッチコピー");
         prototype.setConcept("コンセプト");
         prototype.setImageName("sample.png");
         prototype.setUserId(ownerId);
-        prototypeRepository.insert(prototype);
+        PrototypeMapper.insert(prototype);
         othersPrototypeId = prototype.getId();
     }
 

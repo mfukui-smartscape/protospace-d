@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import in.tech_camp.proto_space.entity.Comment;
-import in.tech_camp.proto_space.entity.Prototype;
-import in.tech_camp.proto_space.entity.User;
+import in.tech_camp.proto_space.entity.CommentEntity;
+import in.tech_camp.proto_space.entity.PrototypeEntity;
+import in.tech_camp.proto_space.entity.UserEntity;
 import in.tech_camp.proto_space.form.CommentForm;
 import in.tech_camp.proto_space.repository.CommentMapper;
 import in.tech_camp.proto_space.repository.PrototypeMapper;
@@ -43,16 +43,16 @@ public class CommentController {
                           Model model,
                           Authentication authentication) {
 
-        Prototype prototype = prototypeMapper.findById(prototypeId);
+        PrototypeEntity prototype = prototypeMapper.findById(prototypeId);
         if (prototype == null) {
             return "redirect:/";
         }
 
-        User loginUser = userMapper.findByEmail(authentication.getName());
+        UserEntity loginUser = userMapper.findByEmail(authentication.getName());
 
         if (bindingResult.hasErrors()) {
             boolean isOwner = loginUser != null && loginUser.getId().equals(prototype.getUserId());
-            List<Comment> comments = commentMapper.findByPrototypeId(prototypeId);
+            List<CommentEntity> comments = commentMapper.findByPrototypeId(prototypeId);
 
             model.addAttribute("prototype", prototype);
             model.addAttribute("comments", comments);
@@ -62,7 +62,7 @@ public class CommentController {
             return "prototypes/detail";
         }
 
-        Comment comment = new Comment();
+        CommentEntity comment = new CommentEntity();
         comment.setContent(form.getContent());
         comment.setPrototypeId(prototypeId);
         comment.setUserId(loginUser.getId());

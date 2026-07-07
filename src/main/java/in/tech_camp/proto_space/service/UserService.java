@@ -1,12 +1,12 @@
 package in.tech_camp.proto_space.service;
 
-import in.tech_camp.proto_space.entity.User;
+import in.tech_camp.proto_space.entity.UserEntity;
 
 public interface UserService {
 
-    User createUserWithEncryptedPassword(User user);
+    UserEntity createUserWithEncryptedPassword(UserEntity user);
 
-    User findByEmail(String email);
+    UserEntity findByEmail(String email);
 
-    User findById(Long id);
+    UserEntity   findById(Long id);
 }

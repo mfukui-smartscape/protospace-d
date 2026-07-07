@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.transaction.annotation.Transactional;
 
-import in.tech_camp.proto_space.entity.User;
+import in.tech_camp.proto_space.entity.UserEntity;
 import in.tech_camp.proto_space.repository.UserMapper;
 
 
@@ -23,7 +23,7 @@ public class UserSignUpIntegrationTest {
   void メールが重複すると保存できない() {
 
       // ① 1件目のユーザーを保存（成功）
-      User user1 = new User();
+      UserEntity user1 = new UserEntity();
       user1.setEmail("test@test.com");
       user1.setPassword("123456");
       user1.setName("山田太郎");
@@ -33,7 +33,7 @@ public class UserSignUpIntegrationTest {
       userMapper.insert(user1);
 
         // ② 同じメールで2件目を作る
-      User user2 = new User();
+      UserEntity user2 = new UserEntity();
       user2.setEmail("test@test.com");
       user2.setPassword("123456");
       user2.setName("山田太郎");

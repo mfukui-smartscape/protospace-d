@@ -8,8 +8,8 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
-import in.tech_camp.proto_space.entity.Prototype;
-import in.tech_camp.proto_space.entity.User;
+import in.tech_camp.proto_space.entity.PrototypeEntity;
+import in.tech_camp.proto_space.entity.UserEntity;
 import in.tech_camp.proto_space.repository.PrototypeMapper;
 import in.tech_camp.proto_space.repository.UserMapper;
 
@@ -28,17 +28,17 @@ public abstract class AbstractPrototypeIntegrationTest {
     @Autowired
     protected PrototypeMapper prototypeMapper;
 
-    protected User user1;
-    protected User user2;
+    protected UserEntity user1;
+    protected UserEntity user2;
 
-    protected Prototype prototype1;
-    protected Prototype prototype2;
+    protected PrototypeEntity prototype1;
+    protected PrototypeEntity prototype2;
 
     @BeforeEach
     void setUp() {
 
  
-        user1 = new User();
+        user1 = new UserEntity();
         user1.setEmail("user1@test.com");
     user1.setPassword("password");
     user1.setName("ユーザー1");
@@ -47,7 +47,7 @@ user1.setAffiliation("");
 user1.setPosition("");
 userMapper.insert(user1);
 
-user2 = new User();
+user2 = new UserEntity();
 user2.setEmail("user2@test.com");
 user2.setPassword("password");
 user2.setName("ユーザー2");
@@ -57,7 +57,7 @@ user2.setPosition("");
 userMapper.insert(user2);
 ;
 
-        prototype1 = new Prototype();
+        prototype1 = new PrototypeEntity();
         prototype1.setName("プロトタイプ1");
         prototype1.setCatchCopy("キャッチコピー1");
         prototype1.setConcept("コンセプト1");
@@ -66,7 +66,7 @@ userMapper.insert(user2);
 
         prototypeMapper.insert(prototype1);
 
-        prototype2 = new Prototype();
+        prototype2 = new PrototypeEntity();
         prototype2.setName("プロトタイプ2");
         prototype2.setCatchCopy("キャッチコピー2");
         prototype2.setConcept("コンセプト2");

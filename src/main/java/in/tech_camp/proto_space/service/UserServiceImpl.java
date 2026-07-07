@@ -4,7 +4,7 @@ package in.tech_camp.proto_space.service;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import in.tech_camp.proto_space.entity.User;
+import in.tech_camp.proto_space.entity.UserEntity;
 import in.tech_camp.proto_space.repository.UserMapper;
 import lombok.RequiredArgsConstructor;
 
@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
 
     
 @Override
-public User createUserWithEncryptedPassword(User user) {
+public UserEntity createUserWithEncryptedPassword(UserEntity user) {
 
     user.setPassword(
             passwordEncoder.encode(
@@ -43,13 +43,13 @@ public User createUserWithEncryptedPassword(User user) {
 
 
     @Override
-    public User findByEmail(String email) {
+    public UserEntity findByEmail(String email) {
 
         return userMapper.findByEmail(email);
     }
 
     @Override
-    public User findById(Long id) {
+    public UserEntity findById(Long id) {
 
         return userMapper.findById(id);
     }

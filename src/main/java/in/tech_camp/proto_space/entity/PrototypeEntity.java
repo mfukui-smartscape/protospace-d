@@ -10,7 +10,7 @@ import lombok.Data;
  * userName を保持できるようにしている（DBカラムではない）。
  */
 @Data
-public class Prototype {
+public class PrototypeEntity {
     private Long id;
     private String name;
     private String catchCopy;

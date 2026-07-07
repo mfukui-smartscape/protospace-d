@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 
-import in.tech_camp.proto_space.entity.User;
+import in.tech_camp.proto_space.entity.UserEntity;
 
 @Mapper
 public interface UserMapper {
@@ -15,17 +15,17 @@ public interface UserMapper {
         VALUES (#{email}, #{password}, #{name}, #{profile}, #{affiliation}, #{position})
         """)
     @Options(useGeneratedKeys = true, keyProperty = "id")
-    void insert(User user);
+    void insert(UserEntity user);
 
     @Select("""
         SELECT * FROM users WHERE id = #{id}
         """)
-    User findById(Long id);
+    UserEntity  findById(Long id);
 
     @Select("""
         SELECT * FROM users WHERE email = #{email}
         """)
-    User findByEmail(String email);
+    UserEntity findByEmail(String email);
 
     @Select("""
         SELECT COUNT(*) FROM users WHERE email = #{email}

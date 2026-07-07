@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import in.tech_camp.proto_space.entity.Prototype;
+import in.tech_camp.proto_space.entity.PrototypeEntity;
 import in.tech_camp.proto_space.repository.PrototypeMapper;
 
 @Service
@@ -16,22 +16,33 @@ public class PrototypeService {
         this.prototypeMapper = prototypeMapper;
     }
 
-    public void save(Prototype prototype) {
+    public void save(PrototypeEntity prototype) {
         if (prototype == null) {
             throw new IllegalArgumentException("prototype must not be null");
         }
         prototypeMapper.insert(prototype);
     }
 
-    public List<Prototype> findAll() {
+    public List<PrototypeEntity> findAll() {
         return prototypeMapper.findAll();
     }
 
-    public List<Prototype> findByUserId(Long userId) {
+    public List<PrototypeEntity> findByUserId(Long userId) {
         return prototypeMapper.findByUserId(userId);
     }
 
-    public Prototype findById(Long id) {
+    public PrototypeEntity findById(Long id) {
         return prototypeMapper.findById(id);
+    }
+
+    public void update(PrototypeEntity prototype) {
+        if (prototype == null) {
+            throw new IllegalArgumentException("prototype must not be null");
+        }
+        prototypeMapper.update(prototype);
+    }
+
+    public void delete(Long id) {
+        prototypeMapper.delete(id);
     }
 }

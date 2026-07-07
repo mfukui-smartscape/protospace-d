@@ -23,9 +23,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import org.springframework.transaction.annotation.Transactional;
 
-import in.tech_camp.proto_space.entity.Comment;
-import in.tech_camp.proto_space.entity.Prototype;
-import in.tech_camp.proto_space.entity.User;
+import in.tech_camp.proto_space.entity.CommentEntity;
+import in.tech_camp.proto_space.entity.PrototypeEntity;
+import in.tech_camp.proto_space.entity.UserEntity;
 import in.tech_camp.proto_space.repository.CommentMapper;
 import in.tech_camp.proto_space.repository.PrototypeMapper;
 import in.tech_camp.proto_space.repository.UserMapper;
@@ -53,7 +53,7 @@ class CommentControllerTest {
     @BeforeEach
     void setUp() {
 
-        User user = new User();
+        UserEntity user = new UserEntity();
         user.setEmail("yamada@example.com");
         user.setPassword("password123");
         user.setName("山田太郎");
@@ -64,7 +64,7 @@ class CommentControllerTest {
         userMapper.insert(user);
         userId = user.getId();
 
-        Prototype prototype = new Prototype();
+        PrototypeEntity prototype = new PrototypeEntity();
         prototype.setName("AIカメラ");
         prototype.setCatchCopy("未来を映す");
         prototype.setConcept("AI画像解析");
@@ -110,8 +110,8 @@ class CommentControllerTest {
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/prototypes/" + prototypeId));
 
-        List<Comment> comments = commentMapper.findByPrototypeId(prototypeId);
-        Comment savedComment = comments.get(0);
+        List<CommentEntity> comments = commentMapper.findByPrototypeId(prototypeId);
+        CommentEntity savedComment = comments.get(0);
 
         assertNotNull(savedComment);
         assertEquals("いいね！", savedComment.getContent());
@@ -138,7 +138,7 @@ class CommentControllerTest {
     void DBに保存されたコメントと投稿者名が表示される()
             throws Exception {
 
-        Comment comment = new Comment();
+        CommentEntity comment = new CommentEntity();
         comment.setContent("いいね！");
         comment.setPrototypeId(prototypeId);
         comment.setUserId(userId);
@@ -157,7 +157,7 @@ class CommentControllerTest {
     void 他プロトタイプのコメントは表示されない()
             throws Exception {
 
-        Prototype otherPrototype = new Prototype();
+        PrototypeEntity otherPrototype = new PrototypeEntity();
         otherPrototype.setName("別プロトタイプ");
         otherPrototype.setCatchCopy("別キャッチコピー");
         otherPrototype.setConcept("別コンセプト");
@@ -168,7 +168,7 @@ class CommentControllerTest {
 
         Long otherPrototypeId = otherPrototype.getId();
 
-        Comment otherComment = new Comment();
+        CommentEntity otherComment = new CommentEntity();
         otherComment.setContent("別プロトタイプのコメント");
         otherComment.setPrototypeId(otherPrototypeId);
         otherComment.setUserId(userId);
@@ -194,7 +194,7 @@ class CommentControllerTest {
                 .param("content", "テストコメント"))
                 .andExpect(status().is3xxRedirection());
 
-        List<Comment> savedComments = commentMapper.findByPrototypeId(prototypeId);
+        List<CommentEntity> savedComments = commentMapper.findByPrototypeId(prototypeId);
         assertTrue(savedComments.isEmpty());
     }
 }

@@ -15,7 +15,7 @@ public class PrototypePostSuccessIntegrationTest
         extends AbstractPrototypeIntegrationTest {
 
     @Test
-    @WithMockUser
+    @WithMockUser(username = "user1@test.com")
     void プロトタイプ投稿できる()
             throws Exception {
 

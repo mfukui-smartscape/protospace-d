@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import in.tech_camp.proto_space.entity.User;
+import in.tech_camp.proto_space.entity.UserEntity;
 import in.tech_camp.proto_space.form.UserForm;
 import in.tech_camp.proto_space.repository.UserMapper;
 import in.tech_camp.proto_space.service.UserService;
@@ -36,7 +36,7 @@ public class UserController {
                 model.addAttribute("userForm",userForm);
                 return "users/new";
         }
-        User user = new User();
+        UserEntity user = new UserEntity();
         user.setEmail(userForm.getEmail());
         user.setPassword(userForm.getPassword());
         user.setName(userForm.getName());

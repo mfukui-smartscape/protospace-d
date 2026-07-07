@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import in.tech_camp.proto_space.entity.User;
+import in.tech_camp.proto_space.entity.UserEntity;
 import in.tech_camp.proto_space.service.PrototypeService;
 import in.tech_camp.proto_space.service.UserService;
 
@@ -27,7 +27,7 @@ public class TopPageController {
 
         if (authentication != null) {
 
-            User user = userService.findByEmail(authentication.getName());
+            UserEntity user = userService.findByEmail(authentication.getName());
 
             if (user != null) {
                 model.addAttribute("userName", user.getName());

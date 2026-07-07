@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import org.springframework.transaction.annotation.Transactional;
 
-import in.tech_camp.proto_space.entity.User;
+import in.tech_camp.proto_space.entity.UserEntity;
 import in.tech_camp.proto_space.factories.UserFormFactory;
 import in.tech_camp.proto_space.form.UserForm;
 import in.tech_camp.proto_space.service.UserService;
@@ -42,7 +42,7 @@ public class UserLoginIntegrationTest {
 
         userForm = UserFormFactory.createUser();
 
-        User user = new User();
+        UserEntity user = new UserEntity();
         user.setEmail(userForm.getEmail());
         user.setName(userForm.getName());
         user.setPassword(userForm.getPassword());

@@ -1,7 +1,12 @@
 package in.tech_camp.proto_space.system;
 
+import java.util.List;
+
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.security.test.context.support.WithMockUser;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart;
@@ -9,13 +14,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import java.util.List;
-
-import org.junit.jupiter.api.Test;
-import org.springframework.mock.web.MockMultipartFile;
-import org.springframework.security.test.context.support.WithMockUser;
-
-import in.tech_camp.proto_space.entity.Prototype;
+import in.tech_camp.proto_space.entity.PrototypeEntity;
 
 public class PrototypeEditSuccessIntegrationTest
         extends AbstractPrototypeIntegrationTest {
@@ -25,7 +24,7 @@ public class PrototypeEditSuccessIntegrationTest
     void プロトタイプを編集できる()
             throws Exception {
 
-        List<Prototype> beforeList =
+        List<PrototypeEntity> beforeList =
                 prototypeMapper.findAll();
 
         int beforeCount =
@@ -55,7 +54,7 @@ public class PrototypeEditSuccessIntegrationTest
                                 "/prototypes/"
                                         + prototype1.getId()));
 
-        List<Prototype> afterList =
+        List<PrototypeEntity> afterList =
                 prototypeMapper.findAll();
 
         int afterCount =
@@ -85,7 +84,7 @@ public class PrototypeEditSuccessIntegrationTest
                         .with(csrf()))
                 .andExpect(status().is3xxRedirection());
 
-        Prototype updated =
+        PrototypeEntity updated =
                 prototypeMapper.findById(
                         prototype1.getId());
 

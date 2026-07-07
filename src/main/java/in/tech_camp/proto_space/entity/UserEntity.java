@@ -10,7 +10,7 @@ import lombok.Data;
  * ※ password はハッシュ化された値が入る。
  */
 @Data
-public class User {
+public class UserEntity {
     private Long id;
     private String email;
     private String password;

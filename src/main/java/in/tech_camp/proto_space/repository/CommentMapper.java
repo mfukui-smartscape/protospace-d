@@ -7,17 +7,17 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 
-import in.tech_camp.proto_space.entity.Comment;
+import in.tech_camp.proto_space.entity.CommentEntity;
 
 @Mapper
-public interface CommentRepository {
+public interface CommentMapper {
 
     @Insert("""
         INSERT INTO comments (content, user_id, prototype_id)
         VALUES (#{content}, #{userId}, #{prototypeId})
         """)
     @Options(useGeneratedKeys = true, keyProperty = "id")
-    void insert(Comment comment);
+    void insert(CommentEntity comment);
 
     @Select("""
         SELECT c.*, u.name AS user_name
@@ -26,5 +26,5 @@ public interface CommentRepository {
         WHERE c.prototype_id = #{prototypeId}
         ORDER BY c.created_at ASC
         """)
-    List<Comment> findByPrototypeId(Long prototypeId);
+    List<CommentEntity> findByPrototypeId(Long prototypeId);
 }

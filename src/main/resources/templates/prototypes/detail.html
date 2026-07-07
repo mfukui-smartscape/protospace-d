@@ -1,47 +1,37 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title th:text="${prototype.name}">プロトタイプ詳細</title>
+    <meta charset="UTF-8" />
+    <title>プロトタイプ詳細</title>
 </head>
 <body>
-    <article data-testid="prototype-detail">
-        <h1 th:text="${prototype.name}" data-testid="prototype-name"></h1>
-        <p th:text="${prototype.catchCopy}" data-testid="prototype-catch-copy"></p>
-        <p th:text="${prototype.concept}" data-testid="prototype-concept"></p>
-        <img th:src="@{'/images/' + ${prototype.imageName}}" th:alt="${prototype.name}" data-testid="prototype-image" />
-        <p>
-            投稿者: <span th:text="${prototype.userName}" data-testid="prototype-owner-name"></span>
-        </p>
+    <h1 th:text="${prototype.name}">プロトタイプ名</h1>
+    <p th:text="${prototype.catchCopy}">キャッチコピー</p>
+    <p th:text="${prototype.concept}">コンセプト</p>
+    <p th:text="${prototype.userName}">投稿者名</p>
+    <img th:src="@{/images/{img}(img=${prototype.imageName})}" th:alt="${prototype.imageName}" />
+    <span th:text="${prototype.imageName}">画像名</span>
 
-        <div th:if="${isOwner}" data-testid="owner-actions">
-            <a th:href="@{/prototypes/{id}/edit(id=${prototype.id})}" data-testid="edit-link">編集</a>
-
-            <a href="#"
-               th:href="@{/prototypes/{id}/delete(id=${prototype.id})}"
-               data-testid="delete-link"
-               onclick="event.preventDefault(); document.getElementById('delete-form').submit();">削除</a>
-            <form id="delete-form" th:action="@{/prototypes/{id}/delete(id=${prototype.id})}" method="post" style="display:none;">
-                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-            </form>
-        </div>
-    </article>
-
-    <section th:if="${isLoggedIn}" data-testid="comment-form-section">
-        <h3>コメント投稿</h3>
-        <form th:action="@{/prototypes/{id}/comments(id=${prototype.id})}" th:object="${commentForm}" method="post">
-            <textarea th:field="*{content}" data-testid="comment-content-input"></textarea>
-            <p th:if="${#fields.hasErrors('content')}" th:errors="*{content}" class="error"></p>
-            <button type="submit" data-testid="comment-submit-button">投稿</button>
+    <div th:if="${isOwner}">
+        <a th:href="@{/prototypes/{id}/edit(id=${prototype.id})}">編集</a>
+        <form th:action="@{/prototypes/{id}/delete(id=${prototype.id})}" method="post">
+            <a th:href="@{/prototypes/{id}/delete(id=${prototype.id})}">削除</a>
+            <button type="submit">削除する</button>
         </form>
-    </section>
+    </div>
 
-    <section data-testid="comments-section">
-        <h3>コメント一覧</h3>
-        <div th:each="comment : ${comments}" data-testid="comment-item">
-            <p th:text="${comment.userName}" data-testid="comment-user-name"></p>
-            <p th:text="${comment.content}" data-testid="comment-content"></p>
-        </div>
-    </section>
+    <!-- コメント一覧 -->
+    <div th:each="comment : ${comments}">
+        <span th:text="${comment.content}">コメント内容</span>
+        <span th:text="${comment.userName}">投稿者名</span>
+    </div>
+
+    <!-- ログイン時のみ表示 -->
+    <div th:if="${isLoggedIn}">
+        <form th:action="@{/prototypes/{id}/comments(id=${prototype.id})}" method="post">
+            <textarea name="content"></textarea>
+            <button type="submit">コメント投稿</button>
+        </form>
+    </div>
 </body>
 </html>

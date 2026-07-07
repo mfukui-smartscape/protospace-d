@@ -1,146 +1,113 @@
 package in.tech_camp.proto_space.controller;
 
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.security.core.Authentication;
-
-import in.tech_camp.proto_space.entity.Prototype;
-import in.tech_camp.proto_space.entity.User;
-import in.tech_camp.proto_space.form.PrototypeForm;
-import in.tech_camp.proto_space.repository.PrototypeMapper;
-import in.tech_camp.proto_space.repository.UserMapper;
-import in.tech_camp.proto_space.validation.ValidationOrder;
-import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
+import in.tech_camp.proto_space.entity.PrototypeEntity;
+import in.tech_camp.proto_space.entity.UserEntity;
+import in.tech_camp.proto_space.form.PrototypeForm;
+import in.tech_camp.proto_space.repository.CommentMapper;
+import in.tech_camp.proto_space.service.PrototypeService;
+import in.tech_camp.proto_space.service.UserService;
+import in.tech_camp.proto_space.validation.ValidationOrder;
+import in.tech_camp.proto_space.validation.ValidationPriority1;
+
 @Controller
-@AllArgsConstructor
 public class PrototypeController {
 
-  private final PrototypeMapper prototypeMapper;
+    private final PrototypeService prototypeService;
+    private final UserService userService;
+    private final CommentMapper commentMapper;
 
-  private final UserMapper userMapper;
-  //投稿ページ
-  @GetMapping("/")
-   public String showPrototype(Model model) {
-     model.addAttribute("prototypes",prototypeMapper.findAll());
-     return "prototypes/index";
-   }
-  
-  @GetMapping("/prototypes/new")
-  public String showPrototypeNew( Model model) {
-    model.addAttribute("prototypeForm",new PrototypeForm());
-    return "prototypes/new";
-  }
-  
-  
-  @PostMapping("/prototypes")
-  public String createPrototype(@Validated(ValidationOrder.class)@ModelAttribute("prototypeForm") PrototypeForm prototypeForm,BindingResult result, Authentication authentication) {
-
-    if (result.hasErrors()) {
-        return "prototypes/new";
-    }
-    User loginUser = userMapper.findByEmail(authentication.getName()); 
-    Prototype prototype = new Prototype();
-    prototype.setUserId(loginUser.getId()); 
-    MultipartFile imageFile = prototypeForm.getImageName();
-
-    if (imageFile != null && !imageFile.isEmpty()) {
-
-      try {
-        String fileName = imageFile.getOriginalFilename();
-
-        prototype.setImageName(fileName);
-
-      } catch (Exception e) {
-        System.out.println("エラー：" + e);
-        return "prototypes/new";
-      }
+    public PrototypeController(PrototypeService prototypeService, UserService userService,
+                               CommentMapper commentMapper) {
+        this.prototypeService = prototypeService;
+        this.userService = userService;
+        this.commentMapper = commentMapper;
     }
 
-    prototype.setName(prototypeForm.getName());
-    prototype.setCatchCopy(prototypeForm.getCatchCopy());
-    prototype.setConcept(prototypeForm.getConcept());
-    try{
-      prototypeMapper.insert(prototype);
-    } catch (Exception e) {
-      System.out.println("エラー：" + e);
-    }
-    
-
-    return "redirect:/";
-  }
-  // 編集ページ
-  
-  @GetMapping("/prototypes/{id}")
-     public String showDetail(
-             @PathVariable Long id,
-             Model model) {
-
-         model.addAttribute(
-                 "prototype",
-                 prototypeMapper.findById(id));
-
-         return "prototypes/show";
-     }
-
-    
-  @GetMapping("/prototypes/{id}/edit")
-public String showEdit(
-        @PathVariable Long id,
-        Authentication authentication,
-        Model model) {
-
-    Prototype prototype =
-            prototypeMapper.findById(id);
-
-    String loginUserEmail =
-            authentication.getName();
-
-    //所有者判定
-    User user = userMapper.findById(prototype.getUserId());
-
-     if (!user.getEmail().equals(loginUserEmail)) {
-       return "redirect:/";
-     }
-
-    PrototypeForm form =
-            new PrototypeForm();
-
-    form.setName(prototype.getName());
-    form.setCatchCopy(prototype.getCatchCopy());
-    form.setConcept(prototype.getConcept());
-
-    model.addAttribute("prototype", prototype);
-    model.addAttribute("prototypeForm", form);
-
-    return "prototypes/edit";
-}
-
-@PostMapping("/prototypes/{id}")
-    public String updatePrototype(
+    //  詳細表示（誰でも見れる。本人だけ編集/削除リンクを出す）
+    @GetMapping("/prototypes/{id}")
+    public String showDetail(
             @PathVariable Long id,
-            @Validated(ValidationOrder.class)
-            @ModelAttribute("prototypeForm")
-            PrototypeForm prototypeForm,
+            Authentication authentication,
+            Model model) {
+
+        PrototypeEntity prototype = prototypeService.findById(id);
+        model.addAttribute("prototype", prototype);
+        model.addAttribute("comments", commentMapper.findByPrototypeId(id));
+
+        boolean isOwner = false;
+        boolean isLoggedIn = false;
+        if (authentication != null
+                && authentication.isAuthenticated()
+                && !(authentication instanceof AnonymousAuthenticationToken)) {
+            isLoggedIn = true;
+            UserEntity loginUser = userService.findByEmail(authentication.getName());
+            if (loginUser != null && loginUser.getId().equals(prototype.getUserId())) {
+                isOwner = true;
+            }
+        }
+        model.addAttribute("isOwner", isOwner);
+        model.addAttribute("isLoggedIn", isLoggedIn);
+
+        return "prototypes/detail";
+    }
+
+    // 投稿
+    @PostMapping("/prototypes")
+    public String create(
+            @Validated(ValidationOrder.class) @ModelAttribute("prototypeForm") PrototypeForm prototypeForm,
             BindingResult result,
-            Model model,
             Authentication authentication) {
 
-        Prototype prototype = prototypeMapper.findById(id);
+        if (result.hasErrors()) {
+            return "prototypes/new";
+        }
+
+        UserEntity loginUser = userService.findByEmail(authentication.getName());
+
+        PrototypeEntity prototype = new PrototypeEntity();
+        prototype.setName(prototypeForm.getName());
+        prototype.setCatchCopy(prototypeForm.getCatchCopy());
+        prototype.setConcept(prototypeForm.getConcept());
+        prototype.setUserId(loginUser.getId());
+
+        MultipartFile imageFile = prototypeForm.getImageName();
+        if (imageFile != null && !imageFile.isEmpty()) {
+            prototype.setImageName(imageFile.getOriginalFilename());
+        }
+
+        prototypeService.save(prototype);
+        return "redirect:/";
+    }
+
+    // 更新（本人のみ）
+    @PostMapping("/prototypes/{id}")
+    public String update(
+            @PathVariable Long id,
+            @Validated(ValidationPriority1.class) @ModelAttribute("prototypeForm") PrototypeForm prototypeForm,
+            BindingResult result,
+            Authentication authentication,
+            Model model) {
+
+        PrototypeEntity prototype = prototypeService.findById(id);
         if (prototype == null) {
             return "redirect:/";
         }
 
-        // 所有者判定（showEditと同じやり方で揃える）
-        User owner = userMapper.findById(prototype.getUserId());
-        if (owner == null || !owner.getEmail().equals(authentication.getName())) {
+        UserEntity loginUser = (authentication != null)
+                ? userService.findByEmail(authentication.getName()) : null;
+        if (loginUser == null || !loginUser.getId().equals(prototype.getUserId())) {
             return "redirect:/prototypes/" + id;
         }
 
@@ -153,33 +120,33 @@ public String showEdit(
         prototype.setCatchCopy(prototypeForm.getCatchCopy());
         prototype.setConcept(prototypeForm.getConcept());
 
-        // 画像が指定されていれば差し替え
         MultipartFile imageFile = prototypeForm.getImageName();
         if (imageFile != null && !imageFile.isEmpty()) {
             prototype.setImageName(imageFile.getOriginalFilename());
         }
 
-        prototypeMapper.update(prototype);
+        prototypeService.update(prototype);
         return "redirect:/prototypes/" + id;
     }
 
+    // 削除（本人のみ）
     @PostMapping("/prototypes/{id}/delete")
     public String delete(
             @PathVariable Long id,
             Authentication authentication) {
 
-        Prototype prototype = prototypeMapper.findById(id);
+        PrototypeEntity prototype = prototypeService.findById(id);
         if (prototype == null) {
             return "redirect:/";
         }
 
-        User owner = userMapper.findById(prototype.getUserId());
-        if (owner == null || !owner.getEmail().equals(authentication.getName())) {
+        UserEntity loginUser = (authentication != null)
+                ? userService.findByEmail(authentication.getName()) : null;
+        if (loginUser == null || !loginUser.getId().equals(prototype.getUserId())) {
             return "redirect:/prototypes/" + id;
         }
 
-        prototypeMapper.delete(id);
+        prototypeService.delete(id);
         return "redirect:/";
     }
-
 }
