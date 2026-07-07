@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class PrototypeNewController {
   @GetMapping("/prototypes/new")
   public String show() {
-    return "prototype_new";
+    return "prototype/new";
   }
 }
