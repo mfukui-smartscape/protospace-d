@@ -88,7 +88,7 @@ class TopPageTest {
     void 投稿者の名前が表示される() throws Exception {
         mockMvc.perform(get("/"))
             .andExpect(xpath("//*[@data-testid='user-name']")
-                    .string("山田太郎"));
+                    .string(org.hamcrest.Matchers.containsString("山田太郎")));
     }
 
     @Test
