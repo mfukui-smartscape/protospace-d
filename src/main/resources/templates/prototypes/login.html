@@ -6,6 +6,8 @@
 </head>
 <body>
 
+    <div th:insert="~{layout/header :: header}"></div>
+
     <h1>ログイン</h1>
 
     <{/login}
@@ -23,6 +25,7 @@
         <button type="submit">ログイン</button>
 
     </form>
+    <div th:insert="~{layout/footer :: footer}"></div>
 
 </body>
 </html>
