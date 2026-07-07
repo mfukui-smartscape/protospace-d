@@ -24,8 +24,8 @@ public class SecurityConfig {
         http
             .authorizeHttpRequests(auth -> auth
                 // --- 認証必須を先に書く（順番が重要）---
-                .requestMatchers("/prototypes/new").authenticated()
-                .requestMatchers("/prototypes/*/edit").authenticated()
+                .requestMatchers(HttpMethod.GET, "/prototypes/new").authenticated()
+                .requestMatchers(HttpMethod.GET, "/prototypes/*/edit").authenticated()
                 .requestMatchers(HttpMethod.POST,   "/prototypes").authenticated()
                 .requestMatchers(HttpMethod.PUT,    "/prototypes/*").authenticated()
                 .requestMatchers(HttpMethod.DELETE, "/prototypes/*").authenticated()
@@ -35,6 +35,7 @@ public class SecurityConfig {
                 .requestMatchers("/").permitAll()
                 .requestMatchers("/login").permitAll()
                 .requestMatchers(HttpMethod.GET,  "/users/new").permitAll()
+                .requestMatchers("/css/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/users").permitAll()
                 .requestMatchers(HttpMethod.GET,  "/prototypes/*").permitAll()  // 詳細
                 .requestMatchers(HttpMethod.GET,  "/users/*").permitAll()       // ユーザー詳細
@@ -43,6 +44,7 @@ public class SecurityConfig {
             )
             .formLogin(login -> login
                 .loginPage("/login")
+                .usernameParameter("email")
                 .defaultSuccessUrl("/")
                 .permitAll()
             )

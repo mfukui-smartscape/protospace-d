@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/user_new_login.css}" rel="stylesheet" type="text/css">
+    <title>ユーザーログイン</title>
+</head>
+<body>
+
+<div th:replace="~{layout/header :: header}"></div>
+
+<div class="contents-row">
+    <div class="container">
+        <h2>ユーザーログイン</h2>
+        <p th:if="${param.error}"class="login-error">
+            メールアドレスまたはパスワードが正しくありません
+        </p>
+        
+        <form th:action="@{/login}" th:method="post" th:object="${userForm}", class="new_user">
+
+            <div class="field">
+                <label>メールアドレス</label><br />
+                <input type="email" id="email" name="email" autofocus="autofocus" required="required">
+            </div>
+
+            <div class="field">
+                <label class="password">パスワード（6文字以上）</label><br />
+                <input type="password" id="password" name="password" autofocus="off" required="required">
+            </div>
+            
+            <div class="actions">
+                <input type="submit" value="ログイン">
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div th:replace="~{layout/footer :: footer}"></div>
+
+</body>
+</html>

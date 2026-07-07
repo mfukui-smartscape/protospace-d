@@ -1,0 +1,107 @@
+/* login.css */
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ヘッダー・フッターは高さ分だけ確保し、伸縮させない */
+body > div:first-child,
+footer,
+.footer {
+    flex: 0 0 auto;
+}
+
+.contents-row {
+    flex: 1 0 auto;
+    padding: 60px 0 0 280px;
+}
+
+.contents-row .container {
+    background-color: #ffffff;
+    display: inline-block;
+}
+
+.contents-row .container h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000000;
+    margin: 0 0 24px 0;
+}
+
+.contents-row .container .login-error {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.new_user .field {
+    margin-bottom: 15px;
+}
+
+.new_user .field label {
+    display: inline-block;
+    font-size: 14px;
+    color: #404040;
+    margin-bottom: 6px;
+}
+
+.new_user .field input[type="email"],
+.new_user .field input[type="password"],
+.new_user .field input[type="name"] {
+    display: block;
+    width: 180px;
+    height: 30px;
+    padding: 0 8px;
+    background-color: #ffffff;
+    border: 1px solid #b2b2b2;
+    border-radius: 3px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.new_user .field input[type="text"] {
+    display: block;
+    width: 600px;
+    height: 60px;
+    padding: 0 8px;
+    background-color: #ffffff;
+    border: 1px solid #b2b2b2;
+    border-radius: 3px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.new_user .field input[type="email"]:focus,
+.new_user .field input[type="password"]:focus,
+.new_user .field input[type="name"]:focus,
+.new_user .field input[type="text"]:focus {
+    outline: none;
+    border: 1px solid #676767;
+    
+}
+
+.new_user .actions {
+    margin-top: 20px;
+}
+
+.new_user .actions input[type="submit"] {
+    width: 120px;
+    height: 36px;
+    background-color: #87ceeb;
+    color: #ffffff;
+    border: 1px solid #c3e6fc;
+    border-radius: 3px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.new_user .actions input[type="submit"]:hover {
+    background-color: #6fc3e6;
+}

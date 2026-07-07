@@ -1,6 +1,7 @@
 package in.tech_camp.proto_space.factories;
 
 import com.github.javafaker.Faker;
+
 import in.tech_camp.proto_space.form.UserForm;
 
 public class UserFormFactory {
@@ -20,7 +21,7 @@ public class UserFormFactory {
 
     userForm.setProfile(faker.lorem().sentence());
 
-    userForm.setRole(faker.company().profession());
+    userForm.setAffiliation(faker.company().profession());
 
     userForm.setPosition(faker.job().position());
 
