@@ -1,6 +1,11 @@
 <header xmlns:th="http://www.thymeleaf.org" th:fragment="header" class="header">
   <div class="header__bar row">
-    <h1 class="grid-6"><a th:href="@{/}">PROTOTYPE SPACE</a></h1>
+    <h1 class="grid-6">
+      <a th:href="@{/}" class="logo">
+        <span class="logo__caption">SHARE THE PROTOTYPE</span>
+        <span class="logo__main">PRO<span class="logo__accent">TO</span> SPACE</span>
+      </a>
+    </h1>
     <div class="user_nav grid-6" th:if="${#authorization.expression('isAuthenticated()')}">
       <span>
         <ul class="user__info">
@@ -11,7 +16,7 @@
       </span>
       <a class="header_botton" th:href="@{/prototypes/new}">New Proto</a>
     </div>
-
+ 
     <div class="grid-6" th:if="${#authorization.expression('!isAuthenticated()')}">
       <a class="header_botton" th:href="@{/users/login}">ログイン</a>
       <a class="header_botton" th:href="@{/users/new}">新規登録</a>
