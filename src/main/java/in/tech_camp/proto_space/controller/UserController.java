@@ -55,7 +55,8 @@ public class UserController {
         UserEntity user = userService.findById(id);
         model.addAttribute("user", user);
         model.addAttribute("prototypes", prototypeService.findByUserId(id));
-        return "user_detail";
+        // 2. UserController.showDetail の return を変更
+        return "users/detail";   // user_detail → users/detail
     }
 
     @GetMapping("/login")
