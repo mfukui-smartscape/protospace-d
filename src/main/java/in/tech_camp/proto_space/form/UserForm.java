@@ -2,7 +2,7 @@ package in.tech_camp.proto_space.form;
 
 import org.springframework.validation.BindingResult;
 
-import in.tech_camp.proto_space.repositry.UserMapper;
+import in.tech_camp.proto_space.repository.UserMapper;
 import in.tech_camp.proto_space.validation.ValidationPriority1;
 import in.tech_camp.proto_space.validation.ValidationPriority2;
 import jakarta.validation.constraints.Email;

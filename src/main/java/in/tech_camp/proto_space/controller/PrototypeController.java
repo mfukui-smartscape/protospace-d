@@ -19,10 +19,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
-
-
-
-
 @Controller
 @AllArgsConstructor
 public class PrototypeController {
@@ -45,15 +41,14 @@ public class PrototypeController {
   
   
   @PostMapping("/prototypes")
-  public String createPrototype(@Validated(ValidationOrder.class)@ModelAttribute("prototypeForm") PrototypeForm prototypeForm,BindingResult result) {
+  public String createPrototype(@Validated(ValidationOrder.class)@ModelAttribute("prototypeForm") PrototypeForm prototypeForm,BindingResult result, Authentication authentication) {
 
     if (result.hasErrors()) {
         return "prototypes/new";
     }
-
+    User loginUser = userMapper.findByEmail(authentication.getName()); 
     Prototype prototype = new Prototype();
-
-    
+    prototype.setUserId(loginUser.getId()); 
     MultipartFile imageFile = prototypeForm.getImageName();
 
     if (imageFile != null && !imageFile.isEmpty()) {
@@ -128,56 +123,63 @@ public String showEdit(
     return "prototypes/edit";
 }
 
-
-
 @PostMapping("/prototypes/{id}")
-public String updatePrototype(
-        @PathVariable Long id,
-        @Validated(ValidationOrder.class)
-        @ModelAttribute("prototypeForm")
-        PrototypeForm prototypeForm,
-        BindingResult result,
-        Model model) {
+    public String updatePrototype(
+            @PathVariable Long id,
+            @Validated(ValidationOrder.class)
+            @ModelAttribute("prototypeForm")
+            PrototypeForm prototypeForm,
+            BindingResult result,
+            Model model,
+            Authentication authentication) {
 
-    Prototype prototype =
-            prototypeMapper.findById(id);
+        Prototype prototype = prototypeMapper.findById(id);
+        if (prototype == null) {
+            return "redirect:/";
+        }
 
-    if (result.hasErrors()) {
+        // 所有者判定（showEditと同じやり方で揃える）
+        User owner = userMapper.findById(prototype.getUserId());
+        if (owner == null || !owner.getEmail().equals(authentication.getName())) {
+            return "redirect:/prototypes/" + id;
+        }
 
-        model.addAttribute("prototype",
-                prototype);
+        if (result.hasErrors()) {
+            model.addAttribute("prototype", prototype);
+            return "prototypes/edit";
+        }
 
-        return "prototypes/edit";
+        prototype.setName(prototypeForm.getName());
+        prototype.setCatchCopy(prototypeForm.getCatchCopy());
+        prototype.setConcept(prototypeForm.getConcept());
+
+        // 画像が指定されていれば差し替え
+        MultipartFile imageFile = prototypeForm.getImageName();
+        if (imageFile != null && !imageFile.isEmpty()) {
+            prototype.setImageName(imageFile.getOriginalFilename());
+        }
+
+        prototypeMapper.update(prototype);
+        return "redirect:/prototypes/" + id;
     }
 
-    prototype.setName(
-            prototypeForm.getName());
+    @PostMapping("/prototypes/{id}/delete")
+    public String delete(
+            @PathVariable Long id,
+            Authentication authentication) {
 
-    prototype.setCatchCopy(
-            prototypeForm.getCatchCopy());
+        Prototype prototype = prototypeMapper.findById(id);
+        if (prototype == null) {
+            return "redirect:/";
+        }
 
-    prototype.setConcept(
-            prototypeForm.getConcept());
+        User owner = userMapper.findById(prototype.getUserId());
+        if (owner == null || !owner.getEmail().equals(authentication.getName())) {
+            return "redirect:/prototypes/" + id;
+        }
 
-    MultipartFile imageFile =
-            prototypeForm.getImageName();
-
-    if (imageFile != null
-            && !imageFile.isEmpty()) {
-
-        prototype.setImageName(
-                imageFile.getOriginalFilename());
+        prototypeMapper.delete(id);
+        return "redirect:/";
     }
-
-    prototypeMapper.update(prototype);
-
-    return "redirect:/prototypes/" + id;
-}
-
-@GetMapping("/login")
-    public String showLogin() {
-        return "prototypes/login";
-    }
-
 
 }

@@ -9,7 +9,7 @@ import org.springframework.security.core.userdetails
 import org.springframework.stereotype.Service;
 
 import in.tech_camp.proto_space.entity.User;
-import in.tech_camp.proto_space.repositry.UserMapper;
+import in.tech_camp.proto_space.repository.UserMapper;
 import lombok.RequiredArgsConstructor;
 
 @Service

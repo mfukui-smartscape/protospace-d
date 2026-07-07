@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import in.tech_camp.proto_space.entity.User;
 import in.tech_camp.proto_space.form.UserForm;
-import in.tech_camp.proto_space.repositry.UserMapper;
+import in.tech_camp.proto_space.repository.UserMapper;
 import in.tech_camp.proto_space.service.UserService;
 import in.tech_camp.proto_space.validation.ValidationOrder;
 import lombok.RequiredArgsConstructor;

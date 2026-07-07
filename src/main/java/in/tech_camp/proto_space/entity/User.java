@@ -1,6 +1,7 @@
 package in.tech_camp.proto_space.entity;
 
 import java.time.LocalDateTime;
+
 import lombok.Data;
 
 /**
@@ -19,4 +20,5 @@ public class User {
     private String position;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+
 }

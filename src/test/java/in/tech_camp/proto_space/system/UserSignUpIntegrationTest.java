@@ -9,7 +9,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.transaction.annotation.Transactional;
 
 import in.tech_camp.proto_space.entity.User;
-import in.tech_camp.proto_space.repositry.UserMapper;
+import in.tech_camp.proto_space.repository.UserMapper;
 
 
 @Transactional
