@@ -2,25 +2,31 @@ package in.tech_camp.proto_space.controller;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.not;
-import static org.junit.jupiter.api.Assertions.*;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import org.springframework.security.test.context.support.WithMockUser;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
-
 import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import org.springframework.transaction.annotation.Transactional;
 
 import in.tech_camp.proto_space.entity.Prototype;
 import in.tech_camp.proto_space.entity.User;
-import in.tech_camp.proto_space.mapper.PrototypeMapper;
-import in.tech_camp.proto_space.mapper.UserMapper;
+
+import in.tech_camp.proto_space.repository.PrototypeRepository;
+import in.tech_camp.proto_space.repository.UserRepository;
+
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -36,10 +42,10 @@ class PrototypeControllerTest {
     MockMvc mockMvc;
 
     @Autowired
-    UserMapper userMapper;
+    UserRepository userMapper;
 
     @Autowired
-    PrototypeMapper prototypeMapper;
+    PrototypeRepository prototypeMapper;
 
     Long ownerId;
     Long otherUserId;

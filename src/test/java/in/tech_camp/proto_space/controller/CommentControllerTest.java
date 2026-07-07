@@ -1,30 +1,34 @@
 package in.tech_camp.proto_space.controller;
 
+import java.util.List;
+
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.not;
-import static org.junit.jupiter.api.Assertions.*;
-
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import org.springframework.security.test.context.support.WithMockUser;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import org.springframework.transaction.annotation.Transactional;
 
 import in.tech_camp.proto_space.entity.Comment;
 import in.tech_camp.proto_space.entity.Prototype;
 import in.tech_camp.proto_space.entity.User;
-import in.tech_camp.proto_space.mapper.CommentMapper;
-import in.tech_camp.proto_space.mapper.PrototypeMapper;
-import in.tech_camp.proto_space.mapper.UserMapper;
+import in.tech_camp.proto_space.repository.CommentRepository;
+import in.tech_camp.proto_space.repository.PrototypeRepository;
+import in.tech_camp.proto_space.repository.UserRepository;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -35,13 +39,13 @@ class CommentControllerTest {
     MockMvc mockMvc;
 
     @Autowired
-    UserMapper userMapper;
+    UserRepository userMapper;
 
     @Autowired
-    PrototypeMapper prototypeMapper;
+    PrototypeRepository prototypeMapper;
 
     @Autowired
-    CommentMapper commentMapper;
+    CommentRepository commentMapper;
 
     private Long userId;
     private Long prototypeId;
@@ -106,7 +110,8 @@ class CommentControllerTest {
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/prototypes/" + prototypeId));
 
-        Comment savedComment = commentMapper.findByPrototypeId(prototypeId);
+        List<Comment> comments = commentMapper.findByPrototypeId(prototypeId);
+        Comment savedComment = comments.get(0);
 
         assertNotNull(savedComment);
         assertEquals("いいね！", savedComment.getContent());
@@ -189,8 +194,7 @@ class CommentControllerTest {
                 .param("content", "テストコメント"))
                 .andExpect(status().is3xxRedirection());
 
-        Comment comment = commentMapper.findByPrototypeId(prototypeId);
-
-        assertNull(comment);
+        List<Comment> savedComments = commentMapper.findByPrototypeId(prototypeId);
+        assertTrue(savedComments.isEmpty());
     }
 }
