@@ -16,11 +16,6 @@
     <div class="container">
         <h2>ユーザー新規登録</h2>
 
-    <!-- 原因特定用：全エラーをまとめて表示 -->
-    <ul th:if="${#fields.hasErrors('*')}" style="color:red">
-        <li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
-    </ul>
-
     <form th:action="@{/users}" th:method="post" th:object="${userForm}" class="new_user">
 
         <div class="field">
