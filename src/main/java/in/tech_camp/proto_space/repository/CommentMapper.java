@@ -7,21 +7,24 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 
-import in.tech_camp.proto_space.entity.Comment;
+import in.tech_camp.proto_space.entity.CommentEntity;
 
-// CommentMapper（共有する形）
 @Mapper
 public interface CommentMapper {
 
-    @Insert("INSERT INTO comments (content, user_id, prototype_id) " +
-            "VALUES (#{content}, #{userId}, #{prototypeId})")
+    @Insert("""
+        INSERT INTO comments (content, user_id, prototype_id)
+        VALUES (#{content}, #{userId}, #{prototypeId})
+        """)
     @Options(useGeneratedKeys = true, keyProperty = "id")
-    void insert(Comment comment);
+    void insert(CommentEntity comment);
 
-    @Select("SELECT c.*, u.name AS user_name " +
-            "FROM comments c " +
-            "JOIN users u ON c.user_id = u.id " +
-            "WHERE c.prototype_id = #{prototypeId} " +
-            "ORDER BY c.created_at ASC")
-    List<Comment> findByPrototypeId(Long prototypeId);
+    @Select("""
+        SELECT c.*, u.name AS user_name
+        FROM comments c
+        JOIN users u ON u.id = c.user_id
+        WHERE c.prototype_id = #{prototypeId}
+        ORDER BY c.created_at ASC
+        """)
+    List<CommentEntity> findByPrototypeId(Long prototypeId);
 }

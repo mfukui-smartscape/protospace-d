@@ -18,7 +18,7 @@
     </div>
  
     <div class="grid-6" th:if="${#authorization.expression('!isAuthenticated()')}">
-      <a class="header_botton" th:href="@{/users/login}">ログイン</a>
+      <a class="header_botton" th:href="@{/login}">ログイン</a>
       <a class="header_botton" th:href="@{/users/new}">新規登録</a>
     </div>
   </div>

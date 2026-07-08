@@ -10,7 +10,7 @@ import lombok.Data;
  * JOINで取得した userName を保持できるようにしている。
  */
 @Data
-public class Comment {
+public class CommentEntity {
     private Long id;
     private String content;
     private Long userId;

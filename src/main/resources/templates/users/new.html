@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/user_new_login.css}" rel="stylesheet" type="text/css">
+    <title>ユーザー新規登録</title>
+</head>
+
+<body>
+
+<div th:replace="~{layout/header :: header}"></div>
+
+<div class="contents-row">
+    <div class="container">
+        <h2>ユーザー新規登録</h2>
+
+    <form th:action="@{/users}" th:method="post" th:object="${userForm}", class="new_user">
+
+        <div class="field">
+            <label for="email">メールアドレス</label>
+            <input type="email" id="email" th:field="*{email}">
+        </div>
+
+        <div class="field">
+            <label for="password">パスワード（6文字以上）</label>
+            <input type="password" id="password" th:field="*{password}">
+        </div>
+
+        <div class="field">
+            <label for="passwordConfirmation">パスワード確認</label>
+            <input type="password" id="passwordConfirmation" th:field="*{passwordConfirmation}">
+        </div>
+
+        <div class="field">
+            <label for="name">ユーザー名</label>
+            <input type="name" id="name" th:field="*{name}">
+        </div>
+
+        <div class="field">
+            <label for="profile">プロフィール</label>
+            <input type="text" id="profile" th:field="*{profile}">
+        </div>
+
+        <div class="field">
+            <label for="affiliation">所属</label>
+            <input type="text" id="affiliation" th:field="*{affiliation}">
+        </div>
+
+        <div class="field">
+            <label for="position">役職</label>
+            <input type="text" id="position" th:field="*{position}">
+        </div>
+
+        <div class="actions">
+            <input type="submit" value="新規登録">
+        </div>
+
+    </form>
+    </div>
+</div>
+
+    <div th:replace="~{layout/footer :: footer}"></div>
+
+</body>
+</html>
