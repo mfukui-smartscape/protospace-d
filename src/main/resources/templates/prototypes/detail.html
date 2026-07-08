@@ -1,37 +1,81 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/css/prototypes/detail.css}" rel="stylesheet" type="text/css" />
     <title>プロトタイプ詳細</title>
 </head>
 <body>
-    <h1 th:text="${prototype.name}">プロトタイプ名</h1>
-    <p th:text="${prototype.catchCopy}">キャッチコピー</p>
-    <p th:text="${prototype.concept}">コンセプト</p>
-    <p th:text="${prototype.userName}">投稿者名</p>
-    <img th:src="@{/images/{img}(img=${prototype.imageName})}" th:alt="${prototype.imageName}" />
-    <span th:text="${prototype.imageName}">画像名</span>
 
-    <div th:if="${isOwner}">
-        <a th:href="@{/prototypes/{id}/edit(id=${prototype.id})}">編集</a>
-        <form th:action="@{/prototypes/{id}/delete(id=${prototype.id})}" method="post" style="display:inline">
-            <a th:href="@{/prototypes/{id}/delete(id=${prototype.id})}"
-            onclick="event.preventDefault(); this.closest('form').submit();">削除</a>
+<div th:replace="~{layout/header :: header}"></div>
+
+<main>
+  <div class="inner detail">
+
+    <!-- タイトル部 -->
+    <div class="detail__head">
+      <h2 class="detail__name" th:text="${prototype.name}">プロトタイプ名</h2>
+      <p class="detail__catch" th:text="${prototype.catchCopy}">キャッチコピー</p>
+      <p class="detail__author">
+        投稿者:
+        <a th:href="@{/users/{id}(id=${prototype.userId})}"
+           th:text="${prototype.userName}">投稿者名</a>
+      </p>
+
+      <!-- 投稿者本人のみ 編集・削除 -->
+      <div class="detail__owner-actions" th:if="${isOwner}">
+        <a class="btn btn--edit"
+            th:href="@{/prototypes/{id}/edit(id=${prototype.id})}">編集</a>
+        <form th:action="@{/prototypes/{id}/delete(id=${prototype.id})}" method="post" class="delete-form">
+            <a class="btn btn--delete"
+            th:href="@{/prototypes/{id}/delete(id=${prototype.id})}">削除</a>
+            <button type="submit" class="btn btn--delete">削除する</button>
         </form>
+      </div>
+    </div>
+
+    <!-- 画像 -->
+    <div class="detail__image">
+      <img th:src="@{/images/{img}(img=${prototype.imageName})}"
+           th:alt="${prototype.name}" />
+    </div>
+
+    <!-- コンセプト -->
+    <div class="detail__concept">
+      <h3 class="detail__label">コンセプト</h3>
+      <p th:text="${prototype.concept}">コンセプト</p>
     </div>
 
     <!-- コメント一覧 -->
-    <div th:each="comment : ${comments}">
-        <span th:text="${comment.content}">コメント内容</span>
-        <span th:text="${comment.userName}">投稿者名</span>
-    </div>
+    <section class="comments">
+      <h3 class="detail__label">コメント</h3>
 
-    <!-- ログイン時のみ表示 -->
-    <div th:if="${isLoggedIn}">
-        <form th:action="@{/prototypes/{id}/comments(id=${prototype.id})}" method="post">
-            <textarea name="content"></textarea>
-            <button type="submit">コメント投稿</button>
-        </form>
-    </div>
+      <ul class="comment-list">
+        <li class="comment" th:each="comment : ${comments}">
+          <span class="comment__body" th:text="${comment.content}">コメント内容</span>
+          <span class="comment__author" th:text="${comment.userName}">投稿者名</span>
+        </li>
+        <li class="comment comment--empty" th:if="${#lists.isEmpty(comments)}">
+          まだコメントはありません。
+        </li>
+      </ul>
+
+      <!-- ログイン時のみ表示するフォーム -->
+      <form th:if="${isLoggedIn}"
+            th:action="@{/prototypes/{id}/comments(id=${prototype.id})}"
+            method="post" class="comment-form">
+        <textarea name="content" class="comment-form__input"
+                  placeholder="コメントを入力"></textarea>
+        <button type="submit" class="btn btn--comment">コメント投稿</button>
+      </form>
+    </section>
+
+  </div>
+</main>
+
+<div th:replace="~{layout/footer :: footer}"></div>
+
 </body>
 </html>
