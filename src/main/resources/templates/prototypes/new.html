@@ -1,32 +1,27 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="ja">
-  <head>
-    <meta charset="UTF-8">
-    <link th:href="@{/css/new.css}" rel="stylesheet" type="text/css">
-    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
-    <title>ProtoType投稿ページ</title>
-  </head>
+<head>
+  <meta charset="UTF-8"/>
+  <title>Prototype New</title>
+  <link th:href="@{/css/prototypes/new.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <div th:insert="~{layout/header :: header}"></div>
+  <h1>新規投稿ページ</h1>
 
-  <body>
-    <div th:insert="~{layout/header :: header}"></div>
-
-    <form th:action="@{/prototypes}" method="post" th:object="${prototypeForm}" class="prototype_form">
-      <h1>新規プロトタイプ投稿</h1>
-      <div class="prototype_subtitle">プロトタイプの名称</div>
-      <input type="text" th:field="*{name}">
-
-      <div class="prototype_subtitle">キャッチコピー</div>
-      <input type="text" th:field="*{catchCopy}">
-
-      <div class="prototype_subtitle">コンセプト</div>
-      <input type="text" th:field="*{concept}">
-
-      <div class="prototype_subtitle">プロトタイプの画像</div>
-      <input type="file" th:field="*{imageName}">
-      <br>
-      <input type="submit" value="保存する" class="prototype_submit">
-    </form>
-    <div th:insert="~{layout/footer :: footer}"></div>
-
-  </body>
+  <form th:action="@{/prototypes}" method="post" enctype="multipart/form-data" th:object="${prototypeForm}" class="prototype_form">
+    <div class="prototype_subtitle">プロトタイプの名称</div>
+    <input type="text" name="name" th:value="*{name}" />
+    <div class="prototype_subtitle">キャッチコピー</div>
+    <input type="text" name="catchCopy" th:value="*{catchCopy}" />
+    <div class="prototype_subtitle">コンセプト</div>
+    <textarea name="concept" th:text="*{concept}"></textarea>
+    <div class="prototype_subtitle">プロトタイプの画像</div>
+    <input type="file" name="imageName" />
+    <br>
+    <button type="submit" class="prototype_submit">保存する</button>
+  </form>
+  <div th:insert="~{layout/footer :: footer}"></div>
+</body>
 </html>
