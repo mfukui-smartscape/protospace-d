@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.context.ActiveProfiles;
 
-import in.tech_camp.proto_space.factory.PrototypeFormFactory;
+import in.tech_camp.proto_space.factories.PrototypeFormFactory;
 import in.tech_camp.proto_space.validation.ValidationPriority1;
 import in.tech_camp.proto_space.validation.ValidationPriority3;
 import jakarta.validation.ConstraintViolation;
