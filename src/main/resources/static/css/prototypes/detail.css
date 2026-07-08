@@ -52,6 +52,10 @@
   margin-top: 16px;
 }
 
+.prototype-title {
+    font-size: 30px;
+    margin-bottom: 28px;
+}
 .delete-form {
   margin: 0;
 }
