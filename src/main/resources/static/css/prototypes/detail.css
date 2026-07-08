@@ -1,97 +1,228 @@
-main {
-    display: block;
-    unicode-bidi: isolate;
+/* ===========================================
+   prototypes/detail.css
+   詳細ページ固有スタイル
+   （ヘッダー/フッター等の共通部は style.css に定義済み）
+   アクセント: #8fd3ff / #a7cbe8（既存に合わせる）
+   =========================================== */
+
+.detail {
+  max-width: 760px;
+  padding: 32px 0 48px;
 }
 
-.inner {
-    width: 90%;
-    margin: 0 auto;
+/* ── タイトル部 ── */
+.detail__head {
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 20px;
+  margin-bottom: 28px;
 }
 
-.user-title {
+.detail__name {
+  font-size: 30px;
+  font-weight: bold;
+  color: #4a4f54;
+  margin: 0 0 10px;
+}
+
+.detail__catch {
+  font-size: 16px;
+  color: #6e7378;
+  margin: 0 0 12px;
+}
+
+.detail__author {
+  font-size: 13px;
+  color: #999;
+  margin: 0;
+}
+
+.detail__author a {
+  color: #7fb4dc;
+  text-decoration: underline;
+}
+
+.detail__author a:hover {
+  color: #4a90c2;
+}
+
+/* ── 編集・削除アクション ── */
+.detail__owner-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.prototype-title {
     font-size: 30px;
     margin-bottom: 28px;
 }
-
-.user-table {
-    border-collapse: collapse;
-    margin-bottom: 32px;
-    width: 50%;
+.delete-form {
+  margin: 0;
 }
 
-tbody {
-    display: table-row-group;
-    vertical-align: middle;
-    unicode-bidi: isolate;
-    border-color: inherit;
+/* 共通ボタン */
+.btn {
+  height: 34px;
+  padding: 0 20px;
+  border-radius: 3px;
+  font-size: 13px;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  transition: 0.25s;
 }
 
-tr {
-    display: table-row;
-    vertical-align: inherit;
-    unicode-bidi: isolate;
-    border-color: inherit;
+.btn--edit {
+  border-color: #8fd3ff;
+  color: #8fd3ff;
+  background: #fff;
+}
+.btn--edit:hover {
+  background: #8fd3ff;
+  color: #fff;
 }
 
-th {
-    text-align: left;
-    font-weight: bold;
-    background: #fafafa;
-    border-collapse: collapse;
-    border: 1px solid #f5f5f5;
-    width: 30%;
-    padding: 8px;
+.btn--delete {
+  border-color: #e59a9a;
+  color: #d16a6a;
+  background: #fff;
+  font-family: inherit;
+}
+.btn--delete:hover {
+  background: #d16a6a;
+  color: #fff;
 }
 
-td {
-    text-align: left;
-    border: 1px solid #f5f5f5;
-    border-collapse: collapse;
-    width: 70%;
-    padding: 16px 8px;
+/* ── 画像 ── */
+.detail__image {
+  margin-bottom: 32px;
+  text-align: center;
 }
 
-.prototype-titleeltit {
-    font-size: 30px;
-    margin-bottom: 28px;
-}
-
-.prototype-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.prototype-card {
-    width: calc((100% - 50px) / 3);
-    margin-bottom: 40px;
-}
-
-.prototype-image {
-    margin-bottom: 16px;
-}
-
-img {
+.detail__image img {
   max-width: 100%;
-  vertical-align: bottom;
+  border: 1px solid #eee;
+  border-radius: 4px;
 }
 
-.prototype-name {
-    display: block;
-    font-size: 20px;
-    margin-bottom: 8px;
-    font-weight: bold;
+/* ── ラベル見出し（コンセプト/コメント共通）── */
+.detail__label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #6e7378;
+  letter-spacing: 1px;
+  padding-left: 10px;
+  border-left: 3px solid #a7cbe8;
+  margin: 0 0 12px;
 }
 
-.prototype-catch-copy {
-    font-size: 16px;
+/* ── コンセプト ── */
+.detail__concept {
+  margin-bottom: 40px;
 }
 
-.user-name {
-    display: block;
-    font-size: 12px;
-    color: #999;
-    text-align: right;
-    text-decoration: underline;
+.detail__concept p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #555;
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+/* ── コメント ── */
+.comments {
+  margin-top: 8px;
+}
+
+.comment-list {
+  list-style: none;
+  margin: 0 0 24px;
+  padding: 0;
+}
+
+.comment {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 12px 14px;
+  background: #fafcfe;
+  border: 1px solid #eef4f9;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.comment__body {
+  font-size: 14px;
+  color: #444;
+  word-break: break-word;
+  flex: 1;
+}
+
+.comment__author {
+  font-size: 12px;
+  color: #9a9a9a;
+  white-space: nowrap;
+}
+
+.comment--empty {
+  justify-content: center;
+  color: #b5b5b5;
+  font-size: 13px;
+  background: transparent;
+  border-style: dashed;
+}
+
+/* ── コメント投稿フォーム ── */
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.comment-form__input {
+  width: 100%;
+  min-height: 72px;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-family: inherit;
+  border: 1px solid #d6e3ef;
+  border-radius: 4px;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.comment-form__input:focus {
+  outline: none;
+  border-color: #8fd3ff;
+}
+
+.btn--comment {
+  align-self: flex-end;
+  border-color: #8fd3ff;
+  color: #8fd3ff;
+  background: #fff;
+}
+.btn--comment:hover {
+  background: #8fd3ff;
+  color: #fff;
+}
+
+/* ── レスポンシブ ── */
+@media (max-width: 800px) {
+  .detail {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .comment {
+    flex-direction: column;
+    gap: 4px;
+  }
+  .comment__author {
+    align-self: flex-end;
+  }
 }
