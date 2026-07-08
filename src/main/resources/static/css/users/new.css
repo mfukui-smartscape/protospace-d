@@ -15,14 +15,21 @@ footer,
     flex: 0 0 auto;
 }
 
+main {
+    margin-top: 40px;
+    display: block;
+    unicode-bidi: isolate;
+}
+
 .contents-row {
-    flex: 1 0 auto;
-    padding: 60px 0 0 280px;
+    width: 1024px;
+    margin: 0 auto;
 }
 
 .contents-row .container {
     background-color: #ffffff;
     display: inline-block;
+    min-height: calc(100vh - 161px);
 }
 
 .contents-row .container h2 {
