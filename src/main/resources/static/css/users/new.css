@@ -15,14 +15,21 @@ footer,
     flex: 0 0 auto;
 }
 
+main {
+    margin-top: 40px;
+    display: block;
+    unicode-bidi: isolate;
+}
+
 .contents-row {
-    flex: 1 0 auto;
-    padding: 60px 0 0 280px;
+    width: 1024px;
+    margin: 0 auto;
 }
 
 .contents-row .container {
     background-color: #ffffff;
     display: inline-block;
+    min-height: calc(100vh - 161px);
 }
 
 .contents-row .container h2 {
@@ -44,8 +51,7 @@ footer,
 }
 
 .new_user .field input[type="email"],
-.new_user .field input[type="password"],
-.new_user .field input[type="name"] {
+.new_user .field input[type="password"] {
     display: block;
     width: 180px;
     height: 30px;
@@ -59,7 +65,6 @@ footer,
 
 .new_user .field input[type="email"]:focus,
 .new_user .field input[type="password"]:focus,
-.new_user .field input[type="name"]:focus,
 .new_user .field input[type="text"]:focus {
     outline: none;
     border: 1px solid #676767;
@@ -84,8 +89,14 @@ footer,
     background-color: #6fc3e6;
 }
 
-.login-error {
-    color: #e74c3c;
+.new_user .field input[type="text"] {
+    display: block;
+    width: 600px;
+    height: 60px;
+    padding: 0 8px;
+    background-color: #ffffff;
+    border: 1px solid #b2b2b2;
+    border-radius: 3px;
     font-size: 14px;
-    margin-bottom: 20px;
+    box-sizing: border-box;
 }

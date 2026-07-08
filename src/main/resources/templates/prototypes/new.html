@@ -1,18 +1,31 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="ja">
-<head>
-  <meta charset="UTF-8"/>
-  <title>Prototype New</title>
-</head>
-<body>
-  <h1>投稿ページ</h1>
+  <head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/new.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+    <title>ProtoType投稿ページ</title>
+  </head>
 
-  <form th:action="@{/prototypes}" method="post" enctype="multipart/form-data" th:object="${prototypeForm}">
-    <input type="text" name="name" th:value="*{name}" />
-    <input type="text" name="catchCopy" th:value="*{catchCopy}" />
-    <textarea name="concept" th:text="*{concept}"></textarea>
-    <input type="file" name="imageName" />
-    <button type="submit">投稿する</button>
-  </form>
-</body>
+  <body>
+    <div th:insert="~{layout/header :: header}"></div>
+
+    <form th:action="@{/prototypes}" method="post" th:object="${prototypeForm}" enctype="multipart/form-data" class="prototype_form">
+      <h1>新規プロトタイプ投稿</h1>
+      <div class="prototype_subtitle">プロトタイプの名称</div>
+      <input type="text" th:field="*{name}">
+
+      <div class="prototype_subtitle">キャッチコピー</div>
+      <input type="text" th:field="*{catchCopy}">
+      <div class="prototype_subtitle">コンセプト</div>
+      <input type="text" th:field="*{concept}">
+
+      <div class="prototype_subtitle">プロトタイプの画像</div>
+      <input type="file" th:field="*{imageName}">
+      <br>
+      <input type="submit" value="保存する" class="prototype_submit">
+    </form>
+    <div th:insert="~{layout/footer :: footer}"></div>
+
+  </body>
 </html>
