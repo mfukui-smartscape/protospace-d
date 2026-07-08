@@ -1,6 +1,7 @@
 package in.tech_camp.proto_space.entity;
 
 import java.time.LocalDateTime;
+
 import lombok.Data;
 
 /**
@@ -9,7 +10,7 @@ import lombok.Data;
  * ※ password はハッシュ化された値が入る。
  */
 @Data
-public class User {
+public class UserEntity {
     private Long id;
     private String email;
     private String password;
@@ -19,4 +20,5 @@ public class User {
     private String position;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+
 }

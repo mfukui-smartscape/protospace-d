@@ -1,0 +1,1450 @@
+Initialized native services in: /home/s00297/.gradle/native
+Initialized jansi services in: /home/s00297/.gradle/native
+Found daemon DaemonInfo{pid=8819, address=[e83366e5-17e3-4a4f-9b2e-1243b34ce3ce port:42965, addresses:[/127.0.0.1]], state=Idle, lastBusy=1783295834301, context=DefaultDaemonContext[uid=b45919cb-a981-4138-b73d-6737a302cad9,javaHome=/home/s00297/.vscode-server/extensions/redhat.java-1.55.0-linux-x64/jre/21.0.11-linux-x86_64,javaVersion=21,javaVendor=Eclipse Adoptium,daemonRegistryDir=/home/s00297/.gradle/daemon,pid=8819,idleTimeout=10800000,priority=NORMAL,applyInstrumentationAgent=true,nativeServicesMode=ENABLED,daemonOpts=-XX:MaxMetaspaceSize=384m,-XX:+HeapDumpOnOutOfMemoryError,-Xms256m,-Xmx512m,-Dfile.encoding=UTF-8,-Duser.country,-Duser.language=en,-Duser.variant]} however its context does not match the desired criteria.
+JVM is incompatible.
+Wanted: DaemonRequestContext{jvmCriteria=/home/linuxbrew/.linuxbrew/Cellar/openjdk@21/21.0.10/libexec (no JDK specified, using current Java home), daemonOpts=[-XX:MaxMetaspaceSize=384m, -XX:+HeapDumpOnOutOfMemoryError, -Xms256m, -Xmx512m, -Dfile.encoding=UTF-8, -Duser.country, -Duser.language=en, -Duser.variant], applyInstrumentationAgent=true, nativeServicesMode=ENABLED, priority=NORMAL}
+Actual: DefaultDaemonContext[uid=b45919cb-a981-4138-b73d-6737a302cad9,javaHome=/home/s00297/.vscode-server/extensions/redhat.java-1.55.0-linux-x64/jre/21.0.11-linux-x86_64,javaVersion=21,javaVendor=Eclipse Adoptium,daemonRegistryDir=/home/s00297/.gradle/daemon,pid=8819,idleTimeout=10800000,priority=NORMAL,applyInstrumentationAgent=true,nativeServicesMode=ENABLED,daemonOpts=-XX:MaxMetaspaceSize=384m,-XX:+HeapDumpOnOutOfMemoryError,-Xms256m,-Xmx512m,-Dfile.encoding=UTF-8,-Duser.country,-Duser.language=en,-Duser.variant]
+
+  Looking for a different daemon...
+The client will now receive all logging from the daemon (pid: 11293). The daemon log file: /home/s00297/.gradle/daemon/8.14.5/daemon-11293.out.log
+Starting 20th build in daemon [uptime: 53 mins 58.714 secs, performance: 100%, GC rate: 0.00/s, heap usage: 0% of 512 MiB, non-heap usage: 22% of 384 MiB]
+Using 14 worker leases.
+Now considering [/home/s00297/java_projects/protospace-d] as hierarchies to watch
+Watching the file system is configured to be enabled if available
+File system watching is active
+Starting Build
+Settings evaluated using settings file '/home/s00297/java_projects/protospace-d/settings.gradle'.
+Projects loaded. Root project using build file '/home/s00297/java_projects/protospace-d/build.gradle'.
+Included projects: [root project 'proto-space']
+
+> Configure project :
+Evaluating root project 'proto-space' using build file '/home/s00297/java_projects/protospace-d/build.gradle'.
+Resolved plugin [id: 'java']
+Resolved plugin [id: 'org.springframework.boot', version: '3.5.16']
+Resolved plugin [id: 'io.spring.dependency-management', version: '1.1.7']
+Applying dependency management to configuration 'annotationProcessor' in project 'proto-space'
+Applying dependency management to configuration 'apiElements' in project 'proto-space'
+Applying dependency management to configuration 'archives' in project 'proto-space'
+Applying dependency management to configuration 'bootArchives' in project 'proto-space'
+Applying dependency management to configuration 'compileClasspath' in project 'proto-space'
+Applying dependency management to configuration 'compileOnly' in project 'proto-space'
+Applying dependency management to configuration 'default' in project 'proto-space'
+Applying dependency management to configuration 'developmentOnly' in project 'proto-space'
+Applying dependency management to configuration 'implementation' in project 'proto-space'
+Applying dependency management to configuration 'mainSourceElements' in project 'proto-space'
+Applying dependency management to configuration 'productionRuntimeClasspath' in project 'proto-space'
+Applying dependency management to configuration 'runtimeClasspath' in project 'proto-space'
+Applying dependency management to configuration 'runtimeElements' in project 'proto-space'
+Applying dependency management to configuration 'runtimeOnly' in project 'proto-space'
+Applying dependency management to configuration 'testAndDevelopmentOnly' in project 'proto-space'
+Applying dependency management to configuration 'testAnnotationProcessor' in project 'proto-space'
+Applying dependency management to configuration 'testCompileClasspath' in project 'proto-space'
+Applying dependency management to configuration 'testCompileOnly' in project 'proto-space'
+Applying dependency management to configuration 'testImplementation' in project 'proto-space'
+Applying dependency management to configuration 'testResultsElementsForTest' in project 'proto-space'
+Applying dependency management to configuration 'testRuntimeClasspath' in project 'proto-space'
+Applying dependency management to configuration 'testRuntimeOnly' in project 'proto-space'
+All projects evaluated.
+Task name matched 'test'
+Selected primary task 'test' from project :
+Resolving global dependency management for project 'proto-space'
+Excluding []
+Excluding []
+Excluding []
+Excluding []
+Excluding []
+Excluding []
+Tasks to be executed: [task ':compileJava', task ':processResources', task ':classes', task ':compileTestJava', task ':processTestResources', task ':testClasses', task ':test']
+Tasks that were excluded: []
+Resolve mutations for :compileJava (Thread[#3726,Execution worker,5,main]) started.
+:compileJava (Thread[#3726,Execution worker,5,main]) started.
+
+> Task :compileJava UP-TO-DATE
+Custom actions are attached to task ':compileJava'.
+Caching disabled for task ':compileJava' because:
+  Build cache is disabled
+Skipping task ':compileJava' as it is up-to-date.
+Resolve mutations for :processResources (Thread[#3726,Execution worker,5,main]) started.
+:processResources (Thread[#3726,Execution worker,5,main]) started.
+
+> Task :processResources UP-TO-DATE
+Caching disabled for task ':processResources' because:
+  Build cache is disabled
+  Not worth caching
+Skipping task ':processResources' as it is up-to-date.
+Resolve mutations for :classes (Thread[#3726,Execution worker,5,main]) started.
+:classes (Thread[#3726,Execution worker,5,main]) started.
+
+> Task :classes UP-TO-DATE
+Skipping task ':classes' as it has no actions.
+Resolve mutations for :compileTestJava (Thread[#3726,Execution worker,5,main]) started.
+:compileTestJava (Thread[#3734,Execution worker Thread 9,5,main]) started.
+
+> Task :compileTestJava UP-TO-DATE
+Custom actions are attached to task ':compileTestJava'.
+Caching disabled for task ':compileTestJava' because:
+  Build cache is disabled
+Skipping task ':compileTestJava' as it is up-to-date.
+Resolve mutations for :processTestResources (Thread[#3734,Execution worker Thread 9,5,main]) started.
+:processTestResources (Thread[#3734,Execution worker Thread 9,5,main]) started.
+
+> Task :processTestResources UP-TO-DATE
+Caching disabled for task ':processTestResources' because:
+  Build cache is disabled
+  Not worth caching
+Skipping task ':processTestResources' as it is up-to-date.
+Resolve mutations for :testClasses (Thread[#3727,Execution worker Thread 2,5,main]) started.
+:testClasses (Thread[#3727,Execution worker Thread 2,5,main]) started.
+
+> Task :testClasses UP-TO-DATE
+Skipping task ':testClasses' as it has no actions.
+Resolve mutations for :test (Thread[#3727,Execution worker Thread 2,5,main]) started.
+:test (Thread[#3737,Execution worker Thread 12,5,main]) started.
+Gradle Test Executor 9 started executing tests.
+
+> Task :test
+Caching disabled for task ':test' because:
+  Build cache is disabled
+Task ':test' is not up-to-date because:
+  Task has failed previously.
+Starting process 'Gradle Test Executor 9'. Working directory: /home/s00297/java_projects/protospace-d Command: /home/linuxbrew/.linuxbrew/Cellar/openjdk@21/21.0.10/libexec/bin/java -Dorg.gradle.internal.worker.tmpdir=/home/s00297/java_projects/protospace-d/build/tmp/test/work @/home/s00297/.gradle/.tmp/gradle-worker-classpath10531679492107542371txt -Xmx512m -Dfile.encoding=UTF-8 -Duser.country -Duser.language=en -Duser.variant -ea worker.org.gradle.process.internal.worker.GradleWorkerMain 'Gradle Test Executor 9'
+Successfully started process 'Gradle Test Executor 9'
+
+PrototypeEditAuthorizationIntegrationTest STANDARD_OUT
+    09:54:37.746 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [in.tech_camp.proto_space.system.PrototypeEditAuthorizationIntegrationTest]: PrototypeEditAuthorizationIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+    09:54:37.899 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration in.tech_camp.proto_space.ProtoSpaceApplication for test class in.tech_camp.proto_space.system.PrototypeEditAuthorizationIntegrationTest
+
+      .   ____          _            __ _ _
+     /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+    ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+     \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+      '  |____| .__|_| |_|_| |_\__, | / / / /
+     =========|_|==============|___/=/_/_/_/
+
+     :: Spring Boot ::               (v3.5.16)
+
+    2026-07-06T09:54:38.326+09:00  INFO 53924 --- [proto-space] [    Test worker] rototypeEditAuthorizationIntegrationTest : Starting PrototypeEditAuthorizationIntegrationTest using Java 21.0.10 with PID 53924 (started by s00297 in /home/s00297/java_projects/protospace-d)
+    2026-07-06T09:54:38.329+09:00  INFO 53924 --- [proto-space] [    Test worker] rototypeEditAuthorizationIntegrationTest : The following 1 profile is active: "test"
+    2026-07-06T09:54:39.677+09:00  INFO 53924 --- [proto-space] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+    2026-07-06T09:54:40.027+09:00  INFO 53924 --- [proto-space] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@23afc725
+    2026-07-06T09:54:40.029+09:00  INFO 53924 --- [proto-space] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+    2026-07-06T09:54:40.069+09:00  INFO 53924 --- [proto-space] [    Test worker] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/protospace_test (PostgreSQL 16.14)
+    2026-07-06T09:54:40.131+09:00  INFO 53924 --- [proto-space] [    Test worker] o.f.core.internal.command.DbValidate     : Successfully validated 3 migrations (execution time 00:00.029s)
+    2026-07-06T09:54:40.180+09:00  INFO 53924 --- [proto-space] [    Test worker] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 3
+    2026-07-06T09:54:40.185+09:00  INFO 53924 --- [proto-space] [    Test worker] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+    2026-07-06T09:54:40.508+09:00  WARN 53924 --- [proto-space] [    Test worker] .s.s.UserDetailsServiceAutoConfiguration : 
+
+    Using generated security password: b24717f8-e69c-41ea-91ff-a9a881b0f53d
+
+    This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+    2026-07-06T09:54:40.515+09:00  INFO 53924 --- [proto-space] [    Test worker] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+    2026-07-06T09:54:41.190+09:00  INFO 53924 --- [proto-space] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+    2026-07-06T09:54:41.190+09:00  INFO 53924 --- [proto-space] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+    2026-07-06T09:54:41.191+09:00  INFO 53924 --- [proto-space] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+    2026-07-06T09:54:41.232+09:00  INFO 53924 --- [proto-space] [    Test worker] rototypeEditAuthorizationIntegrationTest : Started PrototypeEditAuthorizationIntegrationTest in 3.18 seconds (process running for 4.287)
+
+PrototypeEditAuthorizationIntegrationTest > 他人のプロトタイプ編集ページへ遷移できない() STANDARD_ERROR
+    Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+    WARNING: A Java agent has been loaded dynamically (/home/s00297/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.17.8/f09415827a71be7ed621c7bd02550678f28bc81c/byte-buddy-agent-1.17.8.jar)
+    WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+    WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+    WARNING: Dynamic loading of agents will be disallowed by default in a future release
+
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+
+> Task :test
+
+PrototypeEditAuthorizationIntegrationTest > 他人のプロトタイプ編集ページへ遷移できない() FAILED
+    org.springframework.dao.DataIntegrityViolationException: 
+    ### Error updating database.  Cause: org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (114, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:41.849456, 2026-07-06 09:54:41.849456).
+    ### The error may exist in in/tech_camp/proto_space/repository/UserMapper.java (best guess)
+    ### The error may involve in.tech_camp.proto_space.repository.UserMapper.insert-Inline
+    ### The error occurred while setting parameters
+    ### SQL: INSERT INTO users (email, password, name, profile, affiliation, position) VALUES (?, ?, ?,  ?, ?, ?)
+    ### Cause: org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (114, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:41.849456, 2026-07-06 09:54:41.849456).
+    ; ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (114, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:41.849456, 2026-07-06 09:54:41.849456).
+        at app//org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:258)
+        at app//org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:107)
+        at app//org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:95)
+        at app//org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:347)
+        at app/jdk.proxy3/jdk.proxy3.$Proxy93.insert(Unknown Source)
+        at app//org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:224)
+        at app//org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)
+        at app//org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:141)
+        at app//org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86)
+        at app/jdk.proxy3/jdk.proxy3.$Proxy98.insert(Unknown Source)
+        at app//in.tech_camp.proto_space.system.AbstractPrototypeIntegrationTest.setUp(AbstractPrototypeIntegrationTest.java:44)
+        at java.base@21.0.10/java.lang.reflect.Method.invoke(Method.java:580)
+        at java.base@21.0.10/java.util.ArrayList.forEach(ArrayList.java:1596)
+        at java.base@21.0.10/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+        Caused by:
+        org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+          Detail: Failing row contains (114, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:41.849456, 2026-07-06 09:54:41.849456).
+            at app//org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2904)
+            at app//org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2589)
+            at app//org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:431)
+            at app//org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:534)
+            at app//org.postgresql.jdbc.PgStatement.execute(PgStatement.java:437)
+            at app//org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:196)
+            at app//org.postgresql.jdbc.PgPreparedStatement.execute(PgPreparedStatement.java:182)
+            at app//com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+            at app//com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+            at app//org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:48)
+            at app//org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:75)
+            at app//org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+            at app//org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+            at app//org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+            at app//org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
+            at app//org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184)
+            at java.base@21.0.10/java.lang.reflect.Method.invoke(Method.java:580)
+            at app//org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:333)
+            ... 10 more
+
+PrototypeEditAuthorizationIntegrationTest > 自分のプロトタイプ編集ページへ遷移できる() FAILED
+    org.springframework.dao.DataIntegrityViolationException: 
+    ### Error updating database.  Cause: org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (115, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.025933, 2026-07-06 09:54:42.025933).
+    ### The error may exist in in/tech_camp/proto_space/repository/UserMapper.java (best guess)
+    ### The error may involve in.tech_camp.proto_space.repository.UserMapper.insert-Inline
+    ### The error occurred while setting parameters
+    ### SQL: INSERT INTO users (email, password, name, profile, affiliation, position) VALUES (?, ?, ?,  ?, ?, ?)
+    ### Cause: org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (115, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.025933, 2026-07-06 09:54:42.025933).
+    ; ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (115, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.025933, 2026-07-06 09:54:42.025933).
+        at app//org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:258)
+        at app//org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:107)
+        at app//org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:95)
+        at app//org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:347)
+        at app/jdk.proxy3/jdk.proxy3.$Proxy93.insert(Unknown Source)
+        at app//org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:224)
+        at app//org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)
+        at app//org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:141)
+        at app//org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86)
+        at app/jdk.proxy3/jdk.proxy3.$Proxy98.insert(Unknown Source)
+        at app//in.tech_camp.proto_space.system.AbstractPrototypeIntegrationTest.setUp(AbstractPrototypeIntegrationTest.java:44)
+        at java.base@21.0.10/java.lang.reflect.Method.invoke(Method.java:580)
+        at java.base@21.0.10/java.util.ArrayList.forEach(ArrayList.java:1596)
+        at java.base@21.0.10/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+        Caused by:
+        org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+          Detail: Failing row contains (115, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.025933, 2026-07-06 09:54:42.025933).
+            at app//org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2904)
+            at app//org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2589)
+            at app//org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:431)
+            at app//org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:534)
+            at app//org.postgresql.jdbc.PgStatement.execute(PgStatement.java:437)
+            at app//org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:196)
+            at app//org.postgresql.jdbc.PgPreparedStatement.execute(PgPreparedStatement.java:182)
+            at app//com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+            at app//com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+            at app//org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:48)
+            at app//org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:75)
+            at app//org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+            at app//org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+            at app//org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+            at app//org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
+            at app//org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184)
+            at java.base@21.0.10/java.lang.reflect.Method.invoke(Method.java:580)
+            at app//org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:333)
+            ... 10 more
+
+PrototypeEditAuthorizationIntegrationTest > 未ログインでは編集ページへ遷移できない() FAILED
+    org.springframework.dao.DataIntegrityViolationException: 
+    ### Error updating database.  Cause: org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (116, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.037903, 2026-07-06 09:54:42.037903).
+    ### The error may exist in in/tech_camp/proto_space/repository/UserMapper.java (best guess)
+    ### The error may involve in.tech_camp.proto_space.repository.UserMapper.insert-Inline
+    ### The error occurred while setting parameters
+    ### SQL: INSERT INTO users (email, password, name, profile, affiliation, position) VALUES (?, ?, ?,  ?, ?, ?)
+    ### Cause: org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (116, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.037903, 2026-07-06 09:54:42.037903).
+    ; ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (116, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.037903, 2026-07-06 09:54:42.037903).
+        at app//org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:258)
+        at app//org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:107)
+        at app//org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:95)
+        at app//org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:347)
+        at app/jdk.proxy3/jdk.proxy3.$Proxy93.insert(Unknown Source)
+        at app//org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:224)
+        at app//org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)
+        at app//org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:141)
+        at app//org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86)
+        at app/jdk.proxy3/jdk.proxy3.$Proxy98.insert(Unknown Source)
+        at app//in.tech_camp.proto_space.system.AbstractPrototypeIntegrationTest.setUp(AbstractPrototypeIntegrationTest.java:44)
+        at java.base@21.0.10/java.lang.reflect.Method.invoke(Method.java:580)
+        at java.base@21.0.10/java.util.ArrayList.forEach(ArrayList.java:1596)
+        at java.base@21.0.10/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+        Caused by:
+        org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+          Detail: Failing row contains (116, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.037903, 2026-07-06 09:54:42.037903).
+            at app//org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2904)
+            at app//org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2589)
+            at app//org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:431)
+            at app//org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:534)
+            at app//org.postgresql.jdbc.PgStatement.execute(PgStatement.java:437)
+            at app//org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:196)
+            at app//org.postgresql.jdbc.PgPreparedStatement.execute(PgPreparedStatement.java:182)
+            at app//com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+            at app//com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+            at app//org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:48)
+            at app//org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:75)
+            at app//org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+            at app//org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+            at app//org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+            at app//org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
+            at app//org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184)
+            at java.base@21.0.10/java.lang.reflect.Method.invoke(Method.java:580)
+            at app//org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:333)
+            ... 10 more
+
+PrototypeEditSuccessIntegrationTest STANDARD_OUT
+    2026-07-06T09:54:42.048+09:00  INFO 53924 --- [proto-space] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [in.tech_camp.proto_space.system.PrototypeEditSuccessIntegrationTest]: PrototypeEditSuccessIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+    2026-07-06T09:54:42.051+09:00  INFO 53924 --- [proto-space] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration in.tech_camp.proto_space.ProtoSpaceApplication for test class in.tech_camp.proto_space.system.PrototypeEditSuccessIntegrationTest
+
+PrototypeEditSuccessIntegrationTest > 編集済みプロトタイプが詳細画面に表示される() FAILED
+    org.springframework.dao.DataIntegrityViolationException: 
+    ### Error updating database.  Cause: org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (117, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.062875, 2026-07-06 09:54:42.062875).
+    ### The error may exist in in/tech_camp/proto_space/repository/UserMapper.java (best guess)
+    ### The error may involve in.tech_camp.proto_space.repository.UserMapper.insert-Inline
+    ### The error occurred while setting parameters
+    ### SQL: INSERT INTO users (email, password, name, profile, affiliation, position) VALUES (?, ?, ?,  ?, ?, ?)
+    ### Cause: org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (117, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.062875, 2026-07-06 09:54:42.062875).
+    ; ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (117, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.062875, 2026-07-06 09:54:42.062875).
+        at app//org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:258)
+        at app//org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:107)
+        at app//org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:95)
+        at app//org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:347)
+        at app/jdk.proxy3/jdk.proxy3.$Proxy93.insert(Unknown Source)
+        at app//org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:224)
+        at app//org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)
+        at app//org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:141)
+        at app//org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86)
+        at app/jdk.proxy3/jdk.proxy3.$Proxy98.insert(Unknown Source)
+        at app//in.tech_camp.proto_space.system.AbstractPrototypeIntegrationTest.setUp(AbstractPrototypeIntegrationTest.java:44)
+        at java.base@21.0.10/java.lang.reflect.Method.invoke(Method.java:580)
+        at java.base@21.0.10/java.util.ArrayList.forEach(ArrayList.java:1596)
+        at java.base@21.0.10/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+        Caused by:
+        org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+          Detail: Failing row contains (117, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.062875, 2026-07-06 09:54:42.062875).
+            at app//org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2904)
+            at app//org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2589)
+            at app//org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:431)
+            at app//org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:534)
+            at app//org.postgresql.jdbc.PgStatement.execute(PgStatement.java:437)
+            at app//org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:196)
+            at app//org.postgresql.jdbc.PgPreparedStatement.execute(PgPreparedStatement.java:182)
+            at app//com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+            at app//com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+            at app//org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:48)
+            at app//org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:75)
+            at app//org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+            at app//org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+            at app//org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+            at app//org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
+            at app//org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184)
+            at java.base@21.0.10/java.lang.reflect.Method.invoke(Method.java:580)
+            at app//org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:333)
+            ... 10 more
+
+PrototypeEditSuccessIntegrationTest > プロトタイプを編集できる() FAILED
+    org.springframework.dao.DataIntegrityViolationException: 
+    ### Error updating database.  Cause: org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (118, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.073847, 2026-07-06 09:54:42.073847).
+    ### The error may exist in in/tech_camp/proto_space/repository/UserMapper.java (best guess)
+    ### The error may involve in.tech_camp.proto_space.repository.UserMapper.insert-Inline
+    ### The error occurred while setting parameters
+    ### SQL: INSERT INTO users (email, password, name, profile, affiliation, position) VALUES (?, ?, ?,  ?, ?, ?)
+    ### Cause: org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (118, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.073847, 2026-07-06 09:54:42.073847).
+    ; ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (118, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.073847, 2026-07-06 09:54:42.073847).
+        at app//org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:258)
+        at app//org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:107)
+        at app//org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:95)
+        at app//org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:347)
+        at app/jdk.proxy3/jdk.proxy3.$Proxy93.insert(Unknown Source)
+        at app//org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:224)
+        at app//org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)
+        at app//org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:141)
+        at app//org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86)
+        at app/jdk.proxy3/jdk.proxy3.$Proxy98.insert(Unknown Source)
+        at app//in.tech_camp.proto_space.system.AbstractPrototypeIntegrationTest.setUp(AbstractPrototypeIntegrationTest.java:44)
+        at java.base@21.0.10/java.lang.reflect.Method.invoke(Method.java:580)
+        at java.base@21.0.10/java.util.ArrayList.forEach(ArrayList.java:1596)
+        at java.base@21.0.10/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+        Caused by:
+        org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+          Detail: Failing row contains (118, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.073847, 2026-07-06 09:54:42.073847).
+            at app//org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2904)
+            at app//org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2589)
+            at app//org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:431)
+            at app//org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:534)
+            at app//org.postgresql.jdbc.PgStatement.execute(PgStatement.java:437)
+            at app//org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:196)
+            at app//org.postgresql.jdbc.PgPreparedStatement.execute(PgPreparedStatement.java:182)
+            at app//com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+            at app//com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+            at app//org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:48)
+            at app//org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:75)
+            at app//org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+            at app//org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+            at app//org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+            at app//org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
+            at app//org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184)
+            at java.base@21.0.10/java.lang.reflect.Method.invoke(Method.java:580)
+            at app//org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:333)
+            ... 10 more
+
+PrototypeEditSuccessIntegrationTest > 画像を変更しなくても画像は保持される() FAILED
+    org.springframework.dao.DataIntegrityViolationException: 
+    ### Error updating database.  Cause: org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (119, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.084282, 2026-07-06 09:54:42.084282).
+    ### The error may exist in in/tech_camp/proto_space/repository/UserMapper.java (best guess)
+    ### The error may involve in.tech_camp.proto_space.repository.UserMapper.insert-Inline
+    ### The error occurred while setting parameters
+    ### SQL: INSERT INTO users (email, password, name, profile, affiliation, position) VALUES (?, ?, ?,  ?, ?, ?)
+    ### Cause: org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (119, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.084282, 2026-07-06 09:54:42.084282).
+    ; ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (119, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.084282, 2026-07-06 09:54:42.084282).
+        at app//org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:258)
+        at app//org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:107)
+        at app//org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:95)
+        at app//org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:347)
+        at app/jdk.proxy3/jdk.proxy3.$Proxy93.insert(Unknown Source)
+        at app//org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:224)
+        at app//org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)
+        at app//org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:141)
+        at app//org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86)
+        at app/jdk.proxy3/jdk.proxy3.$Proxy98.insert(Unknown Source)
+        at app//in.tech_camp.proto_space.system.AbstractPrototypeIntegrationTest.setUp(AbstractPrototypeIntegrationTest.java:44)
+        at java.base@21.0.10/java.lang.reflect.Method.invoke(Method.java:580)
+        at java.base@21.0.10/java.util.ArrayList.forEach(ArrayList.java:1596)
+        at java.base@21.0.10/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+        Caused by:
+        org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+          Detail: Failing row contains (119, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.084282, 2026-07-06 09:54:42.084282).
+            at app//org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2904)
+            at app//org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2589)
+            at app//org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:431)
+            at app//org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:534)
+            at app//org.postgresql.jdbc.PgStatement.execute(PgStatement.java:437)
+            at app//org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:196)
+            at app//org.postgresql.jdbc.PgPreparedStatement.execute(PgPreparedStatement.java:182)
+            at app//com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+            at app//com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+            at app//org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:48)
+            at app//org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:75)
+            at app//org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+            at app//org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+            at app//org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+            at app//org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
+            at app//org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184)
+            at java.base@21.0.10/java.lang.reflect.Method.invoke(Method.java:580)
+            at app//org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:333)
+            ... 10 more
+
+PrototypeEditValidationIntegrationTest STANDARD_OUT
+    2026-07-06T09:54:42.096+09:00  INFO 53924 --- [proto-space] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [in.tech_camp.proto_space.system.PrototypeEditValidationIntegrationTest]: PrototypeEditValidationIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+    2026-07-06T09:54:42.100+09:00  INFO 53924 --- [proto-space] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration in.tech_camp.proto_space.ProtoSpaceApplication for test class in.tech_camp.proto_space.system.PrototypeEditValidationIntegrationTest
+
+PrototypeEditValidationIntegrationTest > concept未入力では編集できない() FAILED
+    org.springframework.dao.DataIntegrityViolationException: 
+    ### Error updating database.  Cause: org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (120, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.107099, 2026-07-06 09:54:42.107099).
+    ### The error may exist in in/tech_camp/proto_space/repository/UserMapper.java (best guess)
+    ### The error may involve in.tech_camp.proto_space.repository.UserMapper.insert-Inline
+    ### The error occurred while setting parameters
+    ### SQL: INSERT INTO users (email, password, name, profile, affiliation, position) VALUES (?, ?, ?,  ?, ?, ?)
+    ### Cause: org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (120, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.107099, 2026-07-06 09:54:42.107099).
+    ; ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (120, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.107099, 2026-07-06 09:54:42.107099).
+        at app//org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:258)
+        at app//org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:107)
+        at app//org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:95)
+        at app//org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:347)
+        at app/jdk.proxy3/jdk.proxy3.$Proxy93.insert(Unknown Source)
+        at app//org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:224)
+        at app//org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)
+        at app//org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:141)
+        at app//org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86)
+        at app/jdk.proxy3/jdk.proxy3.$Proxy98.insert(Unknown Source)
+        at app//in.tech_camp.proto_space.system.AbstractPrototypeIntegrationTest.setUp(AbstractPrototypeIntegrationTest.java:44)
+        at java.base@21.0.10/java.lang.reflect.Method.invoke(Method.java:580)
+        at java.base@21.0.10/java.util.ArrayList.forEach(ArrayList.java:1596)
+        at java.base@21.0.10/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+        Caused by:
+        org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+          Detail: Failing row contains (120, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.107099, 2026-07-06 09:54:42.107099).
+            at app//org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2904)
+            at app//org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2589)
+            at app//org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:431)
+            at app//org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:534)
+            at app//org.postgresql.jdbc.PgStatement.execute(PgStatement.java:437)
+            at app//org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:196)
+            at app//org.postgresql.jdbc.PgPreparedStatement.execute(PgPreparedStatement.java:182)
+            at app//com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+            at app//com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+            at app//org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:48)
+            at app//org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:75)
+            at app//org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+            at app//org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+            at app//org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+            at app//org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
+            at app//org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184)
+            at java.base@21.0.10/java.lang.reflect.Method.invoke(Method.java:580)
+            at app//org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:333)
+            ... 10 more
+
+PrototypeEditValidationIntegrationTest > name未入力では編集できない() FAILED
+    org.springframework.dao.DataIntegrityViolationException: 
+    ### Error updating database.  Cause: org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (121, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.120342, 2026-07-06 09:54:42.120342).
+    ### The error may exist in in/tech_camp/proto_space/repository/UserMapper.java (best guess)
+    ### The error may involve in.tech_camp.proto_space.repository.UserMapper.insert-Inline
+    ### The error occurred while setting parameters
+    ### SQL: INSERT INTO users (email, password, name, profile, affiliation, position) VALUES (?, ?, ?,  ?, ?, ?)
+    ### Cause: org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (121, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.120342, 2026-07-06 09:54:42.120342).
+    ; ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (121, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.120342, 2026-07-06 09:54:42.120342).
+        at app//org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:258)
+        at app//org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:107)
+        at app//org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:95)
+        at app//org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:347)
+        at app/jdk.proxy3/jdk.proxy3.$Proxy93.insert(Unknown Source)
+        at app//org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:224)
+        at app//org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)
+        at app//org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:141)
+        at app//org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86)
+        at app/jdk.proxy3/jdk.proxy3.$Proxy98.insert(Unknown Source)
+        at app//in.tech_camp.proto_space.system.AbstractPrototypeIntegrationTest.setUp(AbstractPrototypeIntegrationTest.java:44)
+        at java.base@21.0.10/java.lang.reflect.Method.invoke(Method.java:580)
+        at java.base@21.0.10/java.util.ArrayList.forEach(ArrayList.java:1596)
+        at java.base@21.0.10/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+        Caused by:
+        org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+          Detail: Failing row contains (121, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.120342, 2026-07-06 09:54:42.120342).
+            at app//org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2904)
+            at app//org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2589)
+            at app//org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:431)
+            at app//org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:534)
+            at app//org.postgresql.jdbc.PgStatement.execute(PgStatement.java:437)
+            at app//org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:196)
+            at app//org.postgresql.jdbc.PgPreparedStatement.execute(PgPreparedStatement.java:182)
+            at app//com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+            at app//com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+            at app//org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:48)
+            at app//org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:75)
+            at app//org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+            at app//org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+            at app//org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+            at app//org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
+            at app//org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184)
+            at java.base@21.0.10/java.lang.reflect.Method.invoke(Method.java:580)
+            at app//org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:333)
+            ... 10 more
+
+PrototypeEditValidationIntegrationTest > catchCopy未入力では編集できない() FAILED
+    org.springframework.dao.DataIntegrityViolationException: 
+    ### Error updating database.  Cause: org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (122, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.127808, 2026-07-06 09:54:42.127808).
+    ### The error may exist in in/tech_camp/proto_space/repository/UserMapper.java (best guess)
+    ### The error may involve in.tech_camp.proto_space.repository.UserMapper.insert-Inline
+    ### The error occurred while setting parameters
+    ### SQL: INSERT INTO users (email, password, name, profile, affiliation, position) VALUES (?, ?, ?,  ?, ?, ?)
+    ### Cause: org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (122, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.127808, 2026-07-06 09:54:42.127808).
+    ; ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (122, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.127808, 2026-07-06 09:54:42.127808).
+        at app//org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:258)
+        at app//org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:107)
+        at app//org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:95)
+        at app//org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:347)
+        at app/jdk.proxy3/jdk.proxy3.$Proxy93.insert(Unknown Source)
+        at app//org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:224)
+        at app//org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)
+        at app//org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:141)
+        at app//org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86)
+        at app/jdk.proxy3/jdk.proxy3.$Proxy98.insert(Unknown Source)
+        at app//in.tech_camp.proto_space.system.AbstractPrototypeIntegrationTest.setUp(AbstractPrototypeIntegrationTest.java:44)
+        at java.base@21.0.10/java.lang.reflect.Method.invoke(Method.java:580)
+        at java.base@21.0.10/java.util.ArrayList.forEach(ArrayList.java:1596)
+        at java.base@21.0.10/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+        Caused by:
+        org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+          Detail: Failing row contains (122, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.127808, 2026-07-06 09:54:42.127808).
+            at app//org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2904)
+            at app//org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2589)
+            at app//org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:431)
+            at app//org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:534)
+            at app//org.postgresql.jdbc.PgStatement.execute(PgStatement.java:437)
+            at app//org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:196)
+            at app//org.postgresql.jdbc.PgPreparedStatement.execute(PgPreparedStatement.java:182)
+            at app//com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+            at app//com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+            at app//org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:48)
+            at app//org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:75)
+            at app//org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+            at app//org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+            at app//org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+            at app//org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
+            at app//org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184)
+            at java.base@21.0.10/java.lang.reflect.Method.invoke(Method.java:580)
+            at app//org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:333)
+            ... 10 more
+
+PrototypeEditValidationIntegrationTest > 編集失敗時も入力値が保持される() FAILED
+    org.springframework.dao.DataIntegrityViolationException: 
+    ### Error updating database.  Cause: org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (123, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.139482, 2026-07-06 09:54:42.139482).
+    ### The error may exist in in/tech_camp/proto_space/repository/UserMapper.java (best guess)
+    ### The error may involve in.tech_camp.proto_space.repository.UserMapper.insert-Inline
+    ### The error occurred while setting parameters
+    ### SQL: INSERT INTO users (email, password, name, profile, affiliation, position) VALUES (?, ?, ?,  ?, ?, ?)
+    ### Cause: org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (123, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.139482, 2026-07-06 09:54:42.139482).
+    ; ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (123, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.139482, 2026-07-06 09:54:42.139482).
+        at app//org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:258)
+        at app//org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:107)
+        at app//org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:95)
+        at app//org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:347)
+        at app/jdk.proxy3/jdk.proxy3.$Proxy93.insert(Unknown Source)
+        at app//org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:224)
+        at app//org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)
+        at app//org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:141)
+        at app//org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86)
+        at app/jdk.proxy3/jdk.proxy3.$Proxy98.insert(Unknown Source)
+        at app//in.tech_camp.proto_space.system.AbstractPrototypeIntegrationTest.setUp(AbstractPrototypeIntegrationTest.java:44)
+        at java.base@21.0.10/java.lang.reflect.Method.invoke(Method.java:580)
+        at java.base@21.0.10/java.util.ArrayList.forEach(ArrayList.java:1596)
+        at java.base@21.0.10/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+        Caused by:
+        org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+          Detail: Failing row contains (123, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.139482, 2026-07-06 09:54:42.139482).
+            at app//org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2904)
+            at app//org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2589)
+            at app//org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:431)
+            at app//org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:534)
+            at app//org.postgresql.jdbc.PgStatement.execute(PgStatement.java:437)
+            at app//org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:196)
+            at app//org.postgresql.jdbc.PgPreparedStatement.execute(PgPreparedStatement.java:182)
+            at app//com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+            at app//com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+            at app//org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:48)
+            at app//org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:75)
+            at app//org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+            at app//org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+            at app//org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+            at app//org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
+            at app//org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184)
+            at java.base@21.0.10/java.lang.reflect.Method.invoke(Method.java:580)
+            at app//org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:333)
+            ... 10 more
+
+PrototypePostAuthorizationIntegrationTest STANDARD_OUT
+    2026-07-06T09:54:42.146+09:00  INFO 53924 --- [proto-space] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [in.tech_camp.proto_space.system.PrototypePostAuthorizationIntegrationTest]: PrototypePostAuthorizationIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+    2026-07-06T09:54:42.149+09:00  INFO 53924 --- [proto-space] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration in.tech_camp.proto_space.ProtoSpaceApplication for test class in.tech_camp.proto_space.system.PrototypePostAuthorizationIntegrationTest
+
+PrototypePostAuthorizationIntegrationTest > ログインユーザーは投稿ページへ遷移できる() FAILED
+    org.springframework.dao.DataIntegrityViolationException: 
+    ### Error updating database.  Cause: org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (124, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.159113, 2026-07-06 09:54:42.159113).
+    ### The error may exist in in/tech_camp/proto_space/repository/UserMapper.java (best guess)
+    ### The error may involve in.tech_camp.proto_space.repository.UserMapper.insert-Inline
+    ### The error occurred while setting parameters
+    ### SQL: INSERT INTO users (email, password, name, profile, affiliation, position) VALUES (?, ?, ?,  ?, ?, ?)
+    ### Cause: org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (124, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.159113, 2026-07-06 09:54:42.159113).
+    ; ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (124, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.159113, 2026-07-06 09:54:42.159113).
+        at app//org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:258)
+        at app//org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:107)
+        at app//org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:95)
+        at app//org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:347)
+        at app/jdk.proxy3/jdk.proxy3.$Proxy93.insert(Unknown Source)
+        at app//org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:224)
+        at app//org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)
+        at app//org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:141)
+        at app//org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86)
+        at app/jdk.proxy3/jdk.proxy3.$Proxy98.insert(Unknown Source)
+        at app//in.tech_camp.proto_space.system.AbstractPrototypeIntegrationTest.setUp(AbstractPrototypeIntegrationTest.java:44)
+        at java.base@21.0.10/java.lang.reflect.Method.invoke(Method.java:580)
+        at java.base@21.0.10/java.util.ArrayList.forEach(ArrayList.java:1596)
+        at java.base@21.0.10/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+        Caused by:
+        org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+          Detail: Failing row contains (124, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.159113, 2026-07-06 09:54:42.159113).
+            at app//org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2904)
+            at app//org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2589)
+            at app//org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:431)
+            at app//org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:534)
+            at app//org.postgresql.jdbc.PgStatement.execute(PgStatement.java:437)
+            at app//org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:196)
+            at app//org.postgresql.jdbc.PgPreparedStatement.execute(PgPreparedStatement.java:182)
+            at app//com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+            at app//com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+            at app//org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:48)
+            at app//org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:75)
+            at app//org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+            at app//org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+            at app//org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+            at app//org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
+            at app//org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184)
+            at java.base@21.0.10/java.lang.reflect.Method.invoke(Method.java:580)
+            at app//org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:333)
+            ... 10 more
+
+PrototypePostAuthorizationIntegrationTest > 未ログインユーザーはログイン画面へ遷移する() FAILED
+    org.springframework.dao.DataIntegrityViolationException: 
+    ### Error updating database.  Cause: org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (125, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.169684, 2026-07-06 09:54:42.169684).
+    ### The error may exist in in/tech_camp/proto_space/repository/UserMapper.java (best guess)
+    ### The error may involve in.tech_camp.proto_space.repository.UserMapper.insert-Inline
+    ### The error occurred while setting parameters
+    ### SQL: INSERT INTO users (email, password, name, profile, affiliation, position) VALUES (?, ?, ?,  ?, ?, ?)
+    ### Cause: org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (125, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.169684, 2026-07-06 09:54:42.169684).
+    ; ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (125, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.169684, 2026-07-06 09:54:42.169684).
+        at app//org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:258)
+        at app//org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:107)
+        at app//org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:95)
+        at app//org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:347)
+        at app/jdk.proxy3/jdk.proxy3.$Proxy93.insert(Unknown Source)
+        at app//org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:224)
+        at app//org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)
+        at app//org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:141)
+        at app//org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86)
+        at app/jdk.proxy3/jdk.proxy3.$Proxy98.insert(Unknown Source)
+        at app//in.tech_camp.proto_space.system.AbstractPrototypeIntegrationTest.setUp(AbstractPrototypeIntegrationTest.java:44)
+        at java.base@21.0.10/java.lang.reflect.Method.invoke(Method.java:580)
+        at java.base@21.0.10/java.util.ArrayList.forEach(ArrayList.java:1596)
+        at java.base@21.0.10/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+        Caused by:
+        org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+          Detail: Failing row contains (125, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.169684, 2026-07-06 09:54:42.169684).
+            at app//org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2904)
+            at app//org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2589)
+            at app//org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:431)
+            at app//org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:534)
+            at app//org.postgresql.jdbc.PgStatement.execute(PgStatement.java:437)
+            at app//org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:196)
+            at app//org.postgresql.jdbc.PgPreparedStatement.execute(PgPreparedStatement.java:182)
+            at app//com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+            at app//com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+            at app//org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:48)
+            at app//org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:75)
+            at app//org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+            at app//org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+            at app//org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+            at app//org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
+            at app//org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184)
+            at java.base@21.0.10/java.lang.reflect.Method.invoke(Method.java:580)
+            at app//org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:333)
+            ... 10 more
+
+PrototypePostSuccessIntegrationTest STANDARD_OUT
+    2026-07-06T09:54:42.180+09:00  INFO 53924 --- [proto-space] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [in.tech_camp.proto_space.system.PrototypePostSuccessIntegrationTest]: PrototypePostSuccessIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+    2026-07-06T09:54:42.184+09:00  INFO 53924 --- [proto-space] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration in.tech_camp.proto_space.ProtoSpaceApplication for test class in.tech_camp.proto_space.system.PrototypePostSuccessIntegrationTest
+
+PrototypePostSuccessIntegrationTest > 投稿済みプロトタイプがトップページに表示される() FAILED
+    org.springframework.dao.DataIntegrityViolationException: 
+    ### Error updating database.  Cause: org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (126, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.193407, 2026-07-06 09:54:42.193407).
+    ### The error may exist in in/tech_camp/proto_space/repository/UserMapper.java (best guess)
+    ### The error may involve in.tech_camp.proto_space.repository.UserMapper.insert-Inline
+    ### The error occurred while setting parameters
+    ### SQL: INSERT INTO users (email, password, name, profile, affiliation, position) VALUES (?, ?, ?,  ?, ?, ?)
+    ### Cause: org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (126, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.193407, 2026-07-06 09:54:42.193407).
+    ; ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (126, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.193407, 2026-07-06 09:54:42.193407).
+        at app//org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:258)
+        at app//org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:107)
+        at app//org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:95)
+        at app//org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:347)
+        at app/jdk.proxy3/jdk.proxy3.$Proxy93.insert(Unknown Source)
+        at app//org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:224)
+        at app//org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)
+        at app//org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:141)
+        at app//org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86)
+        at app/jdk.proxy3/jdk.proxy3.$Proxy98.insert(Unknown Source)
+        at app//in.tech_camp.proto_space.system.AbstractPrototypeIntegrationTest.setUp(AbstractPrototypeIntegrationTest.java:44)
+        at java.base@21.0.10/java.lang.reflect.Method.invoke(Method.java:580)
+        at java.base@21.0.10/java.util.ArrayList.forEach(ArrayList.java:1596)
+        at java.base@21.0.10/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+        Caused by:
+        org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+          Detail: Failing row contains (126, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.193407, 2026-07-06 09:54:42.193407).
+            at app//org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2904)
+            at app//org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2589)
+            at app//org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:431)
+            at app//org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:534)
+            at app//org.postgresql.jdbc.PgStatement.execute(PgStatement.java:437)
+            at app//org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:196)
+            at app//org.postgresql.jdbc.PgPreparedStatement.execute(PgPreparedStatement.java:182)
+            at app//com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+            at app//com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+            at app//org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:48)
+            at app//org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:75)
+            at app//org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+            at app//org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+            at app//org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+            at app//org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
+            at app//org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184)
+            at java.base@21.0.10/java.lang.reflect.Method.invoke(Method.java:580)
+            at app//org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:333)
+            ... 10 more
+
+PrototypePostSuccessIntegrationTest > プロトタイプ投稿できる() FAILED
+    org.springframework.dao.DataIntegrityViolationException: 
+    ### Error updating database.  Cause: org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (127, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.202161, 2026-07-06 09:54:42.202161).
+    ### The error may exist in in/tech_camp/proto_space/repository/UserMapper.java (best guess)
+    ### The error may involve in.tech_camp.proto_space.repository.UserMapper.insert-Inline
+    ### The error occurred while setting parameters
+    ### SQL: INSERT INTO users (email, password, name, profile, affiliation, position) VALUES (?, ?, ?,  ?, ?, ?)
+    ### Cause: org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (127, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.202161, 2026-07-06 09:54:42.202161).
+    ; ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (127, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.202161, 2026-07-06 09:54:42.202161).
+        at app//org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:258)
+        at app//org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:107)
+        at app//org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:95)
+        at app//org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:347)
+        at app/jdk.proxy3/jdk.proxy3.$Proxy93.insert(Unknown Source)
+        at app//org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:224)
+        at app//org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)
+        at app//org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:141)
+        at app//org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86)
+        at app/jdk.proxy3/jdk.proxy3.$Proxy98.insert(Unknown Source)
+        at app//in.tech_camp.proto_space.system.AbstractPrototypeIntegrationTest.setUp(AbstractPrototypeIntegrationTest.java:44)
+        at java.base@21.0.10/java.lang.reflect.Method.invoke(Method.java:580)
+        at java.base@21.0.10/java.util.ArrayList.forEach(ArrayList.java:1596)
+        at java.base@21.0.10/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+        Caused by:
+        org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+          Detail: Failing row contains (127, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.202161, 2026-07-06 09:54:42.202161).
+            at app//org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2904)
+            at app//org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2589)
+            at app//org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:431)
+            at app//org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:534)
+            at app//org.postgresql.jdbc.PgStatement.execute(PgStatement.java:437)
+            at app//org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:196)
+            at app//org.postgresql.jdbc.PgPreparedStatement.execute(PgPreparedStatement.java:182)
+            at app//com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+            at app//com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+            at app//org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:48)
+            at app//org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:75)
+            at app//org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+            at app//org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+            at app//org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+            at app//org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
+            at app//org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184)
+            at java.base@21.0.10/java.lang.reflect.Method.invoke(Method.java:580)
+            at app//org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:333)
+            ... 10 more
+
+PrototypePostValidationIntegrationTest STANDARD_OUT
+    2026-07-06T09:54:42.208+09:00  INFO 53924 --- [proto-space] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [in.tech_camp.proto_space.system.PrototypePostValidationIntegrationTest]: PrototypePostValidationIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+    2026-07-06T09:54:42.212+09:00  INFO 53924 --- [proto-space] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration in.tech_camp.proto_space.ProtoSpaceApplication for test class in.tech_camp.proto_space.system.PrototypePostValidationIntegrationTest
+
+PrototypePostValidationIntegrationTest > concept未入力では投稿できない() FAILED
+    org.springframework.dao.DataIntegrityViolationException: 
+    ### Error updating database.  Cause: org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (128, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.22047, 2026-07-06 09:54:42.22047).
+    ### The error may exist in in/tech_camp/proto_space/repository/UserMapper.java (best guess)
+    ### The error may involve in.tech_camp.proto_space.repository.UserMapper.insert-Inline
+    ### The error occurred while setting parameters
+    ### SQL: INSERT INTO users (email, password, name, profile, affiliation, position) VALUES (?, ?, ?,  ?, ?, ?)
+    ### Cause: org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (128, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.22047, 2026-07-06 09:54:42.22047).
+    ; ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (128, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.22047, 2026-07-06 09:54:42.22047).
+        at app//org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:258)
+        at app//org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:107)
+        at app//org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:95)
+        at app//org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:347)
+        at app/jdk.proxy3/jdk.proxy3.$Proxy93.insert(Unknown Source)
+        at app//org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:224)
+        at app//org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)
+        at app//org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:141)
+        at app//org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86)
+        at app/jdk.proxy3/jdk.proxy3.$Proxy98.insert(Unknown Source)
+        at app//in.tech_camp.proto_space.system.AbstractPrototypeIntegrationTest.setUp(AbstractPrototypeIntegrationTest.java:44)
+        at java.base@21.0.10/java.lang.reflect.Method.invoke(Method.java:580)
+        at java.base@21.0.10/java.util.ArrayList.forEach(ArrayList.java:1596)
+        at java.base@21.0.10/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+        Caused by:
+        org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+          Detail: Failing row contains (128, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.22047, 2026-07-06 09:54:42.22047).
+            at app//org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2904)
+            at app//org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2589)
+            at app//org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:431)
+            at app//org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:534)
+            at app//org.postgresql.jdbc.PgStatement.execute(PgStatement.java:437)
+            at app//org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:196)
+            at app//org.postgresql.jdbc.PgPreparedStatement.execute(PgPreparedStatement.java:182)
+            at app//com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+            at app//com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+            at app//org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:48)
+            at app//org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:75)
+            at app//org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+            at app//org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+            at app//org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+            at app//org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
+            at app//org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184)
+            at java.base@21.0.10/java.lang.reflect.Method.invoke(Method.java:580)
+            at app//org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:333)
+            ... 10 more
+
+PrototypePostValidationIntegrationTest > name未入力では投稿できない() FAILED
+    org.springframework.dao.DataIntegrityViolationException: 
+    ### Error updating database.  Cause: org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (129, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.226825, 2026-07-06 09:54:42.226825).
+    ### The error may exist in in/tech_camp/proto_space/repository/UserMapper.java (best guess)
+    ### The error may involve in.tech_camp.proto_space.repository.UserMapper.insert-Inline
+    ### The error occurred while setting parameters
+    ### SQL: INSERT INTO users (email, password, name, profile, affiliation, position) VALUES (?, ?, ?,  ?, ?, ?)
+    ### Cause: org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (129, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.226825, 2026-07-06 09:54:42.226825).
+    ; ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (129, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.226825, 2026-07-06 09:54:42.226825).
+        at app//org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:258)
+        at app//org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:107)
+        at app//org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:95)
+        at app//org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:347)
+        at app/jdk.proxy3/jdk.proxy3.$Proxy93.insert(Unknown Source)
+        at app//org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:224)
+        at app//org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)
+        at app//org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:141)
+        at app//org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86)
+        at app/jdk.proxy3/jdk.proxy3.$Proxy98.insert(Unknown Source)
+        at app//in.tech_camp.proto_space.system.AbstractPrototypeIntegrationTest.setUp(AbstractPrototypeIntegrationTest.java:44)
+        at java.base@21.0.10/java.lang.reflect.Method.invoke(Method.java:580)
+        at java.base@21.0.10/java.util.ArrayList.forEach(ArrayList.java:1596)
+        at java.base@21.0.10/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+        Caused by:
+        org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+          Detail: Failing row contains (129, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.226825, 2026-07-06 09:54:42.226825).
+            at app//org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2904)
+            at app//org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2589)
+            at app//org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:431)
+            at app//org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:534)
+            at app//org.postgresql.jdbc.PgStatement.execute(PgStatement.java:437)
+            at app//org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:196)
+            at app//org.postgresql.jdbc.PgPreparedStatement.execute(PgPreparedStatement.java:182)
+            at app//com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+            at app//com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+            at app//org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:48)
+            at app//org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:75)
+            at app//org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+            at app//org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+            at app//org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+            at app//org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
+            at app//org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184)
+            at java.base@21.0.10/java.lang.reflect.Method.invoke(Method.java:580)
+            at app//org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:333)
+            ... 10 more
+
+PrototypePostValidationIntegrationTest > catchCopy未入力では投稿できない() FAILED
+    org.springframework.dao.DataIntegrityViolationException: 
+    ### Error updating database.  Cause: org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (130, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.237073, 2026-07-06 09:54:42.237073).
+    ### The error may exist in in/tech_camp/proto_space/repository/UserMapper.java (best guess)
+    ### The error may involve in.tech_camp.proto_space.repository.UserMapper.insert-Inline
+    ### The error occurred while setting parameters
+    ### SQL: INSERT INTO users (email, password, name, profile, affiliation, position) VALUES (?, ?, ?,  ?, ?, ?)
+    ### Cause: org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (130, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.237073, 2026-07-06 09:54:42.237073).
+    ; ERROR: null value in column "profile" of relation "users" violates not-null constraint
+      Detail: Failing row contains (130, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.237073, 2026-07-06 09:54:42.237073).
+        at app//org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:258)
+        at app//org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:107)
+        at app//org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:95)
+        at app//org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:347)
+        at app/jdk.proxy3/jdk.proxy3.$Proxy93.insert(Unknown Source)
+        at app//org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:224)
+        at app//org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)
+        at app//org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:141)
+        at app//org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86)
+        at app/jdk.proxy3/jdk.proxy3.$Proxy98.insert(Unknown Source)
+        at app//in.tech_camp.proto_space.system.AbstractPrototypeIntegrationTest.setUp(AbstractPrototypeIntegrationTest.java:44)
+        at java.base@21.0.10/java.lang.reflect.Method.invoke(Method.java:580)
+        at java.base@21.0.10/java.util.ArrayList.forEach(ArrayList.java:1596)
+        at java.base@21.0.10/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+        Caused by:
+        org.postgresql.util.PSQLException: ERROR: null value in column "profile" of relation "users" violates not-null constraint
+          Detail: Failing row contains (130, user1@test.com, password, ユーザー1, null, null, null, 2026-07-06 09:54:42.237073, 2026-07-06 09:54:42.237073).
+            at app//org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2904)
+            at app//org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2589)
+            at app//org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:431)
+            at app//org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:534)
+            at app//org.postgresql.jdbc.PgStatement.execute(PgStatement.java:437)
+            at app//org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:196)
+            at app//org.postgresql.jdbc.PgPreparedStatement.execute(PgPreparedStatement.java:182)
+            at app//com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+            at app//com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+            at app//org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:48)
+            at app//org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:75)
+            at app//org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+            at app//org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+            at app//org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+            at app//org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
+            at app//org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184)
+            at java.base@21.0.10/java.lang.reflect.Method.invoke(Method.java:580)
+            at app//org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:333)
+            ... 10 more
+
+ProtoSpaceApplicationTests STANDARD_OUT
+    2026-07-06T09:54:42.244+09:00  INFO 53924 --- [proto-space] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [in.tech_camp.proto_space.ProtoSpaceApplicationTests]: ProtoSpaceApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+    2026-07-06T09:54:42.252+09:00  INFO 53924 --- [proto-space] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration in.tech_camp.proto_space.ProtoSpaceApplication for test class in.tech_camp.proto_space.ProtoSpaceApplicationTests
+
+      .   ____          _            __ _ _
+     /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+    ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+     \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+      '  |____| .__|_| |_|_| |_\__, | / / / /
+     =========|_|==============|___/=/_/_/_/
+
+     :: Spring Boot ::               (v3.5.16)
+
+    2026-07-06T09:54:42.267+09:00  INFO 53924 --- [proto-space] [    Test worker] i.t.p.ProtoSpaceApplicationTests         : Starting ProtoSpaceApplicationTests using Java 21.0.10 with PID 53924 (started by s00297 in /home/s00297/java_projects/protospace-d)
+    2026-07-06T09:54:42.267+09:00  INFO 53924 --- [proto-space] [    Test worker] i.t.p.ProtoSpaceApplicationTests         : No active profile set, falling back to 1 default profile: "default"
+    2026-07-06T09:54:42.545+09:00  INFO 53924 --- [proto-space] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+    2026-07-06T09:54:42.570+09:00  INFO 53924 --- [proto-space] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@506e382b
+    2026-07-06T09:54:42.571+09:00  INFO 53924 --- [proto-space] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+    2026-07-06T09:54:42.573+09:00  INFO 53924 --- [proto-space] [    Test worker] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/protospace_test (PostgreSQL 16.14)
+    2026-07-06T09:54:42.585+09:00  INFO 53924 --- [proto-space] [    Test worker] o.f.core.internal.command.DbValidate     : Successfully validated 3 migrations (execution time 00:00.005s)
+    2026-07-06T09:54:42.612+09:00  INFO 53924 --- [proto-space] [    Test worker] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 3
+    2026-07-06T09:54:42.613+09:00  INFO 53924 --- [proto-space] [    Test worker] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+    2026-07-06T09:54:42.718+09:00  WARN 53924 --- [proto-space] [    Test worker] .s.s.UserDetailsServiceAutoConfiguration : 
+
+    Using generated security password: c038762d-ec35-4eed-8f12-2dfe9f9a6a90
+
+    This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+    2026-07-06T09:54:42.719+09:00  INFO 53924 --- [proto-space] [    Test worker] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+    2026-07-06T09:54:42.857+09:00  INFO 53924 --- [proto-space] [    Test worker] i.t.p.ProtoSpaceApplicationTests         : Started ProtoSpaceApplicationTests in 0.601 seconds (process running for 5.912)
+
+PrototypeEditIntegrationTest > プロトタイプ編集できない場合 > conceptが空では編集できない() STANDARD_OUT
+
+    MockHttpServletRequest:
+          HTTP Method = POST
+          Request URI = /prototypes/19/update
+           Parameters = {name=[Zathin], catchCopy=[Aliquid nulla dolores odit.], concept=[], _csrf=[f2Znj2gRnJRDiuNNHBNo9g3TirkYiRvMhc0fDUTGBFdwVQUMTl8C6w5zpaRuvIEpKT5clT_qp9su7X3h5q95bHT3ZWIVZWNv]}
+              Headers = [Content-Type:"multipart/form-data;charset=UTF-8"]
+                 Body = null
+        Session Attrs = {}
+
+    Handler:
+                 Type = null
+
+    Async:
+        Async started = false
+         Async result = null
+
+    Resolved Exception:
+                 Type = null
+
+    ModelAndView:
+            View name = null
+                 View = null
+                Model = null
+
+    FlashMap:
+           Attributes = null
+
+    MockHttpServletResponse:
+               Status = 302
+        Error message = null
+              Headers = [X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Location:"http://localhost/login"]
+         Content type = null
+                 Body = 
+        Forwarded URL = null
+       Redirected URL = http://localhost/login
+              Cookies = []
+
+PrototypeEditIntegrationTest > プロトタイプ編集できない場合 > conceptが空では編集できない() FAILED
+    java.lang.AssertionError: Status expected:<200> but was:<302>
+        at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:61)
+        at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:128)
+        at org.springframework.test.web.servlet.result.StatusResultMatchers.lambda$matcher$9(StatusResultMatchers.java:640)
+        at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:214)
+        at in.tech_camp.proto_space.system.PrototypeEditIntegrationTest$プロトタイプ編集できない場合.conceptが空では編集できない(PrototypeEditIntegrationTest.java:360)
+
+PrototypeEditIntegrationTest > プロトタイプ編集できない場合 > 編集失敗時も入力値が保持される() STANDARD_OUT
+
+    MockHttpServletRequest:
+          HTTP Method = POST
+          Request URI = /prototypes/21/update
+           Parameters = {name=[編集中の名称], catchCopy=[], concept=[編集中の説明], _csrf=[LmkNEyOpR66xn00xELFNKQC4vAKlzn7jTiHxxjp31KxrxlOTS11uIBKadM-cqShQcpx5H2bdkTucqBjOeUeT8glE7chc8jKj]}
+              Headers = [Content-Type:"multipart/form-data;charset=UTF-8"]
+                 Body = null
+        Session Attrs = {}
+
+    Handler:
+                 Type = null
+
+    Async:
+        Async started = false
+         Async result = null
+
+    Resolved Exception:
+                 Type = null
+
+    ModelAndView:
+            View name = null
+                 View = null
+                Model = null
+
+    FlashMap:
+           Attributes = null
+
+    MockHttpServletResponse:
+               Status = 302
+        Error message = null
+              Headers = [X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Location:"http://localhost/login"]
+         Content type = null
+                 Body = 
+        Forwarded URL = null
+       Redirected URL = http://localhost/login
+              Cookies = []
+
+PrototypeEditIntegrationTest > プロトタイプ編集できない場合 > 編集失敗時も入力値が保持される() FAILED
+    java.lang.AssertionError: Status expected:<200> but was:<302>
+        at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:61)
+        at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:128)
+        at org.springframework.test.web.servlet.result.StatusResultMatchers.lambda$matcher$9(StatusResultMatchers.java:640)
+        at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:214)
+        at in.tech_camp.proto_space.system.PrototypeEditIntegrationTest$プロトタイプ編集できない場合.編集失敗時も入力値が保持される(PrototypeEditIntegrationTest.java:389)
+
+PrototypeEditIntegrationTest > プロトタイプ編集できない場合 > 未ログインでは編集ページへ遷移できない() STANDARD_OUT
+
+    MockHttpServletRequest:
+          HTTP Method = GET
+          Request URI = /prototypes/23/edit
+           Parameters = {}
+              Headers = []
+                 Body = null
+        Session Attrs = {SPRING_SECURITY_SAVED_REQUEST=DefaultSavedRequest [http://localhost/prototypes/23/edit?continue]}
+
+    Handler:
+                 Type = null
+
+    Async:
+        Async started = false
+         Async result = null
+
+    Resolved Exception:
+                 Type = null
+
+    ModelAndView:
+            View name = null
+                 View = null
+                Model = null
+
+    FlashMap:
+           Attributes = null
+
+    MockHttpServletResponse:
+               Status = 302
+        Error message = null
+              Headers = [X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Location:"http://localhost/login"]
+         Content type = null
+                 Body = 
+        Forwarded URL = null
+       Redirected URL = http://localhost/login
+              Cookies = []
+
+PrototypeEditIntegrationTest > プロトタイプ編集できない場合 > 未ログインでは編集ページへ遷移できない() FAILED
+    java.lang.AssertionError: Redirected URL expected:</login> but was:<http://localhost/login>
+        at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:61)
+        at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:128)
+        at org.springframework.test.web.servlet.result.MockMvcResultMatchers.lambda$redirectedUrl$2(MockMvcResultMatchers.java:130)
+        at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:214)
+        at in.tech_camp.proto_space.system.PrototypeEditIntegrationTest$プロトタイプ編集できない場合.未ログインでは編集ページへ遷移できない(PrototypeEditIntegrationTest.java:280)
+
+PrototypeEditIntegrationTest > プロトタイプ編集できない場合 > 他人の編集ページには遷移できない() STANDARD_OUT
+
+    MockHttpServletRequest:
+          HTTP Method = GET
+          Request URI = /prototypes/26/edit
+           Parameters = {}
+              Headers = []
+                 Body = null
+        Session Attrs = {SPRING_SECURITY_SAVED_REQUEST=DefaultSavedRequest [http://localhost/prototypes/26/edit?continue]}
+
+    Handler:
+                 Type = null
+
+    Async:
+        Async started = false
+         Async result = null
+
+    Resolved Exception:
+                 Type = null
+
+    ModelAndView:
+            View name = null
+                 View = null
+                Model = null
+
+    FlashMap:
+           Attributes = null
+
+    MockHttpServletResponse:
+               Status = 302
+        Error message = null
+              Headers = [X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Location:"http://localhost/login"]
+         Content type = null
+                 Body = 
+        Forwarded URL = null
+       Redirected URL = http://localhost/login
+              Cookies = []
+
+PrototypeEditIntegrationTest > プロトタイプ編集できない場合 > 他人の編集ページには遷移できない() FAILED
+    java.lang.AssertionError: Redirected URL expected:</> but was:<http://localhost/login>
+        at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:61)
+        at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:128)
+        at org.springframework.test.web.servlet.result.MockMvcResultMatchers.lambda$redirectedUrl$2(MockMvcResultMatchers.java:130)
+        at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:214)
+        at in.tech_camp.proto_space.system.PrototypeEditIntegrationTest$プロトタイプ編集できない場合.他人の編集ページには遷移できない(PrototypeEditIntegrationTest.java:265)
+
+PrototypeEditIntegrationTest > プロトタイプ編集できない場合 > nameが空では編集できない() STANDARD_OUT
+
+    MockHttpServletRequest:
+          HTTP Method = POST
+          Request URI = /prototypes/27/update
+           Parameters = {name=[], catchCopy=[Non aperiam corporis.], concept=[Aliquid quas aut cum deleniti et qui. Autem officia dignissimos facere error dolor. Sunt reprehenderit vel praesentium ut sint itaque dicta. Velit quae fuga.], _csrf=[FuhbitsVLR-dTR966kpE_5hgqPZdM4DsmzJbmDp8xtzawpnoIYluue0hFSuwfShC02dwyqhXhZdtC7nBowRpoFxN8-rip_iM]}
+              Headers = [Content-Type:"multipart/form-data;charset=UTF-8"]
+                 Body = null
+        Session Attrs = {}
+
+    Handler:
+                 Type = null
+
+    Async:
+        Async started = false
+         Async result = null
+
+    Resolved Exception:
+                 Type = null
+
+    ModelAndView:
+            View name = null
+                 View = null
+                Model = null
+
+    FlashMap:
+           Attributes = null
+
+    MockHttpServletResponse:
+               Status = 302
+        Error message = null
+              Headers = [X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Location:"http://localhost/login"]
+         Content type = null
+                 Body = 
+        Forwarded URL = null
+       Redirected URL = http://localhost/login
+              Cookies = []
+
+PrototypeEditIntegrationTest > プロトタイプ編集できない場合 > nameが空では編集できない() FAILED
+    java.lang.AssertionError: Status expected:<200> but was:<302>
+        at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:61)
+        at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:128)
+        at org.springframework.test.web.servlet.result.StatusResultMatchers.lambda$matcher$9(StatusResultMatchers.java:640)
+        at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:214)
+        at in.tech_camp.proto_space.system.PrototypeEditIntegrationTest$プロトタイプ編集できない場合.nameが空では編集できない(PrototypeEditIntegrationTest.java:304)
+
+PrototypeEditIntegrationTest > プロトタイプ編集できない場合 > catchCopyが空では編集できない() STANDARD_OUT
+
+    MockHttpServletRequest:
+          HTTP Method = POST
+          Request URI = /prototypes/29/update
+           Parameters = {name=[Pannier], catchCopy=[], concept=[Eius consequatur ab autem cum consequatur laborum. Corrupti similique aperiam. Blanditiis dolor deserunt quo minima omnis. Suscipit error non.], _csrf=[LNsGmPDoVz9fLpwyJSbzKv8c92Y3NAhJ7LpsMHpBdehuhsvCH7ln_snRYFlySq8BRwvHSct92l9RBTtk3oxcCEwgTIwK4P72]}
+              Headers = [Content-Type:"multipart/form-data;charset=UTF-8"]
+                 Body = null
+        Session Attrs = {}
+
+    Handler:
+                 Type = null
+
+    Async:
+        Async started = false
+         Async result = null
+
+    Resolved Exception:
+                 Type = null
+
+    ModelAndView:
+            View name = null
+                 View = null
+                Model = null
+
+    FlashMap:
+           Attributes = null
+
+    MockHttpServletResponse:
+               Status = 302
+        Error message = null
+              Headers = [X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Location:"http://localhost/login"]
+         Content type = null
+                 Body = 
+        Forwarded URL = null
+       Redirected URL = http://localhost/login
+              Cookies = []
+
+PrototypeEditIntegrationTest > プロトタイプ編集できない場合 > catchCopyが空では編集できない() FAILED
+    java.lang.AssertionError: Status expected:<200> but was:<302>
+        at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:61)
+        at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:128)
+        at org.springframework.test.web.servlet.result.StatusResultMatchers.lambda$matcher$9(StatusResultMatchers.java:640)
+        at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:214)
+        at in.tech_camp.proto_space.system.PrototypeEditIntegrationTest$プロトタイプ編集できない場合.catchCopyが空では編集できない(PrototypeEditIntegrationTest.java:332)
+
+PrototypeEditIntegrationTest > プロトタイプ編集できる場合 > 自分のプロトタイプ編集ページへ遷移できる() STANDARD_OUT
+
+    MockHttpServletRequest:
+          HTTP Method = GET
+          Request URI = /prototypes/33/edit
+           Parameters = {}
+              Headers = []
+                 Body = null
+        Session Attrs = {SPRING_SECURITY_SAVED_REQUEST=DefaultSavedRequest [http://localhost/prototypes/33/edit?continue]}
+
+    Handler:
+                 Type = null
+
+    Async:
+        Async started = false
+         Async result = null
+
+    Resolved Exception:
+                 Type = null
+
+    ModelAndView:
+            View name = null
+                 View = null
+                Model = null
+
+    FlashMap:
+           Attributes = null
+
+    MockHttpServletResponse:
+               Status = 302
+        Error message = null
+              Headers = [X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Location:"http://localhost/login"]
+         Content type = null
+                 Body = 
+        Forwarded URL = null
+       Redirected URL = http://localhost/login
+              Cookies = []
+
+PrototypeEditIntegrationTest > プロトタイプ編集できる場合 > 自分のプロトタイプ編集ページへ遷移できる() FAILED
+    java.lang.AssertionError: Status expected:<200> but was:<302>
+        at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:61)
+        at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:128)
+        at org.springframework.test.web.servlet.result.StatusResultMatchers.lambda$matcher$9(StatusResultMatchers.java:640)
+        at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:214)
+        at in.tech_camp.proto_space.system.PrototypeEditIntegrationTest$プロトタイプ編集できる場合.自分のプロトタイプ編集ページへ遷移できる(PrototypeEditIntegrationTest.java:129)
+
+PrototypeEditIntegrationTest > プロトタイプ編集できる場合 > 正常に編集できる() STANDARD_OUT
+
+    MockHttpServletRequest:
+          HTTP Method = POST
+          Request URI = /prototypes/35/update
+           Parameters = {name=[編集後の名称], catchCopy=[編集後のコピー], concept=[編集後のコンセプト], _csrf=[SAEKY_5W09BDz6WhiaSfU4_KrD_DBMd_tf1hQTJ3RPn2YOdZcGA9AZ016-lu_MaSvomrY-qrgV7wZqRSgsUHJ1AUJZjHUoY6]}
+              Headers = [Content-Type:"multipart/form-data;charset=UTF-8"]
+                 Body = null
+        Session Attrs = {}
+
+    Handler:
+                 Type = null
+
+    Async:
+        Async started = false
+         Async result = null
+
+    Resolved Exception:
+                 Type = null
+
+    ModelAndView:
+            View name = null
+                 View = null
+                Model = null
+
+    FlashMap:
+           Attributes = null
+
+    MockHttpServletResponse:
+               Status = 302
+        Error message = null
+              Headers = [X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY", Location:"http://localhost/login"]
+         Content type = null
+                 Body = 
+        Forwarded URL = null
+       Redirected URL = http://localhost/login
+              Cookies = []
+
+PrototypeEditIntegrationTest > プロトタイプ編集できる場合 > 正常に編集できる() FAILED
+    java.lang.AssertionError: Redirected URL expected:</prototypes/35> but was:<http://localhost/login>
+        at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:61)
+        at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:128)
+        at org.springframework.test.web.servlet.result.MockMvcResultMatchers.lambda$redirectedUrl$2(MockMvcResultMatchers.java:130)
+        at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:214)
+        at in.tech_camp.proto_space.system.PrototypeEditIntegrationTest$プロトタイプ編集できる場合.正常に編集できる(PrototypeEditIntegrationTest.java:176)
+
+Gradle Test Executor 9 finished executing tests.
+2026-07-06T09:54:44.577+09:00  INFO 53924 --- [proto-space] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-07-06T09:54:44.584+09:00  INFO 53924 --- [proto-space] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-07-06T09:54:44.588+09:00  INFO 53924 --- [proto-space] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2026-07-06T09:54:44.595+09:00  INFO 53924 --- [proto-space] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+
+> Task :test FAILED
+
+32 tests completed, 25 failed
+Finished generating test XML results (0.003 secs) into: /home/s00297/java_projects/protospace-d/build/test-results/test
+Generating HTML test report...
+Finished generating test html results (0.004 secs) into: /home/s00297/java_projects/protospace-d/build/reports/tests/test
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':test'.
+> There were failing tests. See the report at: file:///home/s00297/java_projects/protospace-d/build/reports/tests/test/index.html
+
+* Try:
+> Run with --scan to get full insights.
+
+BUILD FAILED in 8s
+5 actionable tasks: 1 executed, 4 up-to-date

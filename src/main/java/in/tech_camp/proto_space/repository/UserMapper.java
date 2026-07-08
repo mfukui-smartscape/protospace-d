@@ -5,20 +5,30 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 
-import in.tech_camp.proto_space.entity.User;
+import in.tech_camp.proto_space.entity.UserEntity;
 
-// UserMapper（共有する形）
 @Mapper
 public interface UserMapper {
 
-    @Insert("INSERT INTO users (email, password, name, profile, affiliation, position) " +
-            "VALUES (#{email}, #{password}, #{name}, #{profile}, #{affiliation}, #{position})")
+    @Insert("""
+        INSERT INTO users (email, password, name, profile, affiliation, position)
+        VALUES (#{email}, #{password}, #{name}, #{profile}, #{affiliation}, #{position})
+        """)
     @Options(useGeneratedKeys = true, keyProperty = "id")
-    void insert(User user);
+    void insert(UserEntity user);
 
-    @Select("SELECT * FROM users WHERE id = #{id}")
-    User findById(Long id);
+    @Select("""
+        SELECT * FROM users WHERE id = #{id}
+        """)
+    UserEntity  findById(Long id);
 
-    @Select("SELECT * FROM users WHERE email = #{email}")
-    User findByEmail(String email);
+    @Select("""
+        SELECT * FROM users WHERE email = #{email}
+        """)
+    UserEntity findByEmail(String email);
+
+    @Select("""
+        SELECT COUNT(*) FROM users WHERE email = #{email}
+        """)
+    int countByEmail(String email);
 }
