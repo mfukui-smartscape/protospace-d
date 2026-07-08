@@ -1,26 +1,33 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="ja">
 <head>
-  <meta charset="UTF-8"/>
-  <title>Prototype Edit</title>
-  <link th:href="@{/css/prototypes/edit.css}" rel="stylesheet" type="text/css">
+    <meta charset="UTF-8">
+    <title>編集</title>
+    <link th:href="@{/css/edit.css}" rel="stylesheet" type="text/css">
     <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
-</head>
 <body>
-  <div class="edit-container">
+<div th:insert="~{layout/header :: header}"></div>
+<div class="edit-container">
     <h1>プロトタイプ編集</h1>
 
-    <form th:action="@{/prototypes/{id}(id=${prototype.id})}" method="post" enctype="multipart/form-data">
-      <div class="prototype_subtitle">プロトタイプの名称</div>
-      <input type="text" name="name" th:value="${prototypeForm.name}" />
-      <div class="prototype_subtitle">キャッチコピー</div>
-      <input type="text" name="catchCopy" th:value="${prototypeForm.catchCopy}" />
-      <div class="prototype_subtitle">コンセプト</div>
-      <textarea name="concept" th:text="${prototypeForm.concept}"></textarea>
-      <div class="prototype_subtitle">プロトタイプの画像</div>
-      <input type="file" name="imageName" />
-      <button type="submit" class="prototype_submit">保存する</button>
+    <form th:object="${prototypeForm}" method="post" enctype="multipart/form-data">
+
+        <div class="prototype_subtitle">プロトタイプの名称</div>
+        <input type="text" th:field="*{name}">
+
+        <div class="prototype_subtitle">キャッチコピー</div>
+        <input type="text" th:field="*{catchCopy}">
+
+        <div class="prototype_subtitle">コンセプト</div>
+        <textarea th:field="*{concept}"></textarea>
+
+        <div class="prototype_subtitle">プロトタイプの画像</div>
+        <input type="file" th:field="*{imageName}">
+
+        <input type="submit" value="保存する" class="prototype_submit">
+
     </form>
-  </div>
+</div>
+<div th:insert="~{layout/footer :: footer}"></div>
 </body>
 </html>

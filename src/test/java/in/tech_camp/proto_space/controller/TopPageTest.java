@@ -118,6 +118,6 @@ class TopPageTest {
     void ログイン状態だとこんにちはとユーザー名が表示される() throws Exception {
         mockMvc.perform(get("/"))
             .andExpect(xpath("//*[@data-testid='welcome-message']")
-                    .string("こんにちは、" + userName + "です"));
+                    .string("こんにちは、" + userName + "さん"));
     }
 }

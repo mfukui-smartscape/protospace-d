@@ -1,5 +1,11 @@
 package in.tech_camp.proto_space.controller;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.UUID;
+
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -105,70 +111,99 @@ public class PrototypeController {
     }
 
     // 投稿
-    @PostMapping("/prototypes")
-    public String create(
-            @Validated(ValidationOrder.class) @ModelAttribute("prototypeForm") PrototypeForm prototypeForm,
-            BindingResult result,
-            Authentication authentication) {
+@PostMapping("/prototypes")
+public String create(
+        @Validated(ValidationOrder.class) @ModelAttribute("prototypeForm") PrototypeForm prototypeForm,
+        BindingResult result,
+        Authentication authentication) {
 
-        if (result.hasErrors()) {
-            return "prototypes/new";
-        }
-
-        UserEntity loginUser = userService.findByEmail(authentication.getName());
-
-        PrototypeEntity prototype = new PrototypeEntity();
-        prototype.setName(prototypeForm.getName());
-        prototype.setCatchCopy(prototypeForm.getCatchCopy());
-        prototype.setConcept(prototypeForm.getConcept());
-        prototype.setUserId(loginUser.getId());
-
-        MultipartFile imageFile = prototypeForm.getImageName();
-        if (imageFile != null && !imageFile.isEmpty()) {
-            prototype.setImageName(imageFile.getOriginalFilename());
-        }
-
-        prototypeService.save(prototype);
-        return "redirect:/";
+    if (result.hasErrors()) {
+        return "prototypes/new";
     }
+
+    UserEntity loginUser = userService.findByEmail(authentication.getName());
+
+    PrototypeEntity prototype = new PrototypeEntity();
+    prototype.setName(prototypeForm.getName());
+    prototype.setCatchCopy(prototypeForm.getCatchCopy());
+    prototype.setConcept(prototypeForm.getConcept());
+    prototype.setUserId(loginUser.getId());
+
+    MultipartFile imageFile = prototypeForm.getImageName();
+    if (imageFile != null && !imageFile.isEmpty()) {
+        String originalFilename = imageFile.getOriginalFilename();
+        String savedFilename = UUID.randomUUID() + "_" + originalFilename;
+
+        try {
+            // プロジェクトルートを基準にした絶対パスに変更
+            Path uploadDir = Paths.get(System.getProperty("user.dir"),
+                    "build/resources/main/static/images/");
+            Files.createDirectories(uploadDir); // フォルダが無ければ作成
+
+            Path destination = uploadDir.resolve(savedFilename);
+            imageFile.transferTo(destination);
+        } catch (IOException e) {
+            throw new RuntimeException("画像の保存に失敗しました", e);
+        }
+
+        prototype.setImageName(savedFilename);
+    }
+
+    prototypeService.save(prototype);
+    return "redirect:/";
+}
 
     // 更新（本人のみ）
     @PostMapping("/prototypes/{id}")
-    public String update(
-            @PathVariable Long id,
-            @Validated(ValidationPriority1.class) @ModelAttribute("prototypeForm") PrototypeForm prototypeForm,
-            BindingResult result,
-            Authentication authentication,
-            Model model) {
+public String update(
+        @PathVariable Long id,
+        @Validated(ValidationPriority1.class) @ModelAttribute("prototypeForm") PrototypeForm prototypeForm,
+        BindingResult result,
+        Authentication authentication,
+        Model model) {
 
-        PrototypeEntity prototype = prototypeService.findById(id);
-        if (prototype == null) {
-            return "redirect:/";
-        }
+    PrototypeEntity prototype = prototypeService.findById(id);
+    if (prototype == null) {
+        return "redirect:/";
+    }
 
-        UserEntity loginUser = (authentication != null)
-                ? userService.findByEmail(authentication.getName()) : null;
-        if (loginUser == null || !loginUser.getId().equals(prototype.getUserId())) {
-            return "redirect:/prototypes/" + id;
-        }
-
-        if (result.hasErrors()) {
-            model.addAttribute("prototype", prototype);
-            return "prototypes/edit";
-        }
-
-        prototype.setName(prototypeForm.getName());
-        prototype.setCatchCopy(prototypeForm.getCatchCopy());
-        prototype.setConcept(prototypeForm.getConcept());
-
-        MultipartFile imageFile = prototypeForm.getImageName();
-        if (imageFile != null && !imageFile.isEmpty()) {
-            prototype.setImageName(imageFile.getOriginalFilename());
-        }
-
-        prototypeService.update(prototype);
+    UserEntity loginUser = (authentication != null)
+            ? userService.findByEmail(authentication.getName()) : null;
+    if (loginUser == null || !loginUser.getId().equals(prototype.getUserId())) {
         return "redirect:/prototypes/" + id;
     }
+
+    if (result.hasErrors()) {
+        model.addAttribute("prototype", prototype);
+        return "prototypes/edit";
+    }
+
+    prototype.setName(prototypeForm.getName());
+    prototype.setCatchCopy(prototypeForm.getCatchCopy());
+    prototype.setConcept(prototypeForm.getConcept());
+
+    MultipartFile imageFile = prototypeForm.getImageName();
+    if (imageFile != null && !imageFile.isEmpty()) {
+        String originalFilename = imageFile.getOriginalFilename();
+        String savedFilename = UUID.randomUUID() + "_" + originalFilename;
+
+        try {
+            Path uploadDir = Paths.get(System.getProperty("user.dir"),
+                    "build/resources/main/static/images/");
+            Files.createDirectories(uploadDir);
+
+            Path destination = uploadDir.resolve(savedFilename);
+            imageFile.transferTo(destination);
+        } catch (IOException e) {
+            throw new RuntimeException("画像の保存に失敗しました", e);
+        }
+
+        prototype.setImageName(savedFilename);
+    }
+
+    prototypeService.update(prototype);
+    return "redirect:/prototypes/" + id;
+}
 
     // 削除（本人のみ）
     @PostMapping("/prototypes/{id}/delete")
