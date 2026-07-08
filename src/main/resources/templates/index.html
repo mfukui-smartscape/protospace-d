@@ -17,14 +17,14 @@
             <div class="welcome-message"
                 data-testid="welcome-message"
                 th:if="${userName != null}"
-                th:text="|こんにちは、${userName}です|">
+                th:text="|こんにちは、${userName}さん|">
             </div>
 
             <div class="prototype-list">
                 <div class="prototype-card" th:each="prototype : ${prototypes}">
 
                     <a th:href="@{/prototypes/{id}(id=${prototype.id})}">
-                        <img class="prototype-image" data-testid="prototype-image" th:src="${prototype.imageName}"/>
+                        <img class="prototype-image" data-testid="prototype-image" th:src="@{'/images/' + ${prototype.imageName}}"/>
                     </a>
 
                     <a th:href="@{/prototypes/{id}(id=${prototype.id})}">
