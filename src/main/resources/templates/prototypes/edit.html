@@ -5,12 +5,13 @@
     <title>編集</title>
     <link th:href="@{/css/edit.css}" rel="stylesheet" type="text/css">
     <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+</head> 
 <body>
 <div th:insert="~{layout/header :: header}"></div>
 <div class="edit-container">
     <h1>プロトタイプ編集</h1>
 
-    <form th:object="${prototypeForm}" method="post" enctype="multipart/form-data">
+    <form th:action="@{/prototypes/{id}(id=${prototype.id})}" th:object="${prototypeForm}" method="post" enctype="multipart/form-data">
 
         <div class="prototype_subtitle">プロトタイプの名称</div>
         <input type="text" th:field="*{name}">
