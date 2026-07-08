@@ -27,9 +27,11 @@
       <!-- 投稿者本人のみ 編集・削除 -->
       <div class="detail__owner-actions" th:if="${isOwner}">
         <a class="btn btn--edit"
-           th:href="@{/prototypes/{id}/edit(id=${prototype.id})}">編集</a>
+            th:href="@{/prototypes/{id}/edit(id=${prototype.id})}">編集</a>
         <form th:action="@{/prototypes/{id}/delete(id=${prototype.id})}" method="post" class="delete-form">
-          <button type="submit" class="btn btn--delete">削除する</button>
+            <a class="btn btn--delete"
+            th:href="@{/prototypes/{id}/delete(id=${prototype.id})}">削除</a>
+            <button type="submit" class="btn btn--delete">削除する</button>
         </form>
       </div>
     </div>
@@ -60,13 +62,13 @@
         </li>
       </ul>
 
-      <!-- ログイン時のみコメント投稿フォーム -->
+      <!-- ログイン時のみ表示するフォーム -->
       <form th:if="${isLoggedIn}"
             th:action="@{/prototypes/{id}/comments(id=${prototype.id})}"
             method="post" class="comment-form">
         <textarea name="content" class="comment-form__input"
                   placeholder="コメントを入力"></textarea>
-        <button type="submit" class="btn btn--comment">コメントする</button>
+        <button type="submit" class="btn btn--comment">コメント投稿</button>
       </form>
     </section>
 
