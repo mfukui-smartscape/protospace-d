@@ -65,3 +65,26 @@ img {
 .main {
     padding-top: 80px;   /* ヘッダーの高さ + 余白。ヘッダーが60pxなら80くらい */
 }
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+@keyframes page-spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+.page-spin {
+    animation: page-spin 4s linear infinite;
+    transform-origin: center center;
+}
+
+.page-reverse {
+    transform: rotate(180deg);
+    transform-origin: center center;
+}
+
+.reverse-target {
+    transform: rotate(180deg);
+}

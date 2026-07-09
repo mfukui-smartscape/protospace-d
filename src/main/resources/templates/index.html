@@ -6,14 +6,15 @@
     <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css"/>
     <title>ProtoSpace</title>
 </head>
-<body>
+<body th:attr="data-login-user=${userName}"
+      th:classappend="${userName == 'spin' ? ' page-spin' : ''}
+                    + ${userName == 'reverse' ? ' page-reverse' : ''}">
 
     <div th:replace="~{layout/header :: header}"></div>
 
     <main class="main">
         <div class="inner">
 
-            <!-- 検索フォーム（プロトタイプ名・投稿者名・タグ / AND検索） -->
             <form class="search-form" method="get" th:action="@{/}">
                 <input type="text" name="name" th:value="${searchForm.name}"
                        placeholder="プロトタイプ名" />
@@ -30,7 +31,6 @@
                 <button type="submit">検索</button>
             </form>
 
-            <!-- 未検索: こんにちは / 検索後: 検索結果 -->
             <div class="welcome-message"
                 data-testid="welcome-message"
                 th:if="${!searched and userName != null}"
@@ -48,7 +48,8 @@
                     <a th:href="@{/prototypes/{id}(id=${prototype.id})}">
                         <img class="prototype-image"
                             data-testid="prototype-image"
-                            th:classappend="${prototype.name == 'spin'} ? ' spin-target' : ''"
+                            th:classappend="${prototype.name == 'spin' and userName != 'demon' ? ' spin-target' : ''}
+                                        + ${prototype.name == 'reverse' ? ' reverse-target' : ''}"
                             th:src="@{'/images/' + ${prototype.imageName}}"/>
                     </a>
 
@@ -83,6 +84,61 @@
     </main>
 
     <div th:replace="~{layout/footer :: footer}"></div>
-   
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginUser = document.body.dataset.loginUser || '';
+            const isDemon = (loginUser === 'demon');
+            const imgs = document.querySelectorAll('.prototype-image');
+
+            if (!isDemon) {
+                document.querySelectorAll('.spin-target').forEach((img) => {
+                    img.style.animation = 'spin 1s linear infinite';
+                });
+                return;
+            }
+
+            // ===== demon: 逃げ回る（戻らない）=====
+            const THRESHOLD = 300;   // この距離に入ると逃げる
+            const SPEED     = 0.8;  // 逃げる速さ（0.2〜0.6くらいで調整）
+
+            const state = [];
+            imgs.forEach((img, i) => {
+                img.style.position = 'relative';
+                img.style.transition = 'transform 0.06s linear';
+                img.style.willChange = 'transform';
+                state[i] = { x: 0, y: 0 };   // 現在のズレ
+            });
+
+            let mouseX = -9999, mouseY = -9999;
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+
+            function animate() {
+                imgs.forEach((img, i) => {
+                    const s = state[i];
+                    const rect = img.getBoundingClientRect();
+                    // 今の実際の中心（ズレ込み）
+                    const cx = rect.left + rect.width / 2;
+                    const cy = rect.top + rect.height / 2;
+
+                    const dist = Math.hypot(mouseX - cx, mouseY - cy);
+                    if (dist < THRESHOLD) {
+                        // カーソルと逆方向へ、近いほど強く「押しのけられる」
+                        const angle = Math.atan2(cy - mouseY, cx - mouseX);
+                        const push = (THRESHOLD - dist) * SPEED;
+                        s.x += Math.cos(angle) * push;
+                        s.y += Math.sin(angle) * push;
+                        img.style.transform = `translate(${s.x}px, ${s.y}px)`;
+                    }
+                    // 閾値の外なら何もしない＝その場に留まる（戻らない）
+                });
+                requestAnimationFrame(animate);
+            }
+            requestAnimationFrame(animate);
+        });
+        </script>
 </body>
 </html>
