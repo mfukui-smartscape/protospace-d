@@ -9,22 +9,47 @@
 <body>
 
     <div th:replace="~{layout/header :: header}"></div>
-    
-    <main class="main">
 
+    <main class="main">
         <div class="inner">
 
+            <!-- 検索フォーム（プロトタイプ名・投稿者名・タグ / AND検索） -->
+            <form class="search-form" method="get" th:action="@{/}">
+                <input type="text" name="name" th:value="${searchForm.name}"
+                       placeholder="プロトタイプ名" />
+                <input type="text" name="userName" th:value="${searchForm.userName}"
+                       placeholder="投稿者名" />
+                <div class="search-tags">
+                    <label th:each="tag : ${allTags}" class="tag-check">
+                        <input type="checkbox" name="tagIds" th:value="${tag.id}"
+                               th:checked="${searchForm.tagIds != null
+                                            and #lists.contains(searchForm.tagIds, tag.id)}"/>
+                        <span th:text="${tag.name}"></span>
+                    </label>
+                </div>
+                <button type="submit">検索</button>
+            </form>
+
+            <!-- 未検索: こんにちは / 検索後: 検索結果 -->
             <div class="welcome-message"
                 data-testid="welcome-message"
-                th:if="${userName != null}"
+                th:if="${!searched and userName != null}"
                 th:text="|こんにちは、${userName}さん|">
+            </div>
+            <div class="search-result-heading"
+                data-testid="search-result"
+                th:if="${searched}">
+                検索結果
             </div>
 
             <div class="prototype-list">
                 <div class="prototype-card" th:each="prototype : ${prototypes}">
 
                     <a th:href="@{/prototypes/{id}(id=${prototype.id})}">
-                        <img class="prototype-image" data-testid="prototype-image" th:src="@{'/images/' + ${prototype.imageName}}"/>
+                        <img class="prototype-image"
+                            data-testid="prototype-image"
+                            th:classappend="${prototype.name == 'spin'} ? ' spin-target' : ''"
+                            th:src="@{'/images/' + ${prototype.imageName}}"/>
                     </a>
 
                     <a th:href="@{/prototypes/{id}(id=${prototype.id})}">
@@ -39,6 +64,11 @@
                         th:text="${prototype.catchCopy}">
                     </div>
 
+                    <div class="prototype-tags" th:if="${!prototype.tags.isEmpty()}">
+                        <span class="tag-chip" th:each="tag : ${prototype.tags}"
+                              th:text="${tag.name}"></span>
+                    </div>
+
                     <a th:href="@{/users/{id}(id=${prototype.userId})}">
                         <div class="user-name"
                             data-testid="user-name"
@@ -49,11 +79,10 @@
                 </div>
             </div>
 
-            
         </div>
-        
     </main>
-    
+
     <div th:replace="~{layout/footer :: footer}"></div>
+   
 </body>
 </html>

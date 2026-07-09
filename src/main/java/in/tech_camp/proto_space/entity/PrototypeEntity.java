@@ -22,4 +22,5 @@ public class PrototypeEntity {
 
     // JOINで取得する投稿者名（prototypesテーブルのカラムではない）
     private String userName;
+    private java.util.List<TagEntity> tags = new java.util.ArrayList<>();
 }

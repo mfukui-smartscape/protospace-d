@@ -53,3 +53,15 @@ img {
     text-align: right;
     text-decoration: underline;
 }
+
+.search-form { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 24px; }
+.search-form input[type="text"] { padding: 6px 10px; }
+.search-tags { display: flex; flex-wrap: wrap; gap: 6px 12px; }
+.tag-check { display: inline-flex; align-items: center; gap: 4px; font-size: 13px; }
+.search-result-heading { font-size: 20px; font-weight: bold; margin: 16px 0; }
+.prototype-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+.tag-chip { font-size: 11px; padding: 2px 8px; border-radius: 999px; background: #eee; color: #333; }
+
+.main {
+    padding-top: 80px;   /* ヘッダーの高さ + 余白。ヘッダーが60pxなら80くらい */
+}
