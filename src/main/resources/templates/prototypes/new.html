@@ -11,7 +11,6 @@
     <div th:insert="~{layout/header :: header}"></div>
 
     <form th:action="@{/prototypes}" method="post" th:object="${prototypeForm}" enctype="multipart/form-data" class="prototype_form">
-    <!-- <form th:action="@{/prototypes}" method="post" th:object="${prototypeForm}" class="prototype_form"> -->
       <h1>新規プロトタイプ投稿</h1>
       <div class="prototype_subtitle">プロトタイプの名称</div>
       <input type="text" th:field="*{name}">
@@ -21,6 +20,16 @@
 
       <div class="prototype_subtitle">コンセプト</div>
       <input type="text" th:field="*{concept}">
+
+      <div class="prototype_subtitle">使用言語（複数選択可）</div>
+      <div class="tag-select">
+        <label th:each="tag : ${allTags}" class="tag-check">
+          <input type="checkbox" name="tagIds" th:value="${tag.id}"
+                 th:checked="${prototypeForm.tagIds != null
+                              and #lists.contains(prototypeForm.tagIds, tag.id)}">
+          <span th:text="${tag.name}"></span>
+        </label>
+      </div>
 
       <div class="prototype_subtitle">プロトタイプの画像</div>
       <input type="file" th:field="*{imageName}">

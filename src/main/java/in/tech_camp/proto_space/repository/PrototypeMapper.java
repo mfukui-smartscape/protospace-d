@@ -4,12 +4,19 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Many;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.ResultMap;
+import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.Update;
 
 import in.tech_camp.proto_space.entity.PrototypeEntity;
+import in.tech_camp.proto_space.entity.TagEntity;
+import in.tech_camp.proto_space.form.PrototypeSearchForm;
 
 @Mapper
 public interface PrototypeMapper {
@@ -25,6 +32,11 @@ public interface PrototypeMapper {
         JOIN users u ON u.id = p.user_id
         WHERE p.id = #{id}
         """)
+    @Results(id = "prototypeResult", value = {
+        @Result(property = "id", column = "id"),
+        @Result(property = "tags", column = "id",
+                many = @Many(select = "findTagsByPrototypeId"))
+    })
     PrototypeEntity findById(Long id);
 
     @Select("""
@@ -34,6 +46,7 @@ public interface PrototypeMapper {
         WHERE p.user_id = #{userId}
         ORDER BY p.created_at DESC
         """)
+    @ResultMap("prototypeResult")
     List<PrototypeEntity> findByUserId(Long userId);
 
     @Select("""
@@ -42,7 +55,21 @@ public interface PrototypeMapper {
         JOIN users u ON u.id = p.user_id
         ORDER BY p.created_at DESC
         """)
+    @ResultMap("prototypeResult")
     List<PrototypeEntity> findAll();
+
+    @SelectProvider(type = PrototypeSqlProvider.class, method = "search")
+    @ResultMap("prototypeResult")
+    List<PrototypeEntity> search(PrototypeSearchForm form);
+
+    @Select("""
+        SELECT t.id, t.name
+        FROM tags t
+        JOIN prototypes_tags pt ON pt.tag_id = t.id
+        WHERE pt.prototype_id = #{prototypeId}
+        ORDER BY t.id
+        """)
+    List<TagEntity> findTagsByPrototypeId(Long prototypeId);
 
     @Update("UPDATE prototypes "
           + "SET name = #{name}, catch_copy = #{catchCopy}, "

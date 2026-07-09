@@ -22,6 +22,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import in.tech_camp.proto_space.entity.PrototypeEntity;
 import in.tech_camp.proto_space.entity.UserEntity;
 import in.tech_camp.proto_space.form.PrototypeForm;
+import in.tech_camp.proto_space.form.PrototypeSearchForm;
 import in.tech_camp.proto_space.repository.CommentMapper;
 import in.tech_camp.proto_space.service.PrototypeService;
 import in.tech_camp.proto_space.service.UserService;
@@ -42,10 +43,20 @@ public class PrototypeController {
         this.commentMapper = commentMapper;
     }
 
-    // トップページ（一覧）
+    // トップページ（一覧＋検索）
     @GetMapping("/")
-    public String index(Authentication authentication, Model model) {
-        model.addAttribute("prototypes", prototypeService.findAll());
+    public String index(
+            @ModelAttribute("searchForm") PrototypeSearchForm searchForm,
+            Authentication authentication,
+            Model model) {
+
+        boolean searched = !searchForm.isEmpty();
+        model.addAttribute("prototypes",
+                searched ? prototypeService.search(searchForm)
+                         : prototypeService.findAll());
+        model.addAttribute("searched", searched);
+        model.addAttribute("allTags", prototypeService.findAllTags());
+
         if (authentication != null) {
             UserEntity user = userService.findByEmail(authentication.getName());
             if (user != null) {
@@ -59,10 +70,11 @@ public class PrototypeController {
     @GetMapping("/prototypes/new")
     public String showNew(Model model) {
         model.addAttribute("prototypeForm", new PrototypeForm());
+        model.addAttribute("allTags", prototypeService.findAllTags());
         return "prototypes/new";
     }
 
-    // 詳細表示（誰でも見れる。本人だけ編集/削除リンクを出す）
+    // 詳細表示
     @GetMapping("/prototypes/{id}")
     public String showDetail(
             @PathVariable Long id,
@@ -104,106 +116,106 @@ public class PrototypeController {
         form.setName(prototype.getName());
         form.setCatchCopy(prototype.getCatchCopy());
         form.setConcept(prototype.getConcept());
+        // 既存タグを初期選択させる
+        form.setTagIds(prototype.getTags().stream()
+                .map(t -> t.getId()).toList());
 
         model.addAttribute("prototype", prototype);
         model.addAttribute("prototypeForm", form);
+        model.addAttribute("allTags", prototypeService.findAllTags());
         return "prototypes/edit";
     }
 
     // 投稿
-@PostMapping("/prototypes")
-public String create(
-        @Validated(ValidationOrder.class) @ModelAttribute("prototypeForm") PrototypeForm prototypeForm,
-        BindingResult result,
-        Authentication authentication) {
+    @PostMapping("/prototypes")
+    public String create(
+            @Validated(ValidationOrder.class) @ModelAttribute("prototypeForm") PrototypeForm prototypeForm,
+            BindingResult result,
+            Authentication authentication,
+            Model model) {
 
-    if (result.hasErrors()) {
-        return "prototypes/new";
-    }
-
-    UserEntity loginUser = userService.findByEmail(authentication.getName());
-
-    PrototypeEntity prototype = new PrototypeEntity();
-    prototype.setName(prototypeForm.getName());
-    prototype.setCatchCopy(prototypeForm.getCatchCopy());
-    prototype.setConcept(prototypeForm.getConcept());
-    prototype.setUserId(loginUser.getId());
-
-    MultipartFile imageFile = prototypeForm.getImageName();
-    if (imageFile != null && !imageFile.isEmpty()) {
-        String originalFilename = imageFile.getOriginalFilename();
-        String savedFilename = UUID.randomUUID() + "_" + originalFilename;
-
-        try {
-            // プロジェクトルートを基準にした絶対パスに変更
-            Path uploadDir = Paths.get(System.getProperty("user.dir"),
-                    "uploads", "images");
-            Files.createDirectories(uploadDir); // フォルダが無ければ作成
-
-            Path destination = uploadDir.resolve(savedFilename);
-            imageFile.transferTo(destination);
-        } catch (IOException e) {
-            throw new RuntimeException("画像の保存に失敗しました", e);
+        if (result.hasErrors()) {
+            model.addAttribute("allTags", prototypeService.findAllTags());
+            return "prototypes/new";
         }
 
-        prototype.setImageName(savedFilename);
-    }
+        UserEntity loginUser = userService.findByEmail(authentication.getName());
 
-    prototypeService.save(prototype);
-    return "redirect:/";
-}
+        PrototypeEntity prototype = new PrototypeEntity();
+        prototype.setName(prototypeForm.getName());
+        prototype.setCatchCopy(prototypeForm.getCatchCopy());
+        prototype.setConcept(prototypeForm.getConcept());
+        prototype.setUserId(loginUser.getId());
 
-    // 更新（本人のみ）
-    @PostMapping("/prototypes/{id}")
-public String update(
-        @PathVariable Long id,
-        @Validated(ValidationPriority1.class) @ModelAttribute("prototypeForm") PrototypeForm prototypeForm,
-        BindingResult result,
-        Authentication authentication,
-        Model model) {
+        MultipartFile imageFile = prototypeForm.getImageName();
+        if (imageFile != null && !imageFile.isEmpty()) {
+            String originalFilename = imageFile.getOriginalFilename();
+            String savedFilename = UUID.randomUUID() + "_" + originalFilename;
+            try {
+                Path uploadDir = Paths.get(System.getProperty("user.dir"),
+                        "uploads", "images");
+                Files.createDirectories(uploadDir);
+                Path destination = uploadDir.resolve(savedFilename);
+                imageFile.transferTo(destination);
+            } catch (IOException e) {
+                throw new RuntimeException("画像の保存に失敗しました", e);
+            }
+            prototype.setImageName(savedFilename);
+        }
 
-    PrototypeEntity prototype = prototypeService.findById(id);
-    if (prototype == null) {
+        prototypeService.saveWithTags(prototype, prototypeForm.getTagIds());
         return "redirect:/";
     }
 
-    UserEntity loginUser = (authentication != null)
-            ? userService.findByEmail(authentication.getName()) : null;
-    if (loginUser == null || !loginUser.getId().equals(prototype.getUserId())) {
-        return "redirect:/prototypes/" + id;
-    }
+    // 更新（本人のみ）
+    @PostMapping("/prototypes/{id}")
+    public String update(
+            @PathVariable Long id,
+            @Validated(ValidationPriority1.class) @ModelAttribute("prototypeForm") PrototypeForm prototypeForm,
+            BindingResult result,
+            Authentication authentication,
+            Model model) {
 
-    if (result.hasErrors()) {
-        model.addAttribute("prototype", prototype);
-        return "prototypes/edit";
-    }
-
-    prototype.setName(prototypeForm.getName());
-    prototype.setCatchCopy(prototypeForm.getCatchCopy());
-    prototype.setConcept(prototypeForm.getConcept());
-
-    MultipartFile imageFile = prototypeForm.getImageName();
-    if (imageFile != null && !imageFile.isEmpty()) {
-        String originalFilename = imageFile.getOriginalFilename();
-        String savedFilename = UUID.randomUUID() + "_" + originalFilename;
-
-        try {
-            Path uploadDir = Paths.get(System.getProperty("user.dir"),
-                    "uploads", "images");
-            Files.createDirectories(uploadDir);
-
-            Path destination = uploadDir.resolve(savedFilename);
-            imageFile.transferTo(destination);
-        } catch (IOException e) {
-            throw new RuntimeException("画像の保存に失敗しました", e);
+        PrototypeEntity prototype = prototypeService.findById(id);
+        if (prototype == null) {
+            return "redirect:/";
         }
 
-        prototype.setImageName(savedFilename);
-    }
+        UserEntity loginUser = (authentication != null)
+                ? userService.findByEmail(authentication.getName()) : null;
+        if (loginUser == null || !loginUser.getId().equals(prototype.getUserId())) {
+            return "redirect:/prototypes/" + id;
+        }
 
-    prototypeService.update(prototype);
-    return "redirect:/prototypes/" + id;
-}
+        if (result.hasErrors()) {
+            model.addAttribute("prototype", prototype);
+            model.addAttribute("allTags", prototypeService.findAllTags());
+            return "prototypes/edit";
+        }
+
+        prototype.setName(prototypeForm.getName());
+        prototype.setCatchCopy(prototypeForm.getCatchCopy());
+        prototype.setConcept(prototypeForm.getConcept());
+
+        MultipartFile imageFile = prototypeForm.getImageName();
+        if (imageFile != null && !imageFile.isEmpty()) {
+            String originalFilename = imageFile.getOriginalFilename();
+            String savedFilename = UUID.randomUUID() + "_" + originalFilename;
+            try {
+                Path uploadDir = Paths.get(System.getProperty("user.dir"),
+                        "uploads", "images");
+                Files.createDirectories(uploadDir);
+                Path destination = uploadDir.resolve(savedFilename);
+                imageFile.transferTo(destination);
+            } catch (IOException e) {
+                throw new RuntimeException("画像の保存に失敗しました", e);
+            }
+            prototype.setImageName(savedFilename);
+        }
+
+        prototypeService.updateWithTags(prototype, prototypeForm.getTagIds());
+        return "redirect:/prototypes/" + id;
+    }
 
     // 削除（本人のみ）
     @PostMapping("/prototypes/{id}/delete")

@@ -19,6 +19,7 @@ public class PrototypeForm {
   @NotNull(message = "Image can't be blank", groups = ValidationPriority3.class)
   private MultipartFile imageName;
 
+  private java.util.List<Long> tagIds;
   
  public MultipartFile getImage() {
       return imageName;
