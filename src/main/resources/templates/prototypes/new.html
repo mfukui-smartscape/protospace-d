@@ -10,7 +10,8 @@
   <body>
     <div th:insert="~{layout/header :: header}"></div>
 
-    <form th:action="@{/prototypes}" method="post" th:object="${prototypeForm}" class="prototype_form">
+    <form th:action="@{/prototypes}" method="post" th:object="${prototypeForm}" enctype="multipart/form-data" class="prototype_form">
+    <!-- <form th:action="@{/prototypes}" method="post" th:object="${prototypeForm}" class="prototype_form"> -->
       <h1>新規プロトタイプ投稿</h1>
       <div class="prototype_subtitle">プロトタイプの名称</div>
       <input type="text" th:field="*{name}">
