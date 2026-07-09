@@ -27,7 +27,13 @@ public interface PrototypeMapper {
         """)
     PrototypeEntity findById(Long id);
 
-    @Select("SELECT * FROM prototypes WHERE user_id = #{userId}")
+    @Select("""
+        SELECT p.*, u.name AS user_name
+        FROM prototypes p
+        JOIN users u ON u.id = p.user_id
+        WHERE p.user_id = #{userId}
+        ORDER BY p.created_at DESC
+        """)
     List<PrototypeEntity> findByUserId(Long userId);
 
     @Select("""
