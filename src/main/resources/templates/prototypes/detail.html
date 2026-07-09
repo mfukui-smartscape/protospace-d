@@ -15,7 +15,7 @@
     <div th:if="${isOwner}">
         <a th:href="@{/prototypes/{id}/edit(id=${prototype.id})}">編集</a>
         <form th:action="@{/prototypes/{id}/delete(id=${prototype.id})}" method="post">
-            <!-- <a th:href="@{/prototypes/{id}/delete(id=${prototype.id})}">削除</a> -->
+            <a th:href="@{/prototypes/{id}/delete(id=${prototype.id})}">削除</a>
             <button type="submit">削除する</button>
         </form>
     </div>
