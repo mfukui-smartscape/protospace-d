@@ -7,8 +7,8 @@
     <link th:href="@{/css/prototypes/detail.css}" rel="stylesheet" type="text/css" />
     <title>プロトタイプ詳細</title>
 </head>
-<body>
-
+<body th:attr="data-login-user=${userName}"
+      th:classappend="${prototype.name == 'reverse' ? ' page-reverse' : ''}">
 <div th:insert="~{layout/header :: header}"></div>
 
 <main>

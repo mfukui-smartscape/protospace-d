@@ -230,3 +230,8 @@
   }
   .comment__author { align-self: flex-end; }
 }
+
+.page-reverse {
+    transform: rotate(180deg);
+    transform-origin: center center;
+}
