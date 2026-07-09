@@ -1,5 +1,11 @@
 package in.tech_camp.proto_space.controller;
 
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.context.SecurityContextRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,6 +21,8 @@ import in.tech_camp.proto_space.repository.UserMapper;
 import in.tech_camp.proto_space.service.PrototypeService;
 import in.tech_camp.proto_space.service.UserService;
 import in.tech_camp.proto_space.validation.ValidationOrder;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 
 @Controller
@@ -24,6 +32,8 @@ public class UserController {
   private final UserService userService;
   private final UserMapper userMapper;
   private final PrototypeService prototypeService;
+  private final AuthenticationManager authenticationManager;
+  private final SecurityContextRepository securityContextRepository;
 
   @GetMapping("/users/new")
   public String newUser(Model model) {
@@ -32,13 +42,20 @@ public class UserController {
   }
 
     @PostMapping("/users")
-    public String createUser(@Validated(ValidationOrder.class) @ModelAttribute UserForm userForm, BindingResult bindingResult, Model model) {
+    public String createUser(
+            @Validated(ValidationOrder.class) @ModelAttribute UserForm userForm,
+            BindingResult bindingResult,
+            Model model,
+            HttpServletRequest request,
+            HttpServletResponse response) {
+
         userForm.validateEmailUnique(userMapper, bindingResult);
         userForm.validatePasswordConfirmation(bindingResult);
         if (bindingResult.hasErrors()) {
-                model.addAttribute("userForm", userForm);
-                return "users/new";
+            model.addAttribute("userForm", userForm);
+            return "users/new";
         }
+
         UserEntity user = new UserEntity();
         user.setEmail(userForm.getEmail());
         user.setPassword(userForm.getPassword());
@@ -47,7 +64,20 @@ public class UserController {
         user.setAffiliation(userForm.getAffiliation());
         user.setPosition(userForm.getPosition());
         userService.createUserWithEncryptedPassword(user);
-        return "redirect:/login";
+
+        // --- ここから自動ログイン ---
+        UsernamePasswordAuthenticationToken authToken =
+            new UsernamePasswordAuthenticationToken(
+                userForm.getEmail(), userForm.getPassword());  // ★生パスワードを渡す
+        Authentication authentication =
+            authenticationManager.authenticate(authToken);
+
+        SecurityContext context = SecurityContextHolder.createEmptyContext();
+        context.setAuthentication(authentication);
+        SecurityContextHolder.setContext(context);
+        securityContextRepository.saveContext(context, request, response);
+
+        return "redirect:/";
     }
 
     @GetMapping("/users/{id}")
