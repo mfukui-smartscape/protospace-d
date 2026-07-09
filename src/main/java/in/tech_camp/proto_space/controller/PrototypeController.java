@@ -137,7 +137,7 @@ public String create(
         try {
             // プロジェクトルートを基準にした絶対パスに変更
             Path uploadDir = Paths.get(System.getProperty("user.dir"),
-                    "build/resources/main/static/images/");
+                    "uploads", "images");
             Files.createDirectories(uploadDir); // フォルダが無ければ作成
 
             Path destination = uploadDir.resolve(savedFilename);
@@ -189,7 +189,7 @@ public String update(
 
         try {
             Path uploadDir = Paths.get(System.getProperty("user.dir"),
-                    "build/resources/main/static/images/");
+                    "uploads", "images");
             Files.createDirectories(uploadDir);
 
             Path destination = uploadDir.resolve(savedFilename);
